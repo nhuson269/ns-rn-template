@@ -59,3 +59,9 @@ buck-out/
 # Ruby / CocoaPods
 /ios/Pods/
 /vendor/bundle/
+Podfile.lock
+
+#Visua Studio Code
+*.vscode/.react
+package-lock.json
+yarn.lock
