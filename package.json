@@ -1,6 +1,6 @@
 {
   "name": "@nhuson269/react-native-template-typescript",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
   "author": {
     "name": "Nguyen Nhu Son",

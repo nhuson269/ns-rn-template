@@ -26,32 +26,8 @@
 ## :arrow_forward: Usage
 
 ```sh
-npx react-native init MyApp --template react-native-template-typescript
+npx react-native init MyApp --template @nhuson269/react-native-template-typescript
 ```
-
-### Usage with older versions of React Native
-
-#### e.g. `react-native@0.67.x`
-
-```sh
-npx react-native init MyApp --template react-native-template-typescript@6.9.*
-```
-
-See the below table to find out which version of the template to use.
-
-#### React Native <=> Template Version
-
-| React Native | Template |
-| ------------ | -------- |
-| 0.68         | 6.10.\*  |
-| 0.67         | 6.9.\*   |
-| 0.66         | 6.8.\*   |
-| 0.65         | 6.7.\*   |
-| 0.64         | 6.6.\*   |
-| 0.63         | 6.5.\*   |
-| 0.62         | 6.4.\*   |
-| 0.61         | 6.3.\*   |
-| 0.60         | 6.2.\*   |
 
 ## :warning: React Native CLI
 
