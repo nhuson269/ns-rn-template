@@ -1,6 +1,6 @@
 {
-  "name": "@nhuson269/react-native-template-typescript",
-  "version": "0.0.3",
+  "name": "nson269-rn-template-ts",
+  "version": "0.0.4",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
   "author": {
     "name": "Nguyen Nhu Son",
@@ -22,6 +22,9 @@
     "template",
     "template.config.js"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nhuson269/react-native-template-typescript.git"
@@ -29,5 +32,6 @@
   "bugs": {
     "url": "https://github.com/nhuson269/react-native-template-typescript/issues"
   },
-  "homepage": "https://github.com/nhuson269/react-native-template-typescript#readme"
+  "homepage": "https://github.com/nhuson269/react-native-template-typescript#readme",
+  "dependencies": {}
 }
