@@ -1,4 +1,4 @@
-import "./utils/ignore-warnings";
+import "utils/ignore-warnings";
 import { StatusBar } from "components";
 import { i18next } from "languages";
 import { RootNavigator } from "navigators";
