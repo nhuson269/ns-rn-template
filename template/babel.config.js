@@ -1,5 +1,10 @@
 module.exports = {
   presets: ["module:metro-react-native-babel-preset"],
+  env: {
+    production: {
+      plugins: ["transform-remove-console"], //removing consoles.log from app during release (production) versions
+    },
+  },
   plugins: [
     [
       "module-resolver",
@@ -9,6 +14,7 @@ module.exports = {
         alias: {
           components: "./src/components",
           config: "./src/config",
+          hooks: "./src/hooks",
           languages: "./src/languages",
           models: "./src/models",
           navigators: "./src/navigators",

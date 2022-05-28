@@ -32,6 +32,7 @@
     "paths": {                                           /* Specify a set of entries that re-map imports to additional lookup locations. */
       "components/": ["/components"],
       "config/": ["/config"],
+      "hooks/": ["/hooks"],
       "languages/": ["/languages"],
       "models/": ["/models"],
       "navigators/": ["/navigators"],
