@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LaunchScreen } from "screens";
 import { AuthNavigator, HomeNavigator } from "navigators";
 import { RouteName } from "config";
+import { navigationRef, navOnStateChange } from "navigators/navigation-helper";
 
 export type RootNavParamList = {
   [RouteName.LAUNCH]: undefined;
@@ -14,8 +15,14 @@ export type RootNavParamList = {
 const Stack = createNativeStackNavigator<RootNavParamList>();
 
 export const RootNavigator = () => {
+  useEffect(() => {
+    // SETUP NOTIFICATION
+    // notificationService.register();
+    // return () => notificationService.unregister();
+  }, []);
+
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef} onStateChange={navOnStateChange}>
       <Stack.Navigator>
         <Stack.Screen name={RouteName.LAUNCH} component={LaunchScreen} />
         <Stack.Screen name={RouteName.AUTH} component={AuthNavigator} />

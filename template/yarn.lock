@@ -1737,6 +1737,13 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.2.0.tgz#7d6d789ae8edf73dc9bed1246cd48277edea8066"
   integrity sha512-o6aam+0Ug1xGK3ABYmBm0B1YuEKfM/5kaoZO0eHbZwSpw9UzDX4G5y4Nx/K20FHqUmJHkZmLvOUFYwN4N+HqKA==
 
+"@react-native-community/push-notification-ios@1.10.1":
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/push-notification-ios/-/push-notification-ios-1.10.1.tgz#d52a6d69ac1112df0f79e1d17978077629b76784"
+  integrity sha512-k6bZWUKLif4GjenyTD3aQLwA2VT3bNmt22INO/34lexnpmqkPDZF7nreqbckTHG0Zso9wDTe4N/AZJUC/d8iRg==
+  dependencies:
+    invariant "^2.2.4"
+
 "@react-native-firebase/analytics@14.9.4":
   version "14.9.4"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-14.9.4.tgz#f095354903f48ce1e764b1b1c8fece19e763f5cd"
@@ -1993,6 +2000,11 @@
   version "15.7.5"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
+
+"@types/react-native-push-notification@^8.1.0":
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-push-notification/-/react-native-push-notification-8.1.0.tgz#e931a563c4d2b41319b714960028d06bf3523eeb"
+  integrity sha512-Pi6SuNa6p09h3603oWq74erIdVEqURC9AdNYcA3eawiDPC6C8neghISqNpJOhrQUu4RFcIa29LzdADbwvUQR8w==
 
 "@types/react-native@^0.67.3":
   version "0.67.7"
@@ -6515,6 +6527,11 @@ react-native-codegen@^0.0.17:
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
 
+react-native-device-info@8.7.1:
+  version "8.7.1"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-8.7.1.tgz#fbb06f87dbbc4423abe713874699fb2e6e99fd15"
+  integrity sha512-cVMZztFa2Qn6qpQa601W61CtUwZQ1KXfqCOeltejAWEXmgIWivC692WGSdtGudj4upSi1UgMSaGcvKjfcpdGjg==
+
 react-native-gesture-handler@2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.4.2.tgz#de93760b0bc251d94e8ae692f9850ec3ed2e4f27"
@@ -6531,17 +6548,17 @@ react-native-gradle-plugin@^0.0.6:
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.6.tgz#b61a9234ad2f61430937911003cddd7e15c72b45"
   integrity sha512-eIlgtsmDp1jLC24dRn43hB3kEcZVqx6DUQbR0N1ABXGnMEafm9I3V3dUUeD1vh+Dy5WqijSoEwLNUPLgu5zDMg==
 
-react-native-keychain@^8.0.0:
+react-native-keychain@8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-8.0.0.tgz#ff708e4dc2a5440df717179bf9b7cd50f78b61d7"
   integrity sha512-c7Cs+YQN26UaQsRG1dmlXL7VL2ctnXwH/dl0IOMEQ7ZaL2NdN313YSAI8ZEZZjrVhNmPsyWEuvTFqWrdpItqQg==
 
-react-native-localize@^2.2.1:
+react-native-localize@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-native-localize/-/react-native-localize-2.2.1.tgz#6fe646833691c6ee8a474df3c8b069402cb1dba8"
   integrity sha512-BuPaQWvxLZG1NrCDGqgAnecDrNQu3LED9/Pyl4H2LwTMHcEngXpE5PfVntW2GiLumdr6nUOkWmMnh8PynZqrsw==
 
-react-native-mmkv@^2.4.1:
+react-native-mmkv@2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-2.4.1.tgz#9e6a29f55911be2b990776bfb961b4f118126153"
   integrity sha512-sCH8nm7KmRnMzG6wNDfon8jw/mFUfVAEQed5258kpMc2LtEdK47P34GPCovTnEtogWX8z8RQZ5rEGGgty8srtA==
@@ -6550,6 +6567,11 @@ react-native-pager-view@5.4.22:
   version "5.4.22"
   resolved "https://registry.yarnpkg.com/react-native-pager-view/-/react-native-pager-view-5.4.22.tgz#6a987274761f75fa018254756744004e20326d83"
   integrity sha512-9+LjgK+iOiWJJt3Zj7i8Vwarkg9dvVCm8LxrWZFzOzwjtCcQ6K4YrlbPZ5EOb5aFDcMH+eKAty0OQoUIM9n2vA==
+
+react-native-push-notification@8.1.1:
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-push-notification/-/react-native-push-notification-8.1.1.tgz#a41d20c70ea5a7709417e96261b225461f8dc73a"
+  integrity sha512-XpBtG/w+a6WXTxu6l1dNYyTiHnbgnvjoc3KxPTxYkaIABRmvuJZkFxqruyGvfCw7ELAlZEAJO+dthdTabCe1XA==
 
 react-native-reanimated@2.8.0:
   version "2.8.0"

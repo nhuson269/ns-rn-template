@@ -2,7 +2,7 @@ import * as RNLocalize from "react-native-localize";
 import i18next from "i18next";
 import moment from "moment";
 import { initReactI18next } from "react-i18next";
-import storage, { StorageKey } from "utils/storage-util";
+import storage, { StorageKey } from "utils/storage-utils";
 import en from "./lang/en.json";
 import vi from "./lang/vi.json";
 
