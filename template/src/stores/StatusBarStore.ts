@@ -8,8 +8,8 @@ type StatusBarStore = {
   reset: () => void;
 };
 
-export const useStatusBarStore = create<StatusBarStore>((set, get) => ({
-  style: "default",
+export const statusBarStore = create<StatusBarStore>((set, get) => ({
+  style: "dark-content",
   setStyle: value => {
     const style = get().style;
     if (value !== style) {
@@ -28,5 +28,5 @@ export const useStatusBarStore = create<StatusBarStore>((set, get) => ({
       set({ style: "dark-content" });
     }
   },
-  reset: () => set({ style: "default" }),
+  reset: () => set({ style: "dark-content" }),
 }));

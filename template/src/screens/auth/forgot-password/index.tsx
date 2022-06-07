@@ -1,11 +1,11 @@
-import React from "react";
-import { Text, View } from "react-native";
-import styles from "./styles";
+import { Screen, Text } from "components";
+import React, { memo } from "react";
+import { styles } from "./styles";
 
-export const ForgotPasswordScreen = () => {
+export const ForgotPasswordScreen = memo(() => {
   return (
-    <View style={styles.container}>
-      <Text>HelloWorld</Text>
-    </View>
+    <Screen style={styles.container}>
+      <Text value="HelloWorld" />
+    </Screen>
   );
-};
+});

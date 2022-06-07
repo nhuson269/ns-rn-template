@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { LaunchScreen } from "screens";
 import { AuthNavigator, HomeNavigator } from "navigators";
-import { RouteName } from "config";
-import { navigationRef, navOnStateChange } from "navigators/navigation-helper";
+import { navigationRef, navOnStateChange } from "navigators/shared/helper";
+import { RouteName } from "navigators/shared/routes";
+import { LaunchScreen } from "screens";
 
 export type RootNavParamList = {
   [RouteName.LAUNCH]: undefined;
@@ -23,7 +23,7 @@ export const RootNavigator = () => {
 
   return (
     <NavigationContainer ref={navigationRef} onStateChange={navOnStateChange}>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={RouteName.LAUNCH} component={LaunchScreen} />
         <Stack.Screen name={RouteName.AUTH} component={AuthNavigator} />
         <Stack.Screen name={RouteName.MAIN} component={HomeNavigator} />

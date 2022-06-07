@@ -35,7 +35,7 @@ export class NotifyLocalService {
     });
   }
 
-  showNotify(params: { title?: string; message: string; imageUrl?: string; data?: any }) {
+  createNotify(params: { title?: string; message: string; imageUrl?: string; data?: any }) {
     PushNotification.localNotification({
       title: params.title,
       message: params.message,
@@ -55,7 +55,7 @@ export class NotifyLocalService {
     });
   }
 
-  showNotifySchedule(params: { title?: string; message: string; date: Date; data?: any }) {
+  createNotifySchedule(params: { title?: string; message: string; date: Date; data?: any }) {
     PushNotification.localNotificationSchedule({
       title: params.title,
       message: params.message,

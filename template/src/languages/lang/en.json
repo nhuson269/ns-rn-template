@@ -2,6 +2,17 @@
   "common": {
     "ok": "OK!",
     "cancel": "Cancel",
-    "back": "Back"
+    "back": "Back",
+    "usename": "Username",
+    "password": "Password",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "forgotPassword": "Forgot Password"
+  },
+  "errors": {
+    "ok": "OK!",
+    "invalidEmail": "Invalid email address.",
+    "emptyUsername": "Empty usename",
+    "emptyPassword": "Empty password"
   }
 }

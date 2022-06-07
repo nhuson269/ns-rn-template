@@ -1,4 +1,5 @@
 import { Platform } from "react-native";
+import { userStore } from "stores";
 import storage, { StorageKey } from "utils/storage-utils";
 import { NotifyLocalService } from "./notify-local-service";
 import { NotifyPushService } from "./notify-push-service";
@@ -26,7 +27,7 @@ class NotificationService {
   }
 
   checkDeeplink = () => {
-    const isSignIn = false;
+    const isSignIn = userStore.getState().isSignIn;
     if (this.deeplinkUrl && isSignIn) {
       // You SignIn
       // deeplink.go(this.deeplinkUrl);
@@ -34,6 +35,7 @@ class NotificationService {
     }
   };
 
+  // When there is a notification token
   private async notifyRegister(token?: string) {
     // console.debug("Notification Token: ", token);
     if (!token) {
@@ -47,6 +49,7 @@ class NotificationService {
     }
   }
 
+  // When there is a notification to the device
   private notifyMessage(notify: any) {
     // console.debug("Notification Msg: ", notify);
     const dataNotify = notify?.notification;
@@ -54,7 +57,7 @@ class NotificationService {
     const notifyBody = dataNotify?.body;
     const notifyImage = Platform.OS !== "ios" ? dataNotify?.android?.imageUrl : dataNotify?.ios?.imageUrl;
     if (notifyTitle || notifyBody) {
-      this.localService.showNotify({
+      this.localService.createNotify({
         title: notifyTitle,
         message: notifyBody,
         imageUrl: notifyImage,
@@ -63,13 +66,14 @@ class NotificationService {
     }
   }
 
+  // When open notification
   private notifyOpen(notify: any) {
     // console.debug("Notification Open: ", notify);
     const data = notify?.data ?? notify;
     const newId = data?.new_id;
     const notifyId = data?.notification_id;
     const notifyUrl = data?.url;
-    const isSignIn = false;
+    const isSignIn = userStore.getState().isSignIn;
 
     if (notifyUrl) {
       if (notifyUrl && isSignIn) {

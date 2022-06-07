@@ -1,1 +1,3 @@
-export * from "./route-name";
+import Regex from "./Regex";
+
+export { Regex };

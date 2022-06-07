@@ -1,5 +1,5 @@
 import analytics, { FirebaseAnalyticsTypes } from "@react-native-firebase/analytics";
-import { RouteName } from "config";
+import { RouteName } from "navigators/shared/routes";
 
 class AnalyticsService {
   anaModule: FirebaseAnalyticsTypes.Module;

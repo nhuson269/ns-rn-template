@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleProp, ViewStyle } from "react-native";
-import { KeyboardOffsets, ScreenPresets } from "./screen.presets";
+import { KeyboardOffsets, ScreenPresets } from "./presets";
 
-export interface ScreenProps {
+export type ScreenProps = {
   /**
    * Children components.
    */
@@ -29,9 +29,17 @@ export interface ScreenProps {
   statusBar?: "light-content" | "dark-content";
 
   /**
-   * Should we not wrap in SafeAreaView? Defaults to false.
+   * An optional status bar setting. Defaults to false.
    */
-  unsafe?: boolean;
+  translucent?: boolean;
+
+  /**
+   * Should we not wrap in SafeAreaView? Defaults to trl.
+   ** no is []
+   ** trl is ["top", "right", "left"]
+   ** full is ["top", "right", "bottom", "left"]
+   */
+  safe?: "no" | "trl" | "full";
 
   /**
    * By how much should we offset the keyboard? Defaults to none.
@@ -43,4 +51,4 @@ export interface ScreenProps {
    * Only applies to scroll preset.
    */
   keyboardShouldPersistTaps?: "handled" | "always" | "never";
-}
+};

@@ -1,8 +1,8 @@
-import React, { memo } from "react";
-import { StatusBar as RNStatusBar } from "react-native";
-import { useStatusBarStore } from "stores";
+import React, { memo, useCallback } from "react";
+import { StatusBar } from "react-native";
+import { statusBarStore } from "stores";
 
-export const StatusBar = memo(() => {
-  const style = useStatusBarStore().style;
-  return <RNStatusBar animated barStyle={style} />;
+export const StatusBarView = memo(() => {
+  const barStyle = statusBarStore(useCallback(state => state.style, []));
+  return <StatusBar animated translucent backgroundColor="transparent" barStyle={barStyle} />;
 });

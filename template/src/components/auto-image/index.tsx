@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { memo, useLayoutEffect, useState } from "react";
 import { Image as RNImage, ImageProps as DefaultImageProps, ImageURISource, Platform } from "react-native";
 
 type ImageProps = DefaultImageProps & {
@@ -18,7 +18,7 @@ type ImageProps = DefaultImageProps & {
  * Image import from react-native. Now all images in that file are handled by this
  * component and are web-ready if not explicitly sized in the style property.
  */
-export function AutoImage(props: ImageProps) {
+export const AutoImage = memo((props: ImageProps) => {
   const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
 
   useLayoutEffect(() => {
@@ -48,4 +48,4 @@ export function AutoImage(props: ImageProps) {
   }, [props.source]);
 
   return <RNImage {...props} style={[imageSize, props.style]} />;
-}
+});

@@ -1,11 +1,12 @@
-import React from "react";
-import { Text, View } from "react-native";
-import styles from "./styles";
+import { Screen } from "components";
+import React, { memo } from "react";
+import { Text } from "react-native";
+import { styles } from "./styles";
 
-export const HomeScreen = () => {
+export const HomeScreen = memo(() => {
   return (
-    <View style={styles.container}>
+    <Screen style={styles.container}>
       <Text>HelloWorld</Text>
-    </View>
+    </Screen>
   );
-};
+});

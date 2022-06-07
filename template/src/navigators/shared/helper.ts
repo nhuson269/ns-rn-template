@@ -1,15 +1,16 @@
 import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
-import { NavigationContainerRef, ParamListBase, StackActions, TabActions } from "@react-navigation/native";
+import { NavigationContainerRef, StackActions, TabActions } from "@react-navigation/native";
 import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 import { TransitionPresets } from "@react-navigation/stack";
-import { RouteName } from "config";
 import { createRef } from "react";
 import { Keyboard } from "react-native";
 import { analyticsService } from "services";
+import { RouteName } from "./routes";
 
 let previousRouteName: string | undefined;
 
-export const navigationRef = createRef<NavigationContainerRef<ParamListBase>>();
+type ParamBase = { [key: string]: object | string | number | undefined };
+export const navigationRef = createRef<NavigationContainerRef<ParamBase>>();
 
 function getRef(hideKeyboard?: boolean) {
   hideKeyboard && Keyboard.dismiss();
@@ -32,19 +33,19 @@ function popToTop() {
   getRef()?.canGoBack() && getRef(true)?.dispatch(StackActions.popToTop());
 }
 
-function reset(name: RouteName, params?: { [key: string]: object | undefined }) {
+function reset(name: RouteName, params?: ParamBase) {
   getRef(true)?.reset({ index: 1, routes: [{ name, params }] });
 }
 
-function navigate(routeName: RouteName, params?: { [key: string]: object | undefined }) {
+function navigate(routeName: RouteName, params?: ParamBase) {
   getRef(true)?.navigate(routeName, params);
 }
 
-function push(routeName: RouteName, params?: { [key: string]: object | undefined }) {
+function push(routeName: RouteName, params?: ParamBase) {
   getRef(true)?.dispatch(StackActions.push(routeName, params));
 }
 
-function replace(routeName: RouteName, params?: { [key: string]: object | undefined }) {
+function replace(routeName: RouteName, params?: ParamBase) {
   getRef(true)?.dispatch(StackActions.replace(routeName, params));
 }
 
@@ -87,7 +88,7 @@ export const DisableGestureOption: any = {
   gestureEnabled: false,
 };
 
-const NavigationHelper = {
+const navHelper = {
   getRef,
   getRoute,
   goBack,
@@ -100,4 +101,4 @@ const NavigationHelper = {
   jumpTo,
 };
 
-export default NavigationHelper;
+export default navHelper;
