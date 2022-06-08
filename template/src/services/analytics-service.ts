@@ -52,16 +52,16 @@ class AnalyticsService {
   logScreenView(screenName: string, params?: any) {
     let sName: string | undefined;
     switch (screenName) {
-      case RouteName.SIGN_IN:
+      case RouteName.SIGN_IN_DEMO:
         // sName = "Signin";
         break;
-      case RouteName.SIGN_UP:
+      case RouteName.SIGN_UP_DEMO:
         // sName = "Signup";
         break;
-      case RouteName.FORGOT_PASSWORD:
+      case RouteName.FORGOT_PASSWORD_DEMO:
         // sName = "Forgotpassword";
         break;
-      case RouteName.HOME:
+      case RouteName.HOME_DEMO:
         if (params?.roomId) {
           // sName = "Zoom";
         } else {

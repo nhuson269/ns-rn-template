@@ -27,23 +27,23 @@ function navigateToWeb(params: WebParams) {
 }
 
 function navigateToAuth() {
-  navHelper.replace(RouteName.AUTH);
+  navHelper.replace(RouteName.AUTH_DEMO);
 }
 
 function navigateToMain() {
-  navHelper.replace(RouteName.MAIN);
+  navHelper.replace(RouteName.MAIN_DEMO);
 }
 
 function navigateToSignIn() {
-  navHelper.navigate(RouteName.AUTH, { screen: RouteName.SIGN_IN });
+  navHelper.navigate(RouteName.AUTH_DEMO, { screen: RouteName.SIGN_IN_DEMO });
 }
 
 function navigateToSignUp(params?: SignUpParams) {
-  navHelper.navigate(RouteName.AUTH, { screen: RouteName.SIGN_UP, params: params });
+  navHelper.navigate(RouteName.AUTH_DEMO, { screen: RouteName.SIGN_UP_DEMO, params: params });
 }
 
 function navigateToForgotPassword(params?: ForgotPasswordParams) {
-  navHelper.navigate(RouteName.AUTH, { screen: RouteName.FORGOT_PASSWORD, params: params });
+  navHelper.navigate(RouteName.AUTH_DEMO, { screen: RouteName.FORGOT_PASSWORD_DEMO, params: params });
 }
 
 const navActions = {

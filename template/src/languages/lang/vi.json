@@ -3,16 +3,22 @@
     "ok": "OK!",
     "cancel": "Huỷ",
     "back": "Trở về",
-    "usename": "Tài khoản",
+    "username": "Tài khoản",
     "password": "Mật khẩu",
+    "passwordNew": "Mật khẩu mới",
+    "passwordCurrent": "Mật khẩu hiện tại",
+    "passwordConfirm": "Xác nhận mật khẩu",
     "signIn": "Đăng nhập",
     "signUp": "Đăng ký",
-    "forgotPassword": "Quên mật khẩu"
+    "forgotPassword": "Quên mật khẩu",
+    "continue": "Tiếp tục",
+    "confirm": "Xác nhận"
   },
   "errors": {
     "ok": "OK!",
     "invalidEmail": "Email không đúng định dạng",
     "emptyUsername": "Tài khoản rỗng",
-    "emptyPassword": "Mật khẩu rỗng"
+    "emptyPassword": "Mật khẩu rỗng",
+    "passwordConfirmFail": "Mật khẩu xác nhận không chính xác"
   }
 }

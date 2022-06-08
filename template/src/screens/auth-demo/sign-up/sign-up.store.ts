@@ -4,28 +4,31 @@ import { Keyboard } from "react-native";
 import { delay } from "utils/delay";
 import create from "zustand";
 
-type SignInStore = {
+type SignUpStore = {
   isLoading: boolean;
   isFetched: boolean;
   username: string;
   password: string;
+  passwordConfirm: string;
   msgUsername: string;
   msgPassword: string;
+  msgPasswordConfirm: string;
   setUsername: (value: string) => void;
   setPassword: (value: string) => void;
-  login: () => void;
-  goSignUp: () => void;
-  goForgotPassword: () => void;
+  setPasswordConfirm: (value: string) => void;
+  signUp: () => void;
   reset: () => void;
 };
 
-export const signInStore = create<SignInStore>((set, get) => ({
+export const signUpStore = create<SignUpStore>((set, get) => ({
   isLoading: false,
   isFetched: false,
   username: "",
   password: "",
+  passwordConfirm: "",
   msgUsername: "",
   msgPassword: "",
+  msgPasswordConfirm: "",
   setUsername: value => {
     if (value !== get().username) {
       set({ username: value, msgUsername: "" });
@@ -36,32 +39,47 @@ export const signInStore = create<SignInStore>((set, get) => ({
       set({ password: value, msgPassword: "" });
     }
   },
-  login: async () => {
-    const { username, password } = get();
-    if (!username || !password) {
+  setPasswordConfirm: value => {
+    if (value !== get().passwordConfirm) {
+      set({ passwordConfirm: value, msgPasswordConfirm: "" });
+    }
+  },
+  signUp: async () => {
+    Keyboard.dismiss();
+    const { isLoading, username, password, passwordConfirm } = get();
+    if (isLoading) {
+      return;
+    }
+    if (!username || !password || !passwordConfirm) {
       if (!username) {
         set({ msgUsername: translate("errors.emptyUsername") ?? "" });
       }
       if (!password) {
         set({ msgPassword: translate("errors.emptyPassword") ?? "" });
       }
+      if (!passwordConfirm) {
+        set({ msgPasswordConfirm: translate("errors.emptyPassword") ?? "" });
+      }
       return;
     }
-    Keyboard.dismiss();
-    set({ isLoading: true, msgUsername: "", msgPassword: "" });
+    if (password !== passwordConfirm) {
+      set({ msgPasswordConfirm: translate("errors.passwordConfirmFail") ?? "" });
+      return;
+    }
+    set({ isLoading: true, msgUsername: "", msgPassword: "", msgPasswordConfirm: "" });
     await delay(1500);
     set({ isLoading: false });
     navActions.navigateToMain();
   },
-  goSignUp: () => navActions.navigateToSignUp(),
-  goForgotPassword: () => navActions.navigateToForgotPassword(),
   reset: () =>
     set({
       isLoading: false,
       isFetched: false,
       username: "",
       password: "",
+      passwordConfirm: "",
       msgUsername: "",
       msgPassword: "",
+      msgPasswordConfirm: "",
     }),
 }));

@@ -23,4 +23,12 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     color: "red",
   },
+  btEye: {
+    position: "absolute",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 44,
+    height: 44,
+    right: 0,
+  },
 });

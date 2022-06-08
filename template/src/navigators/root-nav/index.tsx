@@ -8,8 +8,8 @@ import { LaunchScreen } from "screens";
 
 export type RootNavParamList = {
   [RouteName.LAUNCH]: undefined;
-  [RouteName.AUTH]: undefined;
-  [RouteName.MAIN]: undefined;
+  [RouteName.AUTH_DEMO]: undefined;
+  [RouteName.MAIN_DEMO]: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootNavParamList>();
@@ -25,8 +25,8 @@ export const RootNavigator = () => {
     <NavigationContainer ref={navigationRef} onStateChange={navOnStateChange}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={RouteName.LAUNCH} component={LaunchScreen} />
-        <Stack.Screen name={RouteName.AUTH} component={AuthNavigator} />
-        <Stack.Screen name={RouteName.MAIN} component={HomeNavigator} />
+        <Stack.Screen name={RouteName.AUTH_DEMO} component={AuthNavigator} />
+        <Stack.Screen name={RouteName.MAIN_DEMO} component={HomeNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );

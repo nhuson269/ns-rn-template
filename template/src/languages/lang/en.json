@@ -3,16 +3,22 @@
     "ok": "OK!",
     "cancel": "Cancel",
     "back": "Back",
-    "usename": "Username",
+    "username": "Username",
     "password": "Password",
+    "passwordNew": "New password",
+    "passwordCurrent": "Current password",
+    "passwordConfirm": "Confirm password",
     "signIn": "Sign in",
     "signUp": "Sign up",
-    "forgotPassword": "Forgot Password"
+    "forgotPassword": "Forgot Password",
+    "continue": "Continue",
+    "confirm": "Confirm"
   },
   "errors": {
     "ok": "OK!",
     "invalidEmail": "Invalid email address.",
-    "emptyUsername": "Empty usename",
-    "emptyPassword": "Empty password"
+    "emptyUsername": "Empty username",
+    "emptyPassword": "Empty password",
+    "passwordConfirmFail": "Confirmation password is incorrect"
   }
 }

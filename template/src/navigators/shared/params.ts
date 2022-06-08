@@ -3,11 +3,9 @@ export type WebParams = {
 };
 
 export type SignUpParams = {
-  email?: string;
-  phone?: string;
+  username?: string;
 };
 
 export type ForgotPasswordParams = {
-  email?: string;
-  phone?: string;
+  username?: string;
 };

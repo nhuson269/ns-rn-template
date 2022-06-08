@@ -4,9 +4,9 @@ import { RouteName } from "navigators/shared/routes";
 import { ForgotPasswordScreen, SignInScreen, SignUpScreen } from "screens";
 
 export type AuthNavParamList = {
-  [RouteName.SIGN_IN]: undefined;
-  [RouteName.SIGN_UP]: undefined;
-  [RouteName.FORGOT_PASSWORD]: undefined;
+  [RouteName.SIGN_IN_DEMO]: undefined;
+  [RouteName.SIGN_UP_DEMO]: undefined;
+  [RouteName.FORGOT_PASSWORD_DEMO]: undefined;
 };
 
 const Stack = createNativeStackNavigator<AuthNavParamList>();
@@ -14,9 +14,9 @@ const Stack = createNativeStackNavigator<AuthNavParamList>();
 export const AuthNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name={RouteName.SIGN_IN} component={SignInScreen} />
-      <Stack.Screen name={RouteName.SIGN_UP} component={SignUpScreen} />
-      <Stack.Screen name={RouteName.FORGOT_PASSWORD} component={ForgotPasswordScreen} />
+      <Stack.Screen name={RouteName.SIGN_IN_DEMO} component={SignInScreen} />
+      <Stack.Screen name={RouteName.SIGN_UP_DEMO} component={SignUpScreen} />
+      <Stack.Screen name={RouteName.FORGOT_PASSWORD_DEMO} component={ForgotPasswordScreen} />
     </Stack.Navigator>
   );
 };

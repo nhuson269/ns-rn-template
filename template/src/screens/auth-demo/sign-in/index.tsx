@@ -8,8 +8,7 @@ export const SignInScreen = memo(() => {
   const store = signInStore();
 
   useEffect(() => {
-    return () => store.reset();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => signInStore.getState().reset();
   }, []);
 
   return (
@@ -18,8 +17,8 @@ export const SignInScreen = memo(() => {
       <View style={styles.contentView}>
         <TextInput
           style={styles.marginBottom16}
-          labelTx="common.usename"
-          placeholderTx="common.usename"
+          labelTx="common.username"
+          placeholderTx="common.username"
           value={store.username}
           message={store.msgUsername}
           onChangeText={store.setUsername}
@@ -27,6 +26,7 @@ export const SignInScreen = memo(() => {
         />
         <TextInput
           style={styles.marginBottom16}
+          secureTextEntry={true}
           labelTx="common.password"
           placeholderTx="common.password"
           value={store.password}
@@ -36,7 +36,7 @@ export const SignInScreen = memo(() => {
         />
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <Button preset="transparent" titleTx="common.signUp" onPress={store.goSignUp} />
-          <Button preset="transparent" titleTx="common.signIn" onPress={store.goForgotPassword} />
+          <Button preset="transparent" titleTx="common.forgotPassword" onPress={store.goForgotPassword} />
         </View>
         <Button style={styles.btSignIn} titleTx="common.signIn" loading={store.isLoading} onPress={store.login} />
       </View>

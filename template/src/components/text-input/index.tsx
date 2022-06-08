@@ -2,9 +2,10 @@ import { Text } from "components/text";
 import useIsMounted from "hooks/useIsMounted";
 import { translate } from "languages";
 import React, { memo, useCallback, useMemo, useState } from "react";
-import { TextInput as RNTextInput, View } from "react-native";
+import { Pressable, TextInput as RNTextInput, View } from "react-native";
 import { TextInputProps } from "./props";
 import { styles } from "./styles";
+import Icons from "react-native-vector-icons/MaterialCommunityIcons";
 
 /**
  * A component which has a label and an input together.
@@ -29,6 +30,7 @@ export const TextInput = memo((props: TextInputProps) => {
 
   const [borderColor, setBorderColor] = useState<string>("#F0F5FA");
   const [bgColor, setBgColor] = useState<string>("#F0F5FA");
+  const [isSecure, setIsSecure] = useState<boolean>(rest.secureTextEntry ?? false);
   const isMounted = useIsMounted();
 
   const keyboardDidShow = useCallback(() => {
@@ -45,9 +47,21 @@ export const TextInput = memo((props: TextInputProps) => {
     }
   }, [isMounted]);
 
+  const changeIsSecure = useCallback(() => {
+    setIsSecure(!isSecure);
+  }, [isSecure]);
+
   const LabelText = useMemo(() => {
     return actualLabel ? <Text style={styles.label} value={actualLabel} /> : null;
   }, [actualLabel]);
+
+  const SecureView = useMemo(() => {
+    return !rest.secureTextEntry ? null : (
+      <Pressable style={styles.btEye} onPress={changeIsSecure}>
+        <Icons name={isSecure ? "eye-off" : "eye"} size={16} />
+      </Pressable>
+    );
+  }, [rest.secureTextEntry, isSecure, changeIsSecure]);
 
   const MessageText = useMemo(() => {
     return message ? <Text style={styles.message} value={message} /> : null;
@@ -59,18 +73,14 @@ export const TextInput = memo((props: TextInputProps) => {
       <View>
         <RNTextInput
           {...rest}
-          style={[
-            styleInput,
-            {
-              backgroundColor: bgColor,
-              borderColor: borderColor,
-            },
-          ]}
+          style={[styleInput, { backgroundColor: bgColor, borderColor: borderColor }]}
+          selectionColor="green"
+          secureTextEntry={isSecure}
           onEndEditing={keyboardDidHide}
           onFocus={keyboardDidShow}
           placeholder={actualPlaceholder}
-          selectionColor="green"
         />
+        {SecureView}
       </View>
       {MessageText}
     </View>

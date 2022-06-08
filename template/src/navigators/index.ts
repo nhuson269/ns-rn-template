@@ -1,3 +1,3 @@
 export * from "./root-nav";
-export * from "./auth-nav";
-export * from "./home-nav";
+export * from "./auth-demo-nav";
+export * from "./home-demo-nav";
