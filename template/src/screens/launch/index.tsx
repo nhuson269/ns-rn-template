@@ -30,3 +30,5 @@ export const LaunchScreen = memo(() => {
     </Screen>
   );
 });
+
+LaunchScreen.displayName = "LaunchScreen";

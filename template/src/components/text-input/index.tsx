@@ -30,7 +30,7 @@ export const TextInput = memo((props: TextInputProps) => {
 
   const [borderColor, setBorderColor] = useState<string>("#F0F5FA");
   const [bgColor, setBgColor] = useState<string>("#F0F5FA");
-  const [isSecure, setIsSecure] = useState<boolean>(rest.secureTextEntry ?? false);
+  const [isSecure, setIsSecure] = useState<boolean>(rest.secureTextEntry || false);
   const isMounted = useIsMounted();
 
   const keyboardDidShow = useCallback(() => {
@@ -86,3 +86,5 @@ export const TextInput = memo((props: TextInputProps) => {
     </View>
   );
 });
+
+TextInput.displayName = "TextInputCustom";

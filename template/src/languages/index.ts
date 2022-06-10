@@ -21,7 +21,7 @@ const sourceLang = {
   en: { translation: en },
 };
 const listLang = Object.keys(sourceLang);
-const defaultLang = listLang.length > 0 ? listLang[0] ?? "vi" : "vi";
+const defaultLang = listLang.length > 0 ? listLang[0] || "vi" : "vi";
 
 // INIT
 i18next

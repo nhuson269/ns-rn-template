@@ -34,6 +34,7 @@
       "config/": ["/config"],
       "hooks/": ["/hooks"],
       "languages/": ["/languages"],
+      "modals/": ["/modals"],
       "models/": ["/models"],
       "navigators/": ["/navigators"],
       "screens/": ["/screens"],

@@ -9,8 +9,7 @@ const DEFAULT: ViewStyle = {
   alignItems: "center",
   justifyContent: "center",
   borderRadius: 8,
-  paddingLeft: 12,
-  paddingRight: 12,
+  paddingHorizontal: 12,
 };
 
 const TRANSPARENT: ViewStyle = {

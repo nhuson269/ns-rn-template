@@ -32,6 +32,7 @@
     "react-native-keychain": "8.0.0",
     "react-native-localize": "2.2.2",
     "react-native-mmkv": "2.4.1",
+    "react-native-modal": "13.0.1",
     "react-native-pager-view": "5.4.24",
     "react-native-push-notification": "8.1.1",
     "react-native-reanimated": "2.8.0",
@@ -39,7 +40,6 @@
     "react-native-screens": "3.13.1",
     "react-native-tab-view": "3.1.1",
     "react-native-vector-icons": "9.1.0",
-    "validate.js": "0.13.1",
     "zustand": "4.0.0-rc.1"
   },
   "devDependencies": {

@@ -10,3 +10,5 @@ export const HomeScreen = memo(() => {
     </Screen>
   );
 });
+
+HomeScreen.displayName = "HomeScreen";

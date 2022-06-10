@@ -57,3 +57,5 @@ export const SignUpScreen = memo(() => {
     </>
   );
 });
+
+SignUpScreen.displayName = "SignUpScreen";

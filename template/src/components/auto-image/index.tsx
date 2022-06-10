@@ -49,3 +49,5 @@ export const AutoImage = memo((props: ImageProps) => {
 
   return <RNImage {...props} style={[imageSize, props.style]} />;
 });
+
+AutoImage.displayName = "AutoImage";

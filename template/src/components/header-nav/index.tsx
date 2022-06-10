@@ -32,3 +32,5 @@ export const HeaderNav = memo((props: HeaderNavProps) => {
     </View>
   );
 });
+
+HeaderNav.displayName = "HeaderNav";

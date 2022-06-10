@@ -5,15 +5,16 @@ import { RootNavigator } from "navigators";
 import { I18nextProvider } from "react-i18next";
 import { gestureHandlerRootHOC } from "react-native-gesture-handler";
 import { SafeAreaProvider, initialWindowMetrics } from "react-native-safe-area-context";
+import { AlertModal } from "modals";
 
 const App = gestureHandlerRootHOC(() => {
   return (
-    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      {/*i18next in folder languages*/}
-      <I18nextProvider i18n={i18next}>
+    <I18nextProvider i18n={i18next}>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
         <RootNavigator />
-      </I18nextProvider>
-    </SafeAreaProvider>
+      </SafeAreaProvider>
+      <AlertModal />
+    </I18nextProvider>
   );
 });
 

@@ -16,6 +16,7 @@ module.exports = {
           config: "./src/config",
           hooks: "./src/hooks",
           languages: "./src/languages",
+          modals: "./src/modals",
           models: "./src/models",
           navigators: "./src/navigators",
           screens: "./src/screens",

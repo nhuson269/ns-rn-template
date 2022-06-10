@@ -54,3 +54,5 @@ export const Button = memo((props: ButtonProps) => {
     </View>
   );
 });
+
+Button.displayName = "ButtonCustom";

@@ -1,4 +1,5 @@
 import { translate } from "languages";
+import alertHelper from "modals/alert/helper";
 import { Keyboard } from "react-native";
 import { delay } from "utils/delay";
 import create from "zustand";
@@ -36,6 +37,7 @@ export const forgotPasswordStore = create<ForgotPasswordStore>((set, get) => ({
     set({ isLoading: true, msgUsername: "" });
     await delay(1500);
     set({ isLoading: false });
+    alertHelper.show({ title: "title", message: "message" });
   },
   reset: () =>
     set({
