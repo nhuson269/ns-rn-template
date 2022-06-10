@@ -1,6 +1,7 @@
 import { translate } from "languages";
 import React, { memo } from "react";
-import { StyleProp, Text as ReactNativeText, TextStyle } from "react-native";
+import Reanimated from "react-native-reanimated";
+import { StyleProp, TextStyle } from "react-native";
 import { presets } from "./presets";
 import { TextProps } from "./props";
 
@@ -9,6 +10,7 @@ import { TextProps } from "./props";
  *
  * This component is a HOC over the built-in React Native one.
  */
+
 export const Text = memo((props: TextProps) => {
   const {
     preset = "default",
@@ -60,7 +62,7 @@ export const Text = memo((props: TextProps) => {
   const styles: StyleProp<TextStyle> = [style, styleOverride, styleProps];
 
   return (
-    <ReactNativeText {...rest} style={styles}>
+    <Reanimated.Text {...rest} style={styles}>
       {content}
       {React.Children.map(children, (child: any) => {
         const childValue = child?.valueOf();
@@ -68,7 +70,7 @@ export const Text = memo((props: TextProps) => {
           ? React.cloneElement(child, { style: [styles, childValue.props?.style || {}] })
           : null;
       })}
-    </ReactNativeText>
+    </Reanimated.Text>
   );
 });
 

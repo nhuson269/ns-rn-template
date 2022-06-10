@@ -1,5 +1,6 @@
 import { Text } from "components/text";
 import React, { memo, useMemo } from "react";
+import Reanimated from "react-native-reanimated";
 import { ActivityIndicator, Pressable, View } from "react-native";
 import { presets } from "./presets";
 import { ButtonProps } from "./props";
@@ -48,10 +49,10 @@ export const Button = memo((props: ButtonProps) => {
   }, [titleTx, title, loading, preset, buttonStyleOverride, titleStyleOverride, rest]);
 
   return (
-    <View style={styleContainer}>
-      <View>{ContentView}</View>
+    <Reanimated.View style={styleContainer}>
+      {ContentView}
       {MessageText}
-    </View>
+    </Reanimated.View>
   );
 });
 
