@@ -27,4 +27,44 @@ export interface TextProps extends NSTextProps {
    * One of the different types of text presets.
    */
   preset?: TextPresets;
+
+  /**
+   * FontSize of text.
+   */
+  size?: number;
+
+  /**
+   * Color of text.
+   */
+  color?: string;
+
+  /**
+   * Style of text, flex = 1.
+   */
+  flex1?: boolean;
+
+  /**
+   * Style of text, fontStyles = italic.
+   */
+  italic?: boolean;
+
+  /**
+   * Style of text, flex = 1.
+   */
+  lineHeight?: number;
+
+  /**
+   * Style of text, textDecorationLines = underline.
+   */
+  underline?: boolean;
+
+  /**
+   * Style textAlign of text.
+   */
+  textAlign?: "auto" | "left" | "right" | "center" | "justify";
+
+  /**
+   * Style textAlignVertical of text.
+   */
+  textAlignVertical?: "auto" | "top" | "bottom" | "center";
 }

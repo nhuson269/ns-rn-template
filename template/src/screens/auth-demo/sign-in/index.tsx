@@ -13,9 +13,7 @@ export const SignInScreen = memo(() => {
 
   return (
     <Screen preset="scroll">
-      <Text style={styles.title} value="HelloWorld">
-        <Text style={{ color: "red" }} value="HelloWorld" />
-      </Text>
+      <Text style={styles.title} value="HelloWorld" />
       <View style={styles.contentView}>
         <TextInput
           style={styles.marginBottom16}
