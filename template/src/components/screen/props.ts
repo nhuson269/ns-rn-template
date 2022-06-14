@@ -4,14 +4,14 @@ import { KeyboardOffsets, ScreenPresets } from "./presets";
 
 export type ScreenProps = {
   /**
-   * Children components.
-   */
-  children?: React.ReactNode;
-
-  /**
    * An optional style override useful for padding & margin.
    */
   style?: StyleProp<ViewStyle>;
+
+  /**
+   * Children components.
+   */
+  children?: React.ReactNode;
 
   /**
    * One of the different types of presets.

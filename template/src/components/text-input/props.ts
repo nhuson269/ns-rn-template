@@ -3,6 +3,11 @@ import { StyleProp, TextInputProps as RNTextInputProps, TextStyle, ViewStyle } f
 
 export interface TextInputProps extends RNTextInputProps {
   /**
+   * Optional container style overrides useful for margins & padding.
+   */
+  style?: StyleProp<ViewStyle>;
+
+  /**
    * The placeholder i18n key.
    */
   placeholderTx?: TxKeyPath;
@@ -21,11 +26,6 @@ export interface TextInputProps extends RNTextInputProps {
    * The message text.
    */
   message?: string;
-
-  /**
-   * Optional container style overrides useful for margins & padding.
-   */
-  style?: StyleProp<ViewStyle>;
 
   /**
    * Optional style overrides for the input.

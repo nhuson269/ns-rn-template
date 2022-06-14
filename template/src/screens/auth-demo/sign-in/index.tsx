@@ -1,6 +1,5 @@
-import { Button, Screen, Text, TextInput } from "components";
+import { Button, Screen, Text, TextInput, View } from "components";
 import React, { memo, useEffect } from "react";
-import { View } from "react-native";
 import { signInStore } from "./sign-in.store";
 import { styles } from "./styles";
 

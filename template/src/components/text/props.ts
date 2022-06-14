@@ -4,6 +4,11 @@ import { TxKeyPath } from "languages";
 
 export interface TextProps extends NSTextProps {
   /**
+   * An optional style override useful for padding & margin.
+   */
+  style?: StyleProp<TextStyle>;
+
+  /**
    * Children components.
    */
   children?: React.ReactNode;
@@ -17,11 +22,6 @@ export interface TextProps extends NSTextProps {
    * The text to display if not using `valueTx` or nested components.
    */
   value?: string | undefined;
-
-  /**
-   * An optional style override useful for padding & margin.
-   */
-  style?: StyleProp<TextStyle>;
 
   /**
    * One of the different types of text presets.

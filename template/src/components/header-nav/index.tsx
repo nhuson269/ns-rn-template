@@ -1,8 +1,6 @@
-import { Button } from "components";
-import { Text } from "components/text";
+import { Button, Text, View } from "components";
 import navHelper from "navigators/shared/helper";
 import React, { memo } from "react";
-import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { HeaderNavProps } from "./props";
 import { styles } from "./styles";

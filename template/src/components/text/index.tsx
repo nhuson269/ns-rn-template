@@ -1,6 +1,6 @@
+import Reanimated from "react-native-reanimated";
 import { translate } from "languages";
 import React, { memo } from "react";
-import Reanimated from "react-native-reanimated";
 import { StyleProp, TextStyle } from "react-native";
 import { presets } from "./presets";
 import { TextProps } from "./props";
@@ -16,7 +16,6 @@ export const Text = memo((props: TextProps) => {
     preset = "default",
     valueTx,
     value,
-    children,
     size,
     color,
     flex1,
@@ -25,6 +24,7 @@ export const Text = memo((props: TextProps) => {
     underline,
     textAlign,
     textAlignVertical,
+    children,
     style: styleOverride,
     ...rest
   } = props;
@@ -33,7 +33,7 @@ export const Text = memo((props: TextProps) => {
   const i18nValue = valueTx && translate(valueTx);
   const content = i18nValue || value;
 
-  const styleProps: any = {};
+  const styleProps: StyleProp<TextStyle> = {};
   if (size) {
     styleProps.fontSize = size;
   }
@@ -41,7 +41,7 @@ export const Text = memo((props: TextProps) => {
     styleProps.color = color;
   }
   if (flex1) {
-    styleProps.flex = flex1;
+    styleProps.flex = 1;
   }
   if (italic) {
     styleProps.fontStyle = "italic";

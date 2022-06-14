@@ -1,10 +1,9 @@
-import { Text } from "components/text";
 import React, { memo, useMemo } from "react";
-import Reanimated from "react-native-reanimated";
-import { ActivityIndicator, Pressable, View } from "react-native";
+import { ActivityIndicator } from "react-native";
 import { presets } from "./presets";
 import { ButtonProps } from "./props";
 import { styles } from "./styles";
+import { Pressable, Text, View } from "components";
 
 /**
  * A component which has a label and an input together.
@@ -49,10 +48,10 @@ export const Button = memo((props: ButtonProps) => {
   }, [titleTx, title, loading, preset, buttonStyleOverride, titleStyleOverride, rest]);
 
   return (
-    <Reanimated.View style={styleContainer}>
+    <View style={styleContainer}>
       {ContentView}
       {MessageText}
-    </Reanimated.View>
+    </View>
   );
 });
 

@@ -1,6 +1,5 @@
-import { Button, Text } from "components";
+import { Button, Text, View } from "components";
 import React, { memo } from "react";
-import { View } from "react-native";
 import Modal from "react-native-modal";
 import { alertStore } from "./alert.store";
 import { styles } from "./styles";

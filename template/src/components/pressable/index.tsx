@@ -1,9 +1,8 @@
-import Reanimated from "react-native-reanimated";
 import React, { memo } from "react";
-import { StyleProp, ViewStyle } from "react-native";
-import { ViewProps } from "./props";
+import { Pressable as RNPressable, StyleProp, ViewStyle } from "react-native";
+import { PressableProps } from "./props";
 
-export const View = memo((props: ViewProps) => {
+export const Pressable = memo((props: PressableProps) => {
   const {
     flex1,
     flexRow,
@@ -84,10 +83,10 @@ export const View = memo((props: ViewProps) => {
   const styles: StyleProp<ViewStyle> = [styleOverride, styleProps];
 
   return (
-    <Reanimated.View {...rest} style={styles}>
+    <RNPressable {...rest} style={styles}>
       {children}
-    </Reanimated.View>
+    </RNPressable>
   );
 });
 
-View.displayName = "ViewCustom";
+Pressable.displayName = "PressableCustom";

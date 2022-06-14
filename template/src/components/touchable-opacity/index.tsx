@@ -1,9 +1,8 @@
-import Reanimated from "react-native-reanimated";
 import React, { memo } from "react";
-import { StyleProp, ViewStyle } from "react-native";
-import { ViewProps } from "./props";
+import { TouchableOpacity as RNTouchableOpacity, StyleProp, ViewStyle } from "react-native";
+import { TouchableOpacityProps } from "./props";
 
-export const View = memo((props: ViewProps) => {
+export const TouchableOpacity = memo((props: TouchableOpacityProps) => {
   const {
     flex1,
     flexRow,
@@ -84,10 +83,10 @@ export const View = memo((props: ViewProps) => {
   const styles: StyleProp<ViewStyle> = [styleOverride, styleProps];
 
   return (
-    <Reanimated.View {...rest} style={styles}>
+    <RNTouchableOpacity {...rest} style={styles}>
       {children}
-    </Reanimated.View>
+    </RNTouchableOpacity>
   );
 });
 
-View.displayName = "ViewCustom";
+TouchableOpacity.displayName = "TouchableOpacityCustom";

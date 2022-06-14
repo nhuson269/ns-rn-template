@@ -1,11 +1,11 @@
-import { Text } from "components/text";
 import useIsMounted from "hooks/useIsMounted";
 import { translate } from "languages";
 import React, { memo, useCallback, useMemo, useState } from "react";
-import { Pressable, TextInput as RNTextInput, View } from "react-native";
+import { Pressable, TextInput as RNTextInput } from "react-native";
 import { TextInputProps } from "./props";
 import { styles } from "./styles";
 import Icons from "react-native-vector-icons/MaterialCommunityIcons";
+import { Text, View } from "components";
 
 /**
  * A component which has a label and an input together.
