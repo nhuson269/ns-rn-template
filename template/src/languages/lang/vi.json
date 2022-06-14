@@ -12,7 +12,13 @@
     "signUp": "Đăng ký",
     "forgotPassword": "Quên mật khẩu",
     "continue": "Tiếp tục",
-    "confirm": "Xác nhận"
+    "confirm": "Xác nhận",
+    "theme": "Chủ đề",
+    "dark": "Tối",
+    "light": "Sáng",
+    "language": "Ngôn ngữ",
+    "english": "Tiếng anh",
+    "vietnamese": "Tiếng việt"
   },
   "errors": {
     "ok": "OK!",
@@ -20,5 +26,9 @@
     "emptyUsername": "Tài khoản rỗng",
     "emptyPassword": "Mật khẩu rỗng",
     "passwordConfirmFail": "Mật khẩu xác nhận không chính xác"
+  },
+  "tabbar": {
+    "home": "Trang chủ",
+    "settings": "Cài đặt"
   }
 }

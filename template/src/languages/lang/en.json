@@ -12,7 +12,13 @@
     "signUp": "Sign up",
     "forgotPassword": "Forgot Password",
     "continue": "Continue",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "language": "Language",
+    "english": "English",
+    "vietnamese": "Vietnamese"
   },
   "errors": {
     "ok": "OK!",
@@ -20,5 +26,9 @@
     "emptyUsername": "Empty username",
     "emptyPassword": "Empty password",
     "passwordConfirmFail": "Confirmation password is incorrect"
+  },
+  "tabbar": {
+    "home": "Home",
+    "settings": "Settings"
   }
 }

@@ -28,6 +28,11 @@ export interface HeaderNavProps {
   title?: string;
 
   /**
+   * Left view in header view, default is true.
+   */
+  isLeftView?: boolean;
+
+  /**
    * Optional ignore StatusBar height, default is false.
    */
   ignoreStatusBar?: boolean;

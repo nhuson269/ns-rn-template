@@ -35,11 +35,11 @@ export type ScreenProps = {
 
   /**
    * Should we not wrap in SafeAreaView? Defaults to trl.
-   ** no is []
+   ** rl is ["right", "left"]
    ** trl is ["top", "right", "left"]
    ** full is ["top", "right", "bottom", "left"]
    */
-  safe?: "no" | "trl" | "full";
+  safe?: "rl" | "trl" | "full";
 
   /**
    * By how much should we offset the keyboard? Defaults to none.

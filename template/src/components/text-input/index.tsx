@@ -1,11 +1,11 @@
 import useIsMounted from "hooks/useIsMounted";
-import { translate } from "languages";
 import React, { memo, useCallback, useMemo, useState } from "react";
-import { Pressable, TextInput as RNTextInput } from "react-native";
+import { Pressable, StyleProp, TextInput as RNTextInput, ViewStyle } from "react-native";
 import { TextInputProps } from "./props";
 import { styles } from "./styles";
 import Icons from "react-native-vector-icons/MaterialCommunityIcons";
 import { Text, View } from "components";
+import { useTranslation } from "react-i18next";
 
 /**
  * A component which has a label and an input together.
@@ -17,21 +17,47 @@ export const TextInput = memo((props: TextInputProps) => {
     labelTx,
     label,
     message,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginHorizontal,
+    marginVertical,
     style: styleOverride,
     inputStyle: inputStyleOverride,
     ...rest
   } = props;
+  const { t } = useTranslation();
 
-  const actualPlaceholder = placeholderTx ? translate(placeholderTx) : placeholder;
-  const actualLabel = labelTx ? translate(labelTx) : label;
-
-  const styleContainer = [styles.container, styleOverride];
-  const styleInput = [styles.textInput, inputStyleOverride];
+  const actualPlaceholder = placeholderTx ? t(placeholderTx) : placeholder;
+  const actualLabel = labelTx ? t(labelTx) : label;
 
   const [borderColor, setBorderColor] = useState<string>("#F0F5FA");
   const [bgColor, setBgColor] = useState<string>("#F0F5FA");
   const [isSecure, setIsSecure] = useState<boolean>(rest.secureTextEntry || false);
   const isMounted = useIsMounted();
+
+  const styleProps: StyleProp<ViewStyle> = {};
+  if (marginTop) {
+    styleProps.marginTop = marginTop;
+  }
+  if (marginRight) {
+    styleProps.marginRight = marginRight;
+  }
+  if (marginBottom) {
+    styleProps.marginBottom = marginBottom;
+  }
+  if (marginLeft) {
+    styleProps.marginLeft = marginLeft;
+  }
+  if (marginHorizontal) {
+    styleProps.marginHorizontal = marginHorizontal;
+  }
+  if (marginVertical) {
+    styleProps.marginVertical = marginVertical;
+  }
+  const styleContainer = [styles.container, styleOverride, styleProps];
+  const styleInput = [styles.textInput, inputStyleOverride, { backgroundColor: bgColor, borderColor: borderColor }];
 
   const keyboardDidShow = useCallback(() => {
     if (isMounted()) {
@@ -73,7 +99,7 @@ export const TextInput = memo((props: TextInputProps) => {
       <View>
         <RNTextInput
           {...rest}
-          style={[styleInput, { backgroundColor: bgColor, borderColor: borderColor }]}
+          style={styleInput}
           selectionColor="green"
           secureTextEntry={isSecure}
           onEndEditing={keyboardDidHide}

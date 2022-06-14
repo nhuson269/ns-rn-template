@@ -1,5 +1,5 @@
 import React, { memo, useMemo } from "react";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, StyleProp, TextStyle, ViewStyle } from "react-native";
 import { presets } from "./presets";
 import { ButtonProps } from "./props";
 import { styles } from "./styles";
@@ -15,13 +15,38 @@ export const Button = memo((props: ButtonProps) => {
     title,
     message,
     loading,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginHorizontal,
+    marginVertical,
     style: styleOverride,
     buttonStyle: buttonStyleOverride,
     titleStyle: titleStyleOverride,
     ...rest
   } = props;
 
-  const styleContainer = [styles.container, styleOverride];
+  const styleProps: StyleProp<ViewStyle> = {};
+  if (marginTop) {
+    styleProps.marginTop = marginTop;
+  }
+  if (marginRight) {
+    styleProps.marginRight = marginRight;
+  }
+  if (marginBottom) {
+    styleProps.marginBottom = marginBottom;
+  }
+  if (marginLeft) {
+    styleProps.marginLeft = marginLeft;
+  }
+  if (marginHorizontal) {
+    styleProps.marginHorizontal = marginHorizontal;
+  }
+  if (marginVertical) {
+    styleProps.marginVertical = marginVertical;
+  }
+  const styleContainer = [styles.container, styleOverride, styleProps];
 
   const MessageText = useMemo(() => {
     return message ? <Text style={styles.message} value={message} /> : null;
@@ -30,7 +55,11 @@ export const Button = memo((props: ButtonProps) => {
   const ContentView = useMemo(() => {
     const stylePreset = presets[preset] || presets.default;
     const styleButton = [stylePreset, buttonStyleOverride];
-    const styleTitle = [styles.title, { color: preset === "default" ? "white" : "green" }, titleStyleOverride];
+    const styleTitle: StyleProp<TextStyle> = [
+      styles.title,
+      { color: preset === "default" ? "white" : "green" },
+      titleStyleOverride,
+    ];
 
     if (loading) {
       return (

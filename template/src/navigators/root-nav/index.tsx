@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { AuthNavigator, HomeNavigator } from "navigators";
+import { AuthNavigator, MainNavigator } from "navigators";
 import { navigationRef, navOnStateChange } from "navigators/shared/helper";
 import { RouteName } from "navigators/shared/routes";
 import { LaunchScreen } from "screens";
@@ -26,7 +26,7 @@ export const RootNavigator = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={RouteName.LAUNCH} component={LaunchScreen} />
         <Stack.Screen name={RouteName.AUTH_DEMO} component={AuthNavigator} />
-        <Stack.Screen name={RouteName.MAIN_DEMO} component={HomeNavigator} />
+        <Stack.Screen name={RouteName.MAIN_DEMO} component={MainNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );

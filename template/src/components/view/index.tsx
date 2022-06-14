@@ -17,6 +17,12 @@ export const View = memo((props: ViewProps) => {
     borderRadius,
     alignItems,
     justifyContent,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginHorizontal,
+    marginVertical,
     center,
     shadow,
     skeleton,
@@ -67,6 +73,24 @@ export const View = memo((props: ViewProps) => {
   if (justifyContent) {
     styleProps.justifyContent = justifyContent;
   }
+  if (marginTop) {
+    styleProps.marginTop = marginTop;
+  }
+  if (marginRight) {
+    styleProps.marginRight = marginRight;
+  }
+  if (marginBottom) {
+    styleProps.marginBottom = marginBottom;
+  }
+  if (marginLeft) {
+    styleProps.marginLeft = marginLeft;
+  }
+  if (marginHorizontal) {
+    styleProps.marginHorizontal = marginHorizontal;
+  }
+  if (marginVertical) {
+    styleProps.marginVertical = marginVertical;
+  }
   if (center) {
     styleProps.alignItems = "center";
     styleProps.justifyContent = "center";
@@ -81,10 +105,9 @@ export const View = memo((props: ViewProps) => {
   if (skeleton) {
     // Skeleton loader
   }
-  const styles: StyleProp<ViewStyle> = [styleOverride, styleProps];
 
   return (
-    <Reanimated.View {...rest} style={styles}>
+    <Reanimated.View {...rest} style={[styleOverride, styleProps]}>
       {children}
     </Reanimated.View>
   );

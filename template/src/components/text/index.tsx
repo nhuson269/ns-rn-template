@@ -1,9 +1,9 @@
 import Reanimated from "react-native-reanimated";
-import { translate } from "languages";
 import React, { memo } from "react";
 import { StyleProp, TextStyle } from "react-native";
 import { presets } from "./presets";
 import { TextProps } from "./props";
+import { useTranslation } from "react-i18next";
 
 /**
  * For your text displaying needs.
@@ -24,13 +24,20 @@ export const Text = memo((props: TextProps) => {
     underline,
     textAlign,
     textAlignVertical,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginHorizontal,
+    marginVertical,
     children,
     style: styleOverride,
     ...rest
   } = props;
+  const { t } = useTranslation();
 
   // figure out which content to use
-  const i18nValue = valueTx && translate(valueTx);
+  const i18nValue = valueTx && t(valueTx);
   const content = i18nValue || value;
 
   const styleProps: StyleProp<TextStyle> = {};
@@ -58,8 +65,26 @@ export const Text = memo((props: TextProps) => {
   if (textAlignVertical) {
     styleProps.textAlignVertical = textAlignVertical;
   }
-  const style: TextStyle = presets[preset] || presets.default;
-  const styles: StyleProp<TextStyle> = [style, styleOverride, styleProps];
+  if (marginTop) {
+    styleProps.marginTop = marginTop;
+  }
+  if (marginRight) {
+    styleProps.marginRight = marginRight;
+  }
+  if (marginBottom) {
+    styleProps.marginBottom = marginBottom;
+  }
+  if (marginLeft) {
+    styleProps.marginLeft = marginLeft;
+  }
+  if (marginHorizontal) {
+    styleProps.marginHorizontal = marginHorizontal;
+  }
+  if (marginVertical) {
+    styleProps.marginVertical = marginVertical;
+  }
+  const style = presets[preset] || presets.default;
+  const styles = [style, styleOverride, styleProps];
 
   return (
     <Reanimated.Text {...rest} style={styles}>

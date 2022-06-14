@@ -16,6 +16,12 @@ export const Pressable = memo((props: PressableProps) => {
     borderRadius,
     alignItems,
     justifyContent,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginHorizontal,
+    marginVertical,
     center,
     shadow,
     skeleton,
@@ -66,6 +72,24 @@ export const Pressable = memo((props: PressableProps) => {
   if (justifyContent) {
     styleProps.justifyContent = justifyContent;
   }
+  if (marginTop) {
+    styleProps.marginTop = marginTop;
+  }
+  if (marginRight) {
+    styleProps.marginRight = marginRight;
+  }
+  if (marginBottom) {
+    styleProps.marginBottom = marginBottom;
+  }
+  if (marginLeft) {
+    styleProps.marginLeft = marginLeft;
+  }
+  if (marginHorizontal) {
+    styleProps.marginHorizontal = marginHorizontal;
+  }
+  if (marginVertical) {
+    styleProps.marginVertical = marginVertical;
+  }
   if (center) {
     styleProps.alignItems = "center";
     styleProps.justifyContent = "center";
@@ -80,10 +104,9 @@ export const Pressable = memo((props: PressableProps) => {
   if (skeleton) {
     // Skeleton loader
   }
-  const styles: StyleProp<ViewStyle> = [styleOverride, styleProps];
 
   return (
-    <RNPressable {...rest} style={styles}>
+    <RNPressable {...rest} style={[styleOverride, styleProps]}>
       {children}
     </RNPressable>
   );

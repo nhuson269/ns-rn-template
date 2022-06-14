@@ -16,6 +16,12 @@ export const TouchableOpacity = memo((props: TouchableOpacityProps) => {
     borderRadius,
     alignItems,
     justifyContent,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginHorizontal,
+    marginVertical,
     center,
     shadow,
     skeleton,
@@ -66,6 +72,24 @@ export const TouchableOpacity = memo((props: TouchableOpacityProps) => {
   if (justifyContent) {
     styleProps.justifyContent = justifyContent;
   }
+  if (marginTop) {
+    styleProps.marginTop = marginTop;
+  }
+  if (marginRight) {
+    styleProps.marginRight = marginRight;
+  }
+  if (marginBottom) {
+    styleProps.marginBottom = marginBottom;
+  }
+  if (marginLeft) {
+    styleProps.marginLeft = marginLeft;
+  }
+  if (marginHorizontal) {
+    styleProps.marginHorizontal = marginHorizontal;
+  }
+  if (marginVertical) {
+    styleProps.marginVertical = marginVertical;
+  }
   if (center) {
     styleProps.alignItems = "center";
     styleProps.justifyContent = "center";
@@ -80,10 +104,9 @@ export const TouchableOpacity = memo((props: TouchableOpacityProps) => {
   if (skeleton) {
     // Skeleton loader
   }
-  const styles: StyleProp<ViewStyle> = [styleOverride, styleProps];
 
   return (
-    <RNTouchableOpacity {...rest} style={styles}>
+    <RNTouchableOpacity {...rest} style={[styleOverride, styleProps]}>
       {children}
     </RNTouchableOpacity>
   );

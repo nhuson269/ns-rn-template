@@ -22,9 +22,10 @@ export const SignUpScreen = memo(() => {
   return (
     <>
       <HeaderNav titleTx="common.signUp" />
-      <Screen style={styles.container} preset="scroll" statusBar="light-content">
+      <Screen style={styles.container} preset="scroll" statusBar="light-content" safe="rl">
         <TextInput
-          style={styles.marginBottom16}
+          style={styles.username}
+          marginBottom={16}
           labelTx="common.username"
           placeholderTx="common.username"
           value={store.username}
@@ -33,7 +34,7 @@ export const SignUpScreen = memo(() => {
           onSubmitEditing={store.signUp}
         />
         <TextInput
-          style={styles.marginBottom16}
+          marginBottom={16}
           secureTextEntry={true}
           labelTx="common.password"
           placeholderTx="common.password"
@@ -43,7 +44,7 @@ export const SignUpScreen = memo(() => {
           onSubmitEditing={store.signUp}
         />
         <TextInput
-          style={styles.marginBottom16}
+          marginBottom={16}
           secureTextEntry={true}
           labelTx="common.passwordConfirm"
           placeholderTx="common.passwordConfirm"

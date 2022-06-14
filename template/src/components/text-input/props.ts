@@ -31,4 +31,34 @@ export interface TextInputProps extends RNTextInputProps {
    * Optional style overrides for the input.
    */
   inputStyle?: StyleProp<TextStyle>;
+
+  /**
+   * Container style, marginTop.
+   */
+  marginTop?: number;
+
+  /**
+   * Container style, marginRight.
+   */
+  marginRight?: number;
+
+  /**
+   * Container style, marginBottom.
+   */
+  marginBottom?: number;
+
+  /**
+   * Container style, marginLeft.
+   */
+  marginLeft?: number;
+
+  /**
+   * Container style, marginHorizontal.
+   */
+  marginHorizontal?: number;
+
+  /**
+   * Container style, marginVertical.
+   */
+  marginVertical?: number;
 }

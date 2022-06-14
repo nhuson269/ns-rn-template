@@ -10,24 +10,24 @@ const isIos = Platform.OS === "ios";
 
 const ScreenWithoutScrolling = memo((props: ScreenProps) => {
   const preset = presets.fixed;
-  const style = props.style || {};
-  // const translucent = props.translucent || true;
-  const backgroundStyle = props.backgroundColor ? { backgroundColor: props.backgroundColor } : {};
-  const safeEdge: SafeEdge[] = props.safe === "full" ? ["top", "right", "bottom", "left"] : ["top", "right", "left"];
-  const edges = props.safe === "no" ? [] : safeEdge;
+  const safe = props.safe || "trl";
+  const safeEdge: SafeEdge[] =
+    safe === "full"
+      ? ["top", "right", "bottom", "left"]
+      : safe === "trl"
+      ? ["top", "right", "left"]
+      : ["right", "left"];
+
+  const bgColor = props.backgroundColor;
+  const styleContainer = [preset.outer, bgColor ? { backgroundColor: bgColor } : {}];
+  const styleContent = [preset.inner, props.style || {}];
 
   return (
     <KeyboardAvoidingView
-      style={[preset.outer, backgroundStyle]}
+      style={styleContainer}
       behavior={isIos ? "padding" : undefined}
       keyboardVerticalOffset={offsets[props.keyboardOffset || "none"]}>
-      {/* <StatusBar
-        animated
-        translucent={translucent}
-        backgroundColor="transparent"
-        barStyle={props.statusBar || "dark-content"}
-      /> */}
-      <SafeAreaView style={[preset.inner, style]} edges={edges}>
+      <SafeAreaView style={styleContent} edges={safeEdge}>
         {props.children}
       </SafeAreaView>
     </KeyboardAvoidingView>
@@ -36,27 +36,27 @@ const ScreenWithoutScrolling = memo((props: ScreenProps) => {
 
 const ScreenWithScrolling = memo((props: ScreenProps) => {
   const preset = presets.scroll;
-  const style = props.style || {};
-  // const translucent = props.translucent || true;
-  const backgroundStyle = props.backgroundColor ? { backgroundColor: props.backgroundColor } : {};
-  const safeEdge: SafeEdge[] = props.safe === "full" ? ["top", "right", "bottom", "left"] : ["top", "right", "left"];
-  const edges = props.safe === "no" ? [] : safeEdge;
+  const safe = props.safe || "trl";
+  const safeEdge: SafeEdge[] =
+    safe === "full"
+      ? ["top", "right", "bottom", "left"]
+      : safe === "trl"
+      ? ["top", "right", "left"]
+      : ["right", "left"];
+
+  const bgColor = props.backgroundColor;
+  const styleContainer = [preset.outer, bgColor ? { backgroundColor: bgColor } : {}];
+  const styleContent = [preset.inner, props.style || {}];
 
   return (
     <KeyboardAvoidingView
-      style={[preset.outer, backgroundStyle]}
+      style={styleContainer}
       behavior={isIos ? "padding" : undefined}
       keyboardVerticalOffset={offsets[props.keyboardOffset || "none"]}>
-      {/* <StatusBar
-        animated
-        translucent={translucent}
-        backgroundColor="transparent"
-        barStyle={props.statusBar || "dark-content"}
-      /> */}
-      <SafeAreaView style={[preset.outer, backgroundStyle]} edges={edges}>
+      <SafeAreaView style={styleContainer} edges={safeEdge}>
         <ScrollView
-          style={[preset.outer, backgroundStyle]}
-          contentContainerStyle={[preset.inner, style]}
+          style={styleContainer}
+          contentContainerStyle={styleContent}
           keyboardShouldPersistTaps={props.keyboardShouldPersistTaps || "handled"}>
           {props.children}
         </ScrollView>

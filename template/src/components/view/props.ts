@@ -62,6 +62,36 @@ export interface ViewProps extends RNViewProps {
   borderRadius?: number;
 
   /**
+   * View style, marginTop.
+   */
+  marginTop?: number;
+
+  /**
+   * View style, marginRight.
+   */
+  marginRight?: number;
+
+  /**
+   * View style, marginBottom.
+   */
+  marginBottom?: number;
+
+  /**
+   * View style, marginLeft.
+   */
+  marginLeft?: number;
+
+  /**
+   * View style, marginHorizontal.
+   */
+  marginHorizontal?: number;
+
+  /**
+   * View style, marginVertical.
+   */
+  marginVertical?: number;
+
+  /**
    * View style, alignItems: "center", justifyContent: "center".
    */
   center?: boolean;

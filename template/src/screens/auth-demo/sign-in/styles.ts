@@ -11,9 +11,6 @@ export const styles = StyleSheet.create({
   contentView: {
     marginHorizontal: 16,
   },
-  marginBottom16: {
-    marginBottom: 16,
-  },
   btSignIn: {
     marginVertical: 16,
   },

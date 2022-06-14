@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
   },
   statusBar: {},
   header: {
+    height: 44,
     flexDirection: "row",
     alignItems: "center",
   },
@@ -14,7 +15,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "white",
-    left: 76,
+    left: 16,
     right: 76,
   },
 });

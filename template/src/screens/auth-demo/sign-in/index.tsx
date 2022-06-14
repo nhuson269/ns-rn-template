@@ -15,7 +15,7 @@ export const SignInScreen = memo(() => {
       <Text style={styles.title} value="HelloWorld" />
       <View style={styles.contentView}>
         <TextInput
-          style={styles.marginBottom16}
+          marginBottom={16}
           labelTx="common.username"
           placeholderTx="common.username"
           value={store.username}
@@ -24,7 +24,7 @@ export const SignInScreen = memo(() => {
           onSubmitEditing={store.login}
         />
         <TextInput
-          style={styles.marginBottom16}
+          marginBottom={16}
           secureTextEntry={true}
           labelTx="common.password"
           placeholderTx="common.password"

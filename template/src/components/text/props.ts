@@ -67,4 +67,34 @@ export interface TextProps extends NSTextProps {
    * Style textAlignVertical of text.
    */
   textAlignVertical?: "auto" | "top" | "bottom" | "center";
+
+  /**
+   * Text style, marginTop.
+   */
+  marginTop?: number;
+
+  /**
+   * Text style, marginRight.
+   */
+  marginRight?: number;
+
+  /**
+   * Text style, marginBottom.
+   */
+  marginBottom?: number;
+
+  /**
+   * Text style, marginLeft.
+   */
+  marginLeft?: number;
+
+  /**
+   * Text style, marginHorizontal.
+   */
+  marginHorizontal?: number;
+
+  /**
+   * Text style, marginVertical.
+   */
+  marginVertical?: number;
 }

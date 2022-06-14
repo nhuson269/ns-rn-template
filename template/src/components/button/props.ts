@@ -42,4 +42,34 @@ export interface ButtonProps extends PressableProps {
    * One of the different types of button presets.
    */
   preset?: ButtonPresets;
+
+  /**
+   * Container style, marginTop.
+   */
+  marginTop?: number;
+
+  /**
+   * Container style, marginRight.
+   */
+  marginRight?: number;
+
+  /**
+   * Container style, marginBottom.
+   */
+  marginBottom?: number;
+
+  /**
+   * Container style, marginLeft.
+   */
+  marginLeft?: number;
+
+  /**
+   * Container style, marginHorizontal.
+   */
+  marginHorizontal?: number;
+
+  /**
+   * Container style, marginVertical.
+   */
+  marginVertical?: number;
 }
