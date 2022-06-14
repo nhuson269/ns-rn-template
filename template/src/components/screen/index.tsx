@@ -2,7 +2,7 @@ import React, { memo, useEffect } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView } from "react-native";
 import { Edge as SafeEdge, SafeAreaView } from "react-native-safe-area-context";
 import { ScreenProps } from "./props";
-import { isNonScrolling, offsets, presets } from "./presets";
+import { offsets, presets } from "./presets";
 import { useIsFocused } from "@react-navigation/native";
 import { statusBarStore } from "components/status-bar/status-bar.store";
 
@@ -79,10 +79,11 @@ export const Screen = memo((props: ScreenProps) => {
     }
   }, [isFocused, props.statusBar]);
 
-  if (isNonScrolling(props.preset)) {
-    return <ScreenWithoutScrolling {...props} />;
-  } else {
-    return <ScreenWithScrolling {...props} />;
+  switch (props.preset) {
+    case "scroll":
+      return <ScreenWithScrolling {...props} />;
+    default:
+      return <ScreenWithoutScrolling {...props} />;
   }
 });
 

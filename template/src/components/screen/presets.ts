@@ -54,13 +54,3 @@ export const presets = {
  * The variations of screens.
  */
 export type ScreenPresets = keyof typeof presets;
-
-/**
- * Is this preset a non-scrolling one?
- *
- * @param preset The preset to check
- */
-export const isNonScrolling = (preset?: ScreenPresets) => {
-  // any of these things will make you scroll
-  return !preset || !presets[preset] || preset === "fixed";
-};
