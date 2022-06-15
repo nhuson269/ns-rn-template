@@ -1,4 +1,4 @@
-import { UserModel } from "models";
+import { getProfileStorage, UserModel } from "models";
 import navActions from "navigators/shared/actions";
 import { delay } from "utils/delay";
 import storage, { StorageKey } from "utils/storage-utils";
@@ -26,8 +26,7 @@ export const userStore = create<UserStore>((set, get) => ({
       return;
     }
     set({ isLoading: true });
-    const data = storage.getString(StorageKey.USER_PROFILE);
-    const profile = !data ? undefined : await JSON.parse(data);
+    const profile = await getProfileStorage();
     await delay(2000);
     set({ isLoading: false, isFetched: true, isSignIn: profile !== undefined, profile: profile });
     if (isNavigate) {
