@@ -1,8 +1,7 @@
 import i18next from "i18next";
 import { translate } from "languages";
 import alertHelper from "modals/alert/helper";
-import navActions from "navigators/shared/actions";
-import { colorStore } from "stores";
+import { colorStore, userStore } from "stores";
 import create from "zustand";
 
 type AccoutDemoStore = {
@@ -27,7 +26,7 @@ export const accoutDemoStore = create<AccoutDemoStore>(() => ({
       message: translate("common.logoutMsg") ?? "",
       btLeftTitle: translate("common.cancel"),
       btRightTitle: translate("common.confirm"),
-      btRightAction: navActions.navigateToAuth,
+      btRightAction: () => userStore.getState().removeProfile(true),
     });
   },
   reset: () => {},

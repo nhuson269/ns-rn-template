@@ -1,3 +1,4 @@
+import { UserModel } from "models";
 import navActions from "navigators/shared/actions";
 import { delay } from "utils/delay";
 import storage, { StorageKey } from "utils/storage-utils";
@@ -7,9 +8,10 @@ type UserStore = {
   isLoading: boolean;
   isFetched: boolean;
   isSignIn: boolean;
-  profile: any;
+  profile: UserModel | undefined;
   getProfile: (isNavigate?: boolean) => void;
   setProfile: (value: any) => void;
+  removeProfile: (isNavigate?: boolean) => void;
   reset: () => void;
 };
 
@@ -27,7 +29,7 @@ export const userStore = create<UserStore>((set, get) => ({
     const data = storage.getString(StorageKey.USER_PROFILE);
     const profile = !data ? undefined : await JSON.parse(data);
     await delay(2000);
-    set({ isLoading: false, isFetched: true, profile: profile });
+    set({ isLoading: false, isFetched: true, isSignIn: profile !== undefined, profile: profile });
     if (isNavigate) {
       if (profile) {
         navActions.navigateToMain();
@@ -39,6 +41,13 @@ export const userStore = create<UserStore>((set, get) => ({
   setProfile: value => {
     set({ profile: value });
     storage.set(StorageKey.USER_PROFILE, JSON.stringify(value));
+  },
+  removeProfile: (isNavigate?: boolean) => {
+    set({ isSignIn: false, profile: undefined });
+    if (isNavigate) {
+      navActions.navigateToAuth();
+    }
+    storage.delete(StorageKey.USER_PROFILE);
   },
   reset: () =>
     set({
