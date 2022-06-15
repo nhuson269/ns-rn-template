@@ -2,6 +2,5 @@ node_modules/
 .vscode/
 .DS_Store
 .idea/
-template/yarn.lock
-template/yarn.lock
+yarn.lock
 template/yarn.lock
