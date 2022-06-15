@@ -13,12 +13,17 @@
     "forgotPassword": "Forgot Password",
     "continue": "Continue",
     "confirm": "Confirm",
+    "logout": "Logout",
+    "logoutMsg": "Are you sure you want to sign out?",
     "theme": "Theme",
     "dark": "Dark",
     "light": "Light",
     "language": "Language",
     "english": "English",
-    "vietnamese": "Vietnamese"
+    "vietnamese": "Vietnamese",
+    "green": "Green",
+    "violet": "Violet",
+    "blue": "Blue"
   },
   "errors": {
     "ok": "OK!",

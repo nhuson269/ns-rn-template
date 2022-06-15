@@ -5,6 +5,7 @@ import { ScreenProps } from "./props";
 import { offsets, presets } from "./presets";
 import { useIsFocused } from "@react-navigation/native";
 import { statusBarStore } from "components/status-bar/status-bar.store";
+import { colorStore } from "stores";
 
 const isIos = Platform.OS === "ios";
 
@@ -18,8 +19,8 @@ const ScreenWithoutScrolling = memo((props: ScreenProps) => {
       ? ["top", "right", "left"]
       : ["right", "left"];
 
-  const bgColor = props.backgroundColor;
-  const styleContainer = [preset.outer, bgColor ? { backgroundColor: bgColor } : {}];
+  const colors = colorStore();
+  const styleContainer = [preset.outer, { backgroundColor: props.backgroundColor || colors.bg_01 }];
   const styleContent = [preset.inner, props.style || {}];
 
   return (
@@ -44,8 +45,8 @@ const ScreenWithScrolling = memo((props: ScreenProps) => {
       ? ["top", "right", "left"]
       : ["right", "left"];
 
-  const bgColor = props.backgroundColor;
-  const styleContainer = [preset.outer, bgColor ? { backgroundColor: bgColor } : {}];
+  const colors = colorStore();
+  const styleContainer = [preset.outer, { backgroundColor: props.backgroundColor || colors.bg_01 }];
   const styleContent = [preset.inner, props.style || {}];
 
   return (

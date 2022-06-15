@@ -12,7 +12,7 @@ type NestedKeyOf<ObjectType extends object> = {
     ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
     : `${Key}`;
 }[keyof ObjectType & string];
-type DefaultLocale = typeof vi;
+type DefaultLocale = typeof vi; // Change the primary language of your app
 type TxKeyPath = NestedKeyOf<DefaultLocale>;
 
 // CONST

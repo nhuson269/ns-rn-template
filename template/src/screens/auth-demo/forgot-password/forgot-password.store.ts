@@ -4,7 +4,7 @@ import { Keyboard } from "react-native";
 import { delay } from "utils/delay";
 import create from "zustand";
 
-type ForgotPasswordStore = {
+type ForgotPasswordDemoStore = {
   isLoading: boolean;
   isFetched: boolean;
   username: string;
@@ -14,7 +14,7 @@ type ForgotPasswordStore = {
   reset: () => void;
 };
 
-export const forgotPasswordStore = create<ForgotPasswordStore>((set, get) => ({
+export const forgotPasswordDemoStore = create<ForgotPasswordDemoStore>((set, get) => ({
   isLoading: false,
   isFetched: false,
   username: "",

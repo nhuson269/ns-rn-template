@@ -2,20 +2,20 @@ import { useRoute } from "@react-navigation/native";
 import { Button, HeaderNav, Screen, TextInput } from "components";
 import { SignUpParams } from "navigators/shared/params";
 import React, { memo, useEffect } from "react";
-import { signUpStore } from "./sign-up.store";
+import { signUpDemoStore } from "./sign-up.store";
 import { styles } from "./styles";
 
 export const SignUpScreen = memo(() => {
   const { username } = useRoute().params as SignUpParams;
-  const store = signUpStore();
+  const store = signUpDemoStore();
 
   useEffect(() => {
-    return () => signUpStore.getState().reset();
+    return () => signUpDemoStore.getState().reset();
   }, []);
 
   useEffect(() => {
     if (username) {
-      signUpStore.getState().setUsername(username);
+      signUpDemoStore.getState().setUsername(username);
     }
   }, [username]);
 

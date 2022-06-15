@@ -4,7 +4,7 @@ import { Keyboard } from "react-native";
 import { delay } from "utils/delay";
 import create from "zustand";
 
-type SignInStore = {
+type SignInDemoStore = {
   isLoading: boolean;
   isFetched: boolean;
   username: string;
@@ -19,7 +19,7 @@ type SignInStore = {
   reset: () => void;
 };
 
-export const signInStore = create<SignInStore>((set, get) => ({
+export const signInDemoStore = create<SignInDemoStore>((set, get) => ({
   isLoading: false,
   isFetched: false,
   username: "",

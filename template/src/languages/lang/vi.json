@@ -13,12 +13,17 @@
     "forgotPassword": "Quên mật khẩu",
     "continue": "Tiếp tục",
     "confirm": "Xác nhận",
+    "logout": "Đăng xuất",
+    "logoutMsg": "Bạn có chắc chắn muốn đăng xuất không?",
     "theme": "Chủ đề",
     "dark": "Tối",
     "light": "Sáng",
     "language": "Ngôn ngữ",
     "english": "Tiếng anh",
-    "vietnamese": "Tiếng việt"
+    "vietnamese": "Tiếng việt",
+    "green": "Xanh lá",
+    "violet": "Tím",
+    "blue": "Xanh dương"
   },
   "errors": {
     "ok": "OK!",

@@ -14,9 +14,19 @@ export interface ButtonProps extends PressableProps {
   buttonStyle?: StyleProp<ViewStyle>;
 
   /**
-   * Optional style overrides for the button.
+   * Optional backgroundColor overrides for the button.
+   */
+  backgroundColor?: string;
+
+  /**
+   * Optional style overrides for the title.
    */
   titleStyle?: StyleProp<TextStyle>;
+
+  /**
+   * Optional color overrides for the title.
+   */
+  titleColor?: string;
 
   /**
    * The title i18n key.

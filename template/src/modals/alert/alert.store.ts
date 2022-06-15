@@ -2,10 +2,10 @@ import create from "zustand";
 
 export type OpenProps = {
   message: string;
-  title?: string;
-  btLeftTitle?: string;
+  title?: string | undefined;
+  btLeftTitle?: string | undefined;
   btLeftAction?: () => void;
-  btRightTitle?: string;
+  btRightTitle?: string | undefined;
   btRightAction?: () => void;
 };
 
@@ -37,8 +37,14 @@ export const alertStore = create<AlertStore>((set, get) => ({
       message: props.message,
       btLeftTitle: props.btLeftTitle || "Ok",
       btRightTitle: props.btRightTitle,
-      btLeftAction: props.btLeftAction || (() => set({ isVisible: false })),
-      btRightAction: props.btRightAction,
+      btLeftAction: () => {
+        set({ isVisible: false });
+        props.btLeftAction?.();
+      },
+      btRightAction: () => {
+        set({ isVisible: false });
+        props.btRightAction?.();
+      },
     });
   },
   onDismiss: () => {

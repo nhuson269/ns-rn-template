@@ -6,6 +6,7 @@ import { styles } from "./styles";
 import Icons from "react-native-vector-icons/MaterialCommunityIcons";
 import { Text, View } from "components";
 import { useTranslation } from "react-i18next";
+import { colorStore } from "stores";
 
 /**
  * A component which has a label and an input together.
@@ -27,15 +28,15 @@ export const TextInput = memo((props: TextInputProps) => {
     inputStyle: inputStyleOverride,
     ...rest
   } = props;
+
+  const colors = colorStore();
+  const [borderColor, setBorderColor] = useState<string>(colors.bg_02);
+  const [bgColor, setBgColor] = useState<string>(colors.bg_02);
+  const [isSecure, setIsSecure] = useState<boolean>(rest.secureTextEntry || false);
+  const isMounted = useIsMounted();
   const { t } = useTranslation();
 
   const actualPlaceholder = placeholderTx ? t(placeholderTx) : placeholder;
-  const actualLabel = labelTx ? t(labelTx) : label;
-
-  const [borderColor, setBorderColor] = useState<string>("#F0F5FA");
-  const [bgColor, setBgColor] = useState<string>("#F0F5FA");
-  const [isSecure, setIsSecure] = useState<boolean>(rest.secureTextEntry || false);
-  const isMounted = useIsMounted();
 
   const styleProps: StyleProp<ViewStyle> = {};
   if (marginTop) {
@@ -61,25 +62,25 @@ export const TextInput = memo((props: TextInputProps) => {
 
   const keyboardDidShow = useCallback(() => {
     if (isMounted()) {
-      setBorderColor("green");
-      setBgColor("white");
+      setBorderColor(colors.t_03);
+      setBgColor(colors.bg_01);
     }
-  }, [isMounted]);
+  }, [isMounted, colors.bg_01, colors.t_03]);
 
   const keyboardDidHide = useCallback(() => {
     if (isMounted()) {
-      setBorderColor("#F0F5FA");
-      setBgColor("#F0F5FA");
+      setBorderColor(colors.bg_02);
+      setBgColor(colors.bg_02);
     }
-  }, [isMounted]);
+  }, [isMounted, colors.bg_02]);
 
   const changeIsSecure = useCallback(() => {
     setIsSecure(!isSecure);
   }, [isSecure]);
 
   const LabelText = useMemo(() => {
-    return actualLabel ? <Text style={styles.label} value={actualLabel} /> : null;
-  }, [actualLabel]);
+    return label || labelTx ? <Text style={styles.label} value={label} valueTx={labelTx} color={colors.t_02} /> : null;
+  }, [label, labelTx, colors.t_02]);
 
   const SecureView = useMemo(() => {
     return !rest.secureTextEntry ? null : (
@@ -90,8 +91,8 @@ export const TextInput = memo((props: TextInputProps) => {
   }, [rest.secureTextEntry, isSecure, changeIsSecure]);
 
   const MessageText = useMemo(() => {
-    return message ? <Text style={styles.message} value={message} /> : null;
-  }, [message]);
+    return message ? <Text style={styles.message} value={message} color={colors.error} /> : null;
+  }, [message, colors.error]);
 
   return (
     <View style={styleContainer}>
@@ -100,7 +101,7 @@ export const TextInput = memo((props: TextInputProps) => {
         <RNTextInput
           {...rest}
           style={styleInput}
-          selectionColor="green"
+          selectionColor={colors.t_03}
           secureTextEntry={isSecure}
           onEndEditing={keyboardDidHide}
           onFocus={keyboardDidShow}

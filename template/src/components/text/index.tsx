@@ -4,6 +4,7 @@ import { StyleProp, TextStyle } from "react-native";
 import { presets } from "./presets";
 import { TextProps } from "./props";
 import { useTranslation } from "react-i18next";
+import { colorStore } from "stores";
 
 /**
  * For your text displaying needs.
@@ -34,6 +35,8 @@ export const Text = memo((props: TextProps) => {
     style: styleOverride,
     ...rest
   } = props;
+
+  const colors = colorStore();
   const { t } = useTranslation();
 
   // figure out which content to use
@@ -84,7 +87,7 @@ export const Text = memo((props: TextProps) => {
     styleProps.marginVertical = marginVertical;
   }
   const style = presets[preset] || presets.default;
-  const styles = [style, styleOverride, styleProps];
+  const styles: StyleProp<TextStyle> = [{ color: colors.t_02 }, style, styleOverride, styleProps];
 
   return (
     <Reanimated.Text {...rest} style={styles}>

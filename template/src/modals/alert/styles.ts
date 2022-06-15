@@ -4,7 +4,6 @@ export const styles = StyleSheet.create({
   container: {
     padding: 16,
     borderRadius: 16,
-    backgroundColor: "white",
   },
   title: {
     fontWeight: "bold",

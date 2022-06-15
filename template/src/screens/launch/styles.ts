@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
     position: "absolute",
     fontSize: 28,
     fontWeight: "bold",
-    color: "green",
   },
   activity: {
     position: "absolute",

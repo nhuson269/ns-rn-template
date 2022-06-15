@@ -21,7 +21,6 @@ export const styles = StyleSheet.create({
   message: {
     marginTop: 4,
     fontSize: 14,
-    color: "red",
   },
   btEye: {
     position: "absolute",

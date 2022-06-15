@@ -1,18 +1,20 @@
 import { Button, Screen, Text, TextInput, View } from "components";
 import React, { memo, useEffect } from "react";
-import { signInStore } from "./sign-in.store";
+import { colorStore } from "stores";
+import { signInDemoStore } from "./sign-in.store";
 import { styles } from "./styles";
 
 export const SignInScreen = memo(() => {
-  const store = signInStore();
+  const store = signInDemoStore();
+  const colors = colorStore();
 
   useEffect(() => {
-    return () => signInStore.getState().reset();
+    return () => signInDemoStore.getState().reset();
   }, []);
 
   return (
     <Screen preset="scroll">
-      <Text style={styles.title} value="HelloWorld" />
+      <Text style={styles.title} value="HelloWorld" color={colors.t_03} />
       <View style={styles.contentView}>
         <TextInput
           marginBottom={16}

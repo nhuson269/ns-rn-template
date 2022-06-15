@@ -1,11 +1,13 @@
 import { Button, Text, View } from "components";
 import React, { memo } from "react";
 import Modal from "react-native-modal";
+import { colorStore } from "stores";
 import { alertStore } from "./alert.store";
 import { styles } from "./styles";
 
 export const AlertModal = memo(() => {
   const store = alertStore();
+  const colors = colorStore();
 
   return (
     <Modal
@@ -25,7 +27,7 @@ export const AlertModal = memo(() => {
       onDismiss={store.onDismiss}
       onModalShow={store.onShow}
       onShow={store.onShow}>
-      <View style={styles.container}>
+      <View style={styles.container} backgroundColor={colors.bg_01}>
         {!store.title ? null : <Text style={styles.title} value={store.title} />}
         <Text style={styles.message} value={store.message} />
         <View style={styles.actionsView}>

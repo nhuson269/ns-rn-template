@@ -4,6 +4,7 @@ import { presets } from "./presets";
 import { ButtonProps } from "./props";
 import { styles } from "./styles";
 import { Pressable, Text, View } from "components";
+import { colorStore } from "stores";
 
 /**
  * A component which has a label and an input together.
@@ -13,6 +14,8 @@ export const Button = memo((props: ButtonProps) => {
     preset = "default",
     titleTx,
     title,
+    titleColor,
+    backgroundColor,
     message,
     loading,
     marginTop,
@@ -27,6 +30,7 @@ export const Button = memo((props: ButtonProps) => {
     ...rest
   } = props;
 
+  const colors = colorStore();
   const styleProps: StyleProp<ViewStyle> = {};
   if (marginTop) {
     styleProps.marginTop = marginTop;
@@ -49,23 +53,24 @@ export const Button = memo((props: ButtonProps) => {
   const styleContainer = [styles.container, styleOverride, styleProps];
 
   const MessageText = useMemo(() => {
-    return message ? <Text style={styles.message} value={message} /> : null;
-  }, [message]);
+    return message ? <Text style={styles.message} value={message} color={colors.error} /> : null;
+  }, [message, colors.error]);
 
   const ContentView = useMemo(() => {
     const stylePreset = presets[preset] || presets.default;
-    const styleButton = [stylePreset, buttonStyleOverride];
-    const styleTitle: StyleProp<TextStyle> = [
-      styles.title,
-      { color: preset === "default" ? "white" : "green" },
-      titleStyleOverride,
+    const styleButton: StyleProp<ViewStyle> = [
+      { backgroundColor: backgroundColor || colors.t_03 },
+      stylePreset,
+      buttonStyleOverride,
     ];
+    const colorTitle = titleColor || preset === "default" ? colors.t_01 : colors.t_03;
+    const styleTitle: StyleProp<TextStyle> = [styles.title, { color: colorTitle }, titleStyleOverride];
 
     if (loading) {
       return (
         <View style={styleButton}>
           <Text style={[styleTitle, { opacity: 0 }]} valueTx={titleTx} value={title} />
-          <ActivityIndicator style={{ position: "absolute" }} color="white" />
+          <ActivityIndicator style={{ position: "absolute" }} color={colorTitle} />
         </View>
       );
     }
@@ -74,7 +79,19 @@ export const Button = memo((props: ButtonProps) => {
         <Text style={styleTitle} valueTx={titleTx} value={title} />
       </Pressable>
     );
-  }, [titleTx, title, loading, preset, buttonStyleOverride, titleStyleOverride, rest]);
+  }, [
+    backgroundColor,
+    colors.t_03,
+    colors.t_01,
+    buttonStyleOverride,
+    titleColor,
+    titleStyleOverride,
+    loading,
+    rest,
+    titleTx,
+    title,
+    preset,
+  ]);
 
   return (
     <View style={styleContainer}>

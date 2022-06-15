@@ -1,13 +1,13 @@
 import { Button, HeaderNav, Screen, TextInput } from "components";
 import React, { memo, useEffect } from "react";
-import { forgotPasswordStore } from "./forgot-password.store";
+import { forgotPasswordDemoStore } from "./forgot-password.store";
 import { styles } from "./styles";
 
 export const ForgotPasswordScreen = memo(() => {
-  const store = forgotPasswordStore();
+  const store = forgotPasswordDemoStore();
 
   useEffect(() => {
-    return () => forgotPasswordStore.getState().reset();
+    return () => forgotPasswordDemoStore.getState().reset();
   }, []);
 
   return (

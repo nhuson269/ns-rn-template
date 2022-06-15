@@ -5,7 +5,6 @@ import { ViewStyle } from "react-native";
  */
 const DEFAULT: ViewStyle = {
   height: 44,
-  backgroundColor: "green",
   alignItems: "center",
   justifyContent: "center",
   borderRadius: 8,
