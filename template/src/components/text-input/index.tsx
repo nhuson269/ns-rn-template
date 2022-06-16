@@ -29,7 +29,7 @@ export const TextInput = memo((props: TextInputProps) => {
     ...rest
   } = props;
 
-  const colors = colorStore();
+  const colors = colorStore().colors;
   const [borderColor, setBorderColor] = useState<string>(colors.bg_02);
   const [bgColor, setBgColor] = useState<string>(colors.bg_02);
   const [isSecure, setIsSecure] = useState<boolean>(rest.secureTextEntry || false);

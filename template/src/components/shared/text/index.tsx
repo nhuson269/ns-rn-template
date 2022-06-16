@@ -36,7 +36,7 @@ export const Text = memo((props: TextProps) => {
     ...rest
   } = props;
 
-  const colors = colorStore();
+  const colors = colorStore().colors;
   const { t } = useTranslation();
 
   // figure out which content to use

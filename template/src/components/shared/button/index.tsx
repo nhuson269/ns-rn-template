@@ -30,7 +30,7 @@ export const Button = memo((props: ButtonProps) => {
     ...rest
   } = props;
 
-  const colors = colorStore();
+  const colors = colorStore().colors;
   const styleProps: StyleProp<ViewStyle> = {};
   if (marginTop) {
     styleProps.marginTop = marginTop;

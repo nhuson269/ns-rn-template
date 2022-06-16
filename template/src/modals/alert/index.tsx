@@ -7,7 +7,7 @@ import { styles } from "./styles";
 
 export const AlertModal = memo(() => {
   const store = alertStore();
-  const colors = colorStore();
+  const colors = colorStore().colors;
 
   return (
     <Modal

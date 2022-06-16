@@ -22,6 +22,12 @@ export const Pressable = memo((props: PressableProps) => {
     marginLeft,
     marginHorizontal,
     marginVertical,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
+    paddingHorizontal,
+    paddingVertical,
     center,
     shadow,
     skeleton,
@@ -89,6 +95,24 @@ export const Pressable = memo((props: PressableProps) => {
   }
   if (marginVertical) {
     styleProps.marginVertical = marginVertical;
+  }
+  if (paddingTop) {
+    styleProps.paddingTop = paddingTop;
+  }
+  if (paddingRight) {
+    styleProps.paddingRight = paddingRight;
+  }
+  if (paddingBottom) {
+    styleProps.paddingBottom = paddingBottom;
+  }
+  if (paddingLeft) {
+    styleProps.paddingLeft = paddingLeft;
+  }
+  if (paddingHorizontal) {
+    styleProps.paddingHorizontal = paddingHorizontal;
+  }
+  if (paddingVertical) {
+    styleProps.paddingVertical = paddingVertical;
   }
   if (center) {
     styleProps.alignItems = "center";

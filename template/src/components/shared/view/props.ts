@@ -1,6 +1,6 @@
-import { FlexAlignType, StyleProp, TouchableOpacityProps as RNTouchableOpacityProps, ViewStyle } from "react-native";
+import { FlexAlignType, StyleProp, ViewProps as RNViewProps, ViewStyle } from "react-native";
 
-export interface TouchableOpacityProps extends RNTouchableOpacityProps {
+export interface ViewProps extends RNViewProps {
   /**
    * Optional container style overrides useful for margins & padding.
    */
@@ -90,6 +90,36 @@ export interface TouchableOpacityProps extends RNTouchableOpacityProps {
    * View style, marginVertical.
    */
   marginVertical?: number;
+
+  /**
+   * View style, paddingTop.
+   */
+  paddingTop?: number;
+
+  /**
+   * View style, paddingRight.
+   */
+  paddingRight?: number;
+
+  /**
+   * View style, paddingLeft.
+   */
+  paddingLeft?: number;
+
+  /**
+   * View style, paddingBottom.
+   */
+  paddingBottom?: number;
+
+  /**
+   * View style, paddingHorizontal.
+   */
+  paddingHorizontal?: number;
+
+  /**
+   * View style, paddingVertical.
+   */
+  paddingVertical?: number;
 
   /**
    * View style, alignItems: "center", justifyContent: "center".

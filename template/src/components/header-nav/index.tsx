@@ -18,7 +18,7 @@ export const HeaderNav = memo((props: HeaderNavProps) => {
     ignoreStatusBar = false,
   } = props;
 
-  const colors = colorStore();
+  const colors = colorStore().colors;
   const insets = useSafeAreaInsets();
   const styleStatusBar: StyleProp<ViewStyle> = [
     styles.statusBar,

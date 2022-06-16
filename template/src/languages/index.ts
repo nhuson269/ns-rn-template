@@ -7,13 +7,20 @@ import en from "./lang/en.json";
 import vi from "./lang/vi.json";
 
 // TYPE
-type NestedKeyOf<ObjectType extends object> = {
-  [Key in keyof ObjectType & string]: ObjectType[Key] extends object
-    ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
-    : `${Key}`;
-}[keyof ObjectType & string];
+type RecursiveKeyOf<TObj extends object> = {
+  [TKey in keyof TObj & (string | number)]: RecursiveKeyOfHandleValue<TObj[TKey], `${TKey}`>;
+}[keyof TObj & (string | number)];
+
+type RecursiveKeyOfInner<TObj extends object> = {
+  [TKey in keyof TObj & (string | number)]: RecursiveKeyOfHandleValue<TObj[TKey], `['${TKey}']` | `.${TKey}`>;
+}[keyof TObj & (string | number)];
+type RecursiveKeyOfHandleValue<TValue, Text extends string> = TValue extends any[]
+  ? Text
+  : TValue extends object
+  ? Text | `${Text}${RecursiveKeyOfInner<TValue>}`
+  : Text;
 type DefaultLocale = typeof vi; // Change the primary language of your app
-type TxKeyPath = NestedKeyOf<DefaultLocale>;
+type TxKeyPath = RecursiveKeyOf<DefaultLocale>;
 
 // CONST
 const sourceLang = {

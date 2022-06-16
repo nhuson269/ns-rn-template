@@ -4,8 +4,8 @@ import { Edge as SafeEdge, SafeAreaView } from "react-native-safe-area-context";
 import { ScreenProps } from "./props";
 import { offsets, presets } from "./presets";
 import { useIsFocused } from "@react-navigation/native";
-import { statusBarStore } from "components/status-bar/status-bar.store";
 import { colorStore } from "stores";
+import { statusBarStore } from "../status-bar/status-bar.store";
 
 const isIos = Platform.OS === "ios";
 
@@ -19,7 +19,7 @@ const ScreenWithoutScrolling = memo((props: ScreenProps) => {
       ? ["top", "right", "left"]
       : ["right", "left"];
 
-  const colors = colorStore();
+  const colors = colorStore().colors;
   const styleContainer = [preset.outer, { backgroundColor: props.backgroundColor || colors.bg_01 }];
   const styleContent = [preset.inner, props.style || {}];
 
@@ -45,7 +45,7 @@ const ScreenWithScrolling = memo((props: ScreenProps) => {
       ? ["top", "right", "left"]
       : ["right", "left"];
 
-  const colors = colorStore();
+  const colors = colorStore().colors;
   const styleContainer = [preset.outer, { backgroundColor: props.backgroundColor || colors.bg_01 }];
   const styleContent = [preset.inner, props.style || {}];
 

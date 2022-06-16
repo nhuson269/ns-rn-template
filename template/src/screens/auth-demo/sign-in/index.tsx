@@ -6,7 +6,7 @@ import { styles } from "./styles";
 
 export const SignInScreen = memo(() => {
   const store = signInDemoStore();
-  const colors = colorStore();
+  const colors = colorStore().colors;
 
   useEffect(() => {
     return () => signInDemoStore.getState().reset();

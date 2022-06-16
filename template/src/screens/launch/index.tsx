@@ -8,7 +8,7 @@ import { styles } from "./styles";
 
 export const LaunchScreen = memo(() => {
   const isLoading = userStore(useCallback(state => state.isLoading, []));
-  const colors = colorStore();
+  const colors = colorStore().colors;
   const isFocused = useIsFocused();
   const { bottom } = useSafeAreaInsets();
   const indicatorBottom = bottom > 0 ? bottom : 16;

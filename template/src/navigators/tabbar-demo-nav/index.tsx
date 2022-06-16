@@ -14,7 +14,7 @@ export type TabbarNavParamList = {
 const Tabbar = createBottomTabNavigator<TabbarNavParamList>();
 
 export const TabbarNavigator = () => {
-  const colors = colorStore();
+  const colors = colorStore().colors;
 
   return (
     <Tabbar.Navigator screenOptions={{ headerShown: false, tabBarActiveTintColor: colors.t_03 }}>

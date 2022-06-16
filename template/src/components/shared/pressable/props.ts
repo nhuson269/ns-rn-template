@@ -92,6 +92,36 @@ export interface PressableProps extends RNPressableProps {
   marginVertical?: number;
 
   /**
+   * View style, paddingTop.
+   */
+  paddingTop?: number;
+
+  /**
+   * View style, paddingRight.
+   */
+  paddingRight?: number;
+
+  /**
+   * View style, paddingLeft.
+   */
+  paddingLeft?: number;
+
+  /**
+   * View style, paddingBottom.
+   */
+  paddingBottom?: number;
+
+  /**
+   * View style, paddingHorizontal.
+   */
+  paddingHorizontal?: number;
+
+  /**
+   * View style, paddingVertical.
+   */
+  paddingVertical?: number;
+
+  /**
    * View style, alignItems: "center", justifyContent: "center".
    */
   center?: boolean;
