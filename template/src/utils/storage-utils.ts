@@ -20,7 +20,7 @@ function removeItem(key: string) {
   return storage.delete(key) as void | Promise<void>;
 }
 
-export const AsyncStorage = {
+export const MMKVStorage = {
   getItem,
   setItem,
   removeItem,
@@ -30,6 +30,7 @@ export enum StorageKey {
   LANGUAGE = "language", // value is string
   NOTIFY_TOKEN = "notification_token", // value is sting
   USER_PROFILE = "user_profile", // value is object
+  COLOR_THEME = "color_theme", // value is string
 }
 
 export default storage;

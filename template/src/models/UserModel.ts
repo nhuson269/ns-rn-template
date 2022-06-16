@@ -6,10 +6,10 @@ export type UserModel = {
 };
 
 export function getProfileData(dataJson: any) {
-  if (dataJson?.PK_USER_ID && dataJson?.USER_NAME) {
+  if (dataJson?.user_id && dataJson?.use_name) {
     const item: UserModel = {
-      id: dataJson.PK_USER_ID,
-      name: dataJson.USER_NAME,
+      id: dataJson.user_id,
+      name: dataJson.use_name,
     };
     return item;
   }
@@ -20,12 +20,8 @@ export async function getProfileStorage() {
   const data = storage.getString(StorageKey.USER_PROFILE);
   try {
     const dataJson = !data ? undefined : await JSON.parse(data);
-    if (dataJson?.PK_USER_ID && dataJson?.USER_NAME) {
-      const item: UserModel = {
-        id: dataJson.PK_USER_ID,
-        name: dataJson.USER_NAME,
-      };
-      return item;
+    if (dataJson?.id && dataJson?.name) {
+      return dataJson;
     }
     return undefined;
   } catch (error) {

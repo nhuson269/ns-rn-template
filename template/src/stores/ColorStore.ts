@@ -1,4 +1,4 @@
-import { AsyncStorage } from "utils/storage-utils";
+import { MMKVStorage, StorageKey } from "utils/storage-utils";
 import create from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -47,8 +47,8 @@ export const colorStore = create<ColorStore, [["zustand/persist", ColorStore]]>(
       },
     }),
     {
-      name: "color-storage",
-      getStorage: () => AsyncStorage,
+      name: StorageKey.COLOR_THEME,
+      getStorage: () => MMKVStorage,
     },
   ),
 );
