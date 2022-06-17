@@ -1,4 +1,4 @@
-import { getProfileStorage, UserModel } from "models";
+import UserModel, { getProfileStorage } from "models/UserModel";
 import navActions from "navigators/shared/actions";
 import { delay } from "utils/delay";
 import storage, { StorageKey } from "utils/storage-utils";

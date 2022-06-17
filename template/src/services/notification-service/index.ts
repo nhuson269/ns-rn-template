@@ -26,14 +26,14 @@ class NotificationService {
     this.pushService.unregister();
   }
 
-  checkDeeplink = () => {
+  checkDeeplink() {
     const isSignIn = userStore.getState().isSignIn;
     if (this.deeplinkUrl && isSignIn) {
       // You SignIn
       // deeplink.go(this.deeplinkUrl);
       this.deeplinkUrl = "";
     }
-  };
+  }
 
   // When there is a notification token
   private async notifyRegister(token?: string) {

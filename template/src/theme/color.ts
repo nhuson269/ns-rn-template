@@ -1,4 +1,4 @@
-export interface Color {
+export type Color = {
   // text
   t_01: string;
   t_02: string;
@@ -13,7 +13,7 @@ export interface Color {
   line_01: string;
   unactive_02: string;
   error: string;
-}
+};
 
 export const greenColor: Color = {
   t_01: "#FFFFFF",

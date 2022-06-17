@@ -36,14 +36,14 @@ export type GeneralApiProblem =
   /**
    * The data we received is not in the expected format.
    */
-  | { kind: "bad-data" }
+  | { kind: "bad-data" };
 
 /**
  * Attempts to get a common cause of problems from an api response.
  *
  * @param response The api response.
  */
-export function getGeneralApiProblem(response: ApiResponse<any>): GeneralApiProblem | void {
+export function getGeneralApiProblem(response: ApiResponse<any>): GeneralApiProblem | null {
   switch (response.problem) {
     case "CONNECTION_ERROR":
       return { kind: "cannot-connect", temporary: true };
@@ -69,6 +69,5 @@ export function getGeneralApiProblem(response: ApiResponse<any>): GeneralApiProb
     case "CANCEL_ERROR":
       return null;
   }
-
   return null;
 }

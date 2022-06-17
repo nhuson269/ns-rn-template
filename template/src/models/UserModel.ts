@@ -1,9 +1,11 @@
 import storage, { StorageKey } from "utils/storage-utils";
 
-export type UserModel = {
+type UserModel = {
   id: number;
   name: string;
 };
+
+export default UserModel;
 
 export function getProfileData(dataJson: any) {
   if (dataJson?.user_id && dataJson?.use_name) {

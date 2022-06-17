@@ -1,7 +1,9 @@
-export type ItemModel = {
+type ItemModel = {
   id: number;
   name: string;
 };
+
+export default ItemModel;
 
 export function getItemData(dataJson: any) {
   if (dataJson?.id && dataJson?.name) {

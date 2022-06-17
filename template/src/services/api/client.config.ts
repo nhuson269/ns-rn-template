@@ -6,9 +6,14 @@ const API_URL = "http://example.com";
 /**
  * The options used to configure the API.
  */
-export interface ApiConfig {
+export interface ClientConfig {
   /**
-   * The URL of the api.
+   * The URL of the client.
+   */
+  id: number;
+
+  /**
+   * The URL of the client.
    */
   url: string;
 
@@ -21,7 +26,8 @@ export interface ApiConfig {
 /**
  * The default configuration for the app.
  */
-export const DEFAULT_API_CONFIG: ApiConfig = {
+export const DEFAULT_CLIENT_CONFIG: ClientConfig = {
+  id: 1,
   url: API_URL || "https://jsonplaceholder.typicode.com",
-  timeout: 10000,
+  timeout: 30000,
 };
