@@ -30,7 +30,6 @@ export const Pressable = memo((props: PressableProps) => {
     paddingVertical,
     center,
     shadow,
-    skeleton,
     children,
     style: styleOverride,
     ...rest
@@ -124,9 +123,6 @@ export const Pressable = memo((props: PressableProps) => {
     styleProps.shadowRadius = 4;
     styleProps.shadowOffset = { width: 0, height: 2 };
     styleProps.elevation = 4;
-  }
-  if (skeleton) {
-    // Skeleton loader
   }
 
   return (

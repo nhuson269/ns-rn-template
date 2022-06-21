@@ -1,17 +1,17 @@
 import { ApiResponse } from "apisauce";
-import { Client, getGeneralApiProblem, GetItemsResult, routes } from "./api";
+import { Client, getGeneralApiProblem, GetItemsResult, routes, TYPICODE_CLIENT_CONFIG } from "services/api";
 
-class ItemService {
+class TodoService {
   private client: Client;
 
   constructor() {
-    this.client = new Client();
+    this.client = new Client(TYPICODE_CLIENT_CONFIG);
   }
 
   async getItems(): Promise<GetItemsResult> {
     try {
       // make the api call
-      const response: ApiResponse<any> = await this.client.instance.get(routes.tracking.list);
+      const response: ApiResponse<any> = await this.client.instance.get(routes.typicode.todos);
 
       // the typical ways to die when calling an api
       if (!response.ok) {
@@ -29,6 +29,6 @@ class ItemService {
   }
 }
 
-const itemService = new ItemService();
+const todoService = new TodoService();
 
-export default itemService;
+export default todoService;

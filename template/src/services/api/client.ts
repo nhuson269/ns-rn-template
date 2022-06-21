@@ -1,6 +1,7 @@
 import { ApisauceInstance, create } from "apisauce";
-import { ClientConfig, DEFAULT_CLIENT_CONFIG } from "./client.config";
+import { ClientConfig } from "./client.config";
 import RNFetchBlob from "rn-fetch-blob";
+import { userStore } from "stores";
 
 export class Client {
   /**
@@ -18,7 +19,7 @@ export class Client {
    *
    * @param config The configuration to use.
    */
-  constructor(config: ClientConfig = DEFAULT_CLIENT_CONFIG) {
+  constructor(config: ClientConfig) {
     this.config = config;
     this.instance = create({
       baseURL: config.url,
@@ -33,6 +34,15 @@ export class Client {
     axiosInterceptors.request.use(
       requestConfig => {
         // Do something before request is sent
+        if (config.id === "HEROKUAPP") {
+          console.debug(config.id, requestConfig.url);
+        }
+        if (config.id === "TYPICODE") {
+          console.debug(config.id, requestConfig.url);
+        }
+        if (!requestConfig.headers.Authorization) {
+          requestConfig.headers.Authorization = userStore.getState().authToken?.accessToken;
+        }
         return requestConfig;
       },
       error => {

@@ -140,9 +140,4 @@ export interface PressableProps extends RNPressableProps {
    * View style, turn on shadow.
    */
   shadow?: boolean;
-
-  /**
-   * Skeleton loader.
-   */
-  skeleton?: boolean;
 }

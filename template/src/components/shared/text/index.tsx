@@ -94,6 +94,9 @@ export const Text = memo((props: TextProps) => {
       {content}
       {React.Children.map(children, (child: any) => {
         const childValue = child?.valueOf();
+        if (typeof childValue === "string" || typeof childValue === "number") {
+          return childValue;
+        }
         return typeof childValue === "object"
           ? React.cloneElement(child, { style: [styles, childValue.props?.style || {}] })
           : null;

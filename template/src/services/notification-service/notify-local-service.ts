@@ -77,7 +77,7 @@ export class NotifyLocalService {
   createDefaultChannels() {
     PushNotification.getChannels(channelIds => {
       for (let i = 0; i < channelIds.length; i++) {
-        const itemId = channelIds[i] ?? "";
+        const itemId = channelIds[i] || "";
         if (itemId) {
           PushNotification.deleteChannel(itemId);
         }

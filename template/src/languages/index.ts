@@ -1,5 +1,5 @@
 import * as RNLocalize from "react-native-localize";
-import i18next from "i18next";
+import i18next, { StringMap } from "i18next";
 import moment from "moment";
 import { initReactI18next } from "react-i18next";
 import storage, { StorageKey } from "utils/storage-utils";
@@ -64,8 +64,8 @@ i18next
 i18next.on("languageChanged", value => moment().locale(value));
 
 // FUNCTION
-function translate(key: TxKeyPath) {
-  return key ? i18next.t(key) : undefined;
+function translate(key: TxKeyPath, options?: StringMap) {
+  return key ? i18next.t(key, options) : undefined;
 }
 
 export { i18next, TxKeyPath, translate };

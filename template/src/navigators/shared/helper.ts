@@ -4,7 +4,7 @@ import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 import { TransitionPresets } from "@react-navigation/stack";
 import { createRef } from "react";
 import { Keyboard } from "react-native";
-import { analyticsService } from "services";
+import analyticsService from "services/analytics-service";
 import { RouteName } from "./routes";
 
 let previousRouteName: string | undefined;

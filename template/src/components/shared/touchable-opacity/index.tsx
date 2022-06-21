@@ -30,7 +30,6 @@ export const TouchableOpacity = memo((props: TouchableOpacityProps) => {
     paddingVertical,
     center,
     shadow,
-    skeleton,
     children,
     style: styleOverride,
     ...rest
@@ -124,9 +123,6 @@ export const TouchableOpacity = memo((props: TouchableOpacityProps) => {
     styleProps.shadowRadius = 4;
     styleProps.shadowOffset = { width: 0, height: 2 };
     styleProps.elevation = 4;
-  }
-  if (skeleton) {
-    // Skeleton loader
   }
 
   return (

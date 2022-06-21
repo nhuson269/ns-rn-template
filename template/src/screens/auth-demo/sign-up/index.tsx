@@ -35,6 +35,15 @@ export const SignUpScreen = memo(() => {
         />
         <TextInput
           marginBottom={16}
+          labelTx="common.fullname"
+          placeholderTx="common.fullname"
+          value={store.fullname}
+          message={store.msgFullname}
+          onChangeText={store.setFullname}
+          onSubmitEditing={store.signUp}
+        />
+        <TextInput
+          marginBottom={16}
           secureTextEntry={true}
           labelTx="common.password"
           placeholderTx="common.password"

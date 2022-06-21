@@ -6,10 +6,12 @@ type ItemModel = {
 export default ItemModel;
 
 export function getItemData(dataJson: any) {
-  if (dataJson?.id && dataJson?.name) {
+  const id = dataJson?.id;
+  const name = dataJson?.name;
+  if (id && name) {
     const item: ItemModel = {
-      id: dataJson.id,
-      name: dataJson.name,
+      id: id,
+      name: name,
     };
     return item;
   }

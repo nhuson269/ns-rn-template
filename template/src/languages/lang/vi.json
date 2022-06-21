@@ -15,6 +15,7 @@
     "confirm": "Xác nhận",
     "logout": "Đăng xuất",
     "logoutMsg": "Bạn có chắc chắn muốn đăng xuất không?",
+    "fullname": "Họ tên",
     "theme": "Chủ đề",
     "dark": "Tối",
     "light": "Sáng",
@@ -27,10 +28,22 @@
   },
   "errors": {
     "ok": "OK!",
+    "networkError": "Lỗi mạng: {{status_code}}",
+    "serviceError": "Lỗi hệ thống: {{status_code}}",
+    "clientError": "Lỗi khi gửi yêu cầu: {{status_code}}",
+    "connectionError": "Máy chủ không khả dụng, dns không hợp lệ.",
+    "timeoutError": "Máy chủ không phản hồi kịp thời",
+    "unknownError": "Đã xảy ra lỗi không xác định, vui lòng thử lại sau.",
+    "unauthorizedError": "Gửi yêu cầu đến hệ thống không thành công vì xác thực thất bại",
+    "forbiddenError": "Gửi yêu cầu đến hệ thống thất bại vì thiếu quyền truy cập",
+    "rejectedError": "Yêu cầu đến hệ thống đã bị từ chối",
+    "notFoundError": "Không tìm thấy địa chỉ máy chủ",
     "invalidEmail": "Email không đúng định dạng",
     "emptyUsername": "Tài khoản rỗng",
+    "emptyFullname": "Họ tên rỗng",
     "emptyPassword": "Mật khẩu rỗng",
-    "passwordConfirmFail": "Mật khẩu xác nhận không chính xác"
+    "passwordConfirmFail": "Mật khẩu xác nhận không chính xác",
+    "featureBeingWorked": "Tính năng này đang được hoàn thiện, vui lòng quay lại sau."
   },
   "tabbar": {
     "home": "Trang chủ",

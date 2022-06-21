@@ -13,7 +13,7 @@ class NotificationService {
   constructor() {
     this.localService = new NotifyLocalService();
     this.pushService = new NotifyPushService();
-    this.notifyToken = storage.getString(StorageKey.NOTIFY_TOKEN) ?? "";
+    this.notifyToken = storage.getString(StorageKey.NOTIFY_TOKEN) || "";
   }
 
   register() {
@@ -44,7 +44,7 @@ class NotificationService {
       this.pushService.subscribeToTopic("all");
     }
     if (this.notifyToken !== token) {
-      this.notifyToken = token ?? "";
+      this.notifyToken = token || "";
       storage.set(StorageKey.NOTIFY_TOKEN, this.notifyToken);
     }
   }
@@ -69,7 +69,7 @@ class NotificationService {
   // When open notification
   private notifyOpen(notify: any) {
     // console.debug("Notification Open: ", notify);
-    const data = notify?.data ?? notify;
+    const data = notify?.data || notify;
     const newId = data?.new_id;
     const notifyId = data?.notification_id;
     const notifyUrl = data?.url;

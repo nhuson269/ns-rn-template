@@ -28,6 +28,7 @@ export const MMKVStorage = {
 
 export enum StorageKey {
   LANGUAGE = "language", // value is string
+  ENVIRONMENT = "environment", // value is sting
   NOTIFY_TOKEN = "notification_token", // value is sting
   USER_PROFILE = "user_profile", // value is object
   COLOR_THEME = "color_theme", // value is string

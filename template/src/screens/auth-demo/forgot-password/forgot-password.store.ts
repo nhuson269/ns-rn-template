@@ -8,7 +8,7 @@ type ForgotPasswordDemoStore = {
   isLoading: boolean;
   isFetched: boolean;
   username: string;
-  msgUsername: string;
+  msgUsername: string | undefined;
   setUsername: (value: string) => void;
   goConfirm: () => void;
   reset: () => void;
@@ -31,13 +31,13 @@ export const forgotPasswordDemoStore = create<ForgotPasswordDemoStore>((set, get
       return;
     }
     if (!username) {
-      set({ msgUsername: translate("errors.emptyUsername") ?? "" });
+      set({ msgUsername: translate("errors.emptyUsername") });
       return;
     }
     set({ isLoading: true, msgUsername: "" });
     await delay(1500);
     set({ isLoading: false });
-    alertHelper.show({ title: "title", message: "message" });
+    alertHelper.show({ message: translate("errors.featureBeingWorked") || "" });
   },
   reset: () =>
     set({

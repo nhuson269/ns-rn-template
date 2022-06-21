@@ -15,7 +15,7 @@ export const LaunchScreen = memo(() => {
 
   useEffect(() => {
     if (isFocused) {
-      userStore.getState().getProfile(true);
+      userStore.getState().getCache();
     }
   }, [isFocused]);
 

@@ -23,10 +23,10 @@ export const accoutDemoStore = create<AccoutDemoStore>(() => ({
   logout: () => {
     alertHelper.show({
       title: translate("common.logout"),
-      message: translate("common.logoutMsg") ?? "",
+      message: translate("common.logoutMsg") || "",
       btLeftTitle: translate("common.cancel"),
       btRightTitle: translate("common.confirm"),
-      btRightAction: () => userStore.getState().removeProfile(true),
+      btRightAction: userStore.getState().removeUser,
     });
   },
   reset: () => {},

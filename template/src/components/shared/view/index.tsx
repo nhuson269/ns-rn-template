@@ -31,7 +31,6 @@ export const View = memo((props: ViewProps) => {
     paddingVertical,
     center,
     shadow,
-    skeleton,
     children,
     style: styleOverride,
     ...rest
@@ -125,9 +124,6 @@ export const View = memo((props: ViewProps) => {
     styleProps.shadowRadius = 4;
     styleProps.shadowOffset = { width: 0, height: 2 };
     styleProps.elevation = 4;
-  }
-  if (skeleton) {
-    // Skeleton loader
   }
 
   return (

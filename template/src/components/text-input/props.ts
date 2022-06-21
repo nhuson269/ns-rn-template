@@ -25,7 +25,7 @@ export interface TextInputProps extends RNTextInputProps {
   /**
    * The message text.
    */
-  message?: string;
+  message?: string | undefined;
 
   /**
    * Optional style overrides for the input.

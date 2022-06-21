@@ -140,9 +140,4 @@ export interface TouchableOpacityProps extends RNTouchableOpacityProps {
    * View style, turn on shadow.
    */
   shadow?: boolean;
-
-  /**
-   * Skeleton loader.
-   */
-  skeleton?: boolean;
 }

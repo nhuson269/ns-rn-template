@@ -41,7 +41,7 @@ export interface ButtonProps extends PressableProps {
   /**
    * The message text.
    */
-  message?: string;
+  message?: string | undefined;
 
   /**
    * Optional animating ActivityIndicator.

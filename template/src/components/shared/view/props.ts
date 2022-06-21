@@ -140,9 +140,4 @@ export interface ViewProps extends RNViewProps {
    * View style, turn on shadow.
    */
   shadow?: boolean;
-
-  /**
-   * Skeleton loader.
-   */
-  skeleton?: boolean;
 }

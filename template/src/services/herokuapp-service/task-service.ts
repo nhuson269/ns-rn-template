@@ -1,17 +1,17 @@
 import { ApiResponse } from "apisauce";
-import { Client, getGeneralApiProblem, GetItemsResult, routes } from "./api";
+import { Client, getGeneralApiProblem, GetItemsResult, HEROKUAPP_CLIENT_CONFIG, routes } from "services/api";
 
-class AuthService {
+class TaskService {
   private client: Client;
 
   constructor() {
-    this.client = new Client();
+    this.client = new Client(HEROKUAPP_CLIENT_CONFIG);
   }
 
-  async getItems(): Promise<GetItemsResult> {
+  async getTasks(): Promise<GetItemsResult> {
     try {
       // make the api call
-      const response: ApiResponse<any> = await this.client.instance.get(routes.tracking.list);
+      const response: ApiResponse<any> = await this.client.instance.get(routes.herokuapp.task.url);
 
       // the typical ways to die when calling an api
       if (!response.ok) {
@@ -29,6 +29,6 @@ class AuthService {
   }
 }
 
-const authService = new AuthService();
+const taskService = new TaskService();
 
-export default authService;
+export default taskService;

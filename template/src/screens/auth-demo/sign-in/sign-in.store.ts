@@ -1,7 +1,9 @@
 import { translate } from "languages";
+import alertHelper from "modals/alert/helper";
 import navActions from "navigators/shared/actions";
 import { Keyboard } from "react-native";
-import { delay } from "utils/delay";
+import { userService } from "services/herokuapp-service";
+import { userStore } from "stores";
 import create from "zustand";
 
 type SignInDemoStore = {
@@ -9,8 +11,8 @@ type SignInDemoStore = {
   isFetched: boolean;
   username: string;
   password: string;
-  msgUsername: string;
-  msgPassword: string;
+  msgUsername: string | undefined;
+  msgPassword: string | undefined;
   setUsername: (value: string) => void;
   setPassword: (value: string) => void;
   login: () => void;
@@ -22,8 +24,8 @@ type SignInDemoStore = {
 export const signInDemoStore = create<SignInDemoStore>((set, get) => ({
   isLoading: false,
   isFetched: false,
-  username: "",
-  password: "",
+  username: "muh.nurali43@gmail.com",
+  password: "12345678",
   msgUsername: "",
   msgPassword: "",
   setUsername: value => {
@@ -44,17 +46,28 @@ export const signInDemoStore = create<SignInDemoStore>((set, get) => ({
     }
     if (!username || !password) {
       if (!username) {
-        set({ msgUsername: translate("errors.emptyUsername") ?? "" });
+        set({ msgUsername: translate("errors.emptyUsername") });
       }
       if (!password) {
-        set({ msgPassword: translate("errors.emptyPassword") ?? "" });
+        set({ msgPassword: translate("errors.emptyPassword") });
       }
       return;
     }
     set({ isLoading: true, msgUsername: "", msgPassword: "" });
-    await delay(1500);
+    const resultLogin = await userService.login(username, password);
+    if (resultLogin.kind === "ok") {
+      await userStore.getState().setAuthToken(resultLogin.authToken);
+      const resultMe = await userService.userMe();
+      if (resultMe.kind === "ok") {
+        userStore.getState().setUser(resultMe.data);
+        navActions.navigateToMain();
+      } else if (resultMe.message) {
+        alertHelper.show({ message: resultMe.message });
+      }
+    } else if (resultLogin.message) {
+      alertHelper.show({ message: resultLogin.message });
+    }
     set({ isLoading: false });
-    navActions.navigateToMain();
   },
   goSignUp: () => {
     navActions.navigateToSignUp({ username: get().username });
