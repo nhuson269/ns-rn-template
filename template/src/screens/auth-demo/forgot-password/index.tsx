@@ -3,7 +3,7 @@ import React, { memo, useEffect } from "react";
 import { forgotPasswordDemoStore } from "./forgot-password.store";
 import { styles } from "./styles";
 
-export const ForgotPasswordScreen = memo(() => {
+export const ForgotPasswordDemoScreen = memo(() => {
   const store = forgotPasswordDemoStore();
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export const ForgotPasswordScreen = memo(() => {
   return (
     <>
       <HeaderNav titleTx="common.forgotPassword" />
-      <Screen style={styles.container} preset="scroll" statusBar="light-content" safe="rl">
+      <Screen statusBar="light-content" safe="rl" preset="scroll" style={styles.container}>
         <TextInput
           style={styles.username}
           marginBottom={16}
@@ -30,4 +30,4 @@ export const ForgotPasswordScreen = memo(() => {
   );
 });
 
-ForgotPasswordScreen.displayName = "ForgotPasswordScreen";
+ForgotPasswordDemoScreen.displayName = "ForgotPasswordDemoScreen";

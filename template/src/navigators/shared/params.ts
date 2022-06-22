@@ -2,10 +2,10 @@ export type WebParams = {
   url: string;
 };
 
-export type SignUpParams = {
+export type SignUpDemoParams = {
   username?: string;
 };
 
-export type ForgotPasswordParams = {
+export type ForgotPasswordDemoParams = {
   username?: string;
 };

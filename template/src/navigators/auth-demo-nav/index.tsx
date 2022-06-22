@@ -1,24 +1,25 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RouteName } from "navigators/shared/routes";
-import { ForgotPasswordScreen, SignInScreen, SignUpScreen } from "screens";
+import { ForgotPasswordDemoScreen, SignInDemoScreen, SignUpDemoScreen } from "screens";
+import { ForgotPasswordDemoParams, SignUpDemoParams } from "navigators/shared/params";
 
-export type AuthNavParamList = {
+export type AuthDemoNavParamList = {
   [RouteName.SIGN_IN_DEMO]: undefined;
-  [RouteName.SIGN_UP_DEMO]: undefined;
-  [RouteName.FORGOT_PASSWORD_DEMO]: undefined;
+  [RouteName.SIGN_UP_DEMO]: SignUpDemoParams;
+  [RouteName.FORGOT_PASSWORD_DEMO]: ForgotPasswordDemoParams;
 };
 
-const Stack = createNativeStackNavigator<AuthNavParamList>();
+const Stack = createNativeStackNavigator<AuthDemoNavParamList>();
 
-export const AuthNavigator = () => {
+export const AuthDemoNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name={RouteName.SIGN_IN_DEMO} component={SignInScreen} />
-      <Stack.Screen name={RouteName.SIGN_UP_DEMO} component={SignUpScreen} />
-      <Stack.Screen name={RouteName.FORGOT_PASSWORD_DEMO} component={ForgotPasswordScreen} />
+      <Stack.Screen name={RouteName.SIGN_IN_DEMO} component={SignInDemoScreen} />
+      <Stack.Screen name={RouteName.SIGN_UP_DEMO} component={SignUpDemoScreen} />
+      <Stack.Screen name={RouteName.FORGOT_PASSWORD_DEMO} component={ForgotPasswordDemoScreen} />
     </Stack.Navigator>
   );
 };
 
-AuthNavigator.displayName = "AuthNavigator";
+AuthDemoNavigator.displayName = "AuthDemoNavigator";

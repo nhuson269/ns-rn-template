@@ -16,6 +16,7 @@
     "logout": "Logout",
     "logoutMsg": "Are you sure you want to sign out?",
     "fullname": "Full name",
+    "loading": "Loading...",
     "theme": "Theme",
     "dark": "Dark",
     "light": "Light",
@@ -48,5 +49,11 @@
   "tabbar": {
     "home": "Home",
     "settings": "Settings"
+  },
+  "todoList": {
+    "title": "Todo list"
+  },
+  "todoDetail": {
+    "title": "Todo detail"
   }
 }

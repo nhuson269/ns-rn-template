@@ -4,7 +4,7 @@ import { colorStore } from "stores";
 import { signInDemoStore } from "./sign-in.store";
 import { styles } from "./styles";
 
-export const SignInScreen = memo(() => {
+export const SignInDemoScreen = memo(() => {
   const store = signInDemoStore();
   const colors = colorStore().colors;
 
@@ -45,4 +45,4 @@ export const SignInScreen = memo(() => {
   );
 });
 
-SignInScreen.displayName = "SignInScreen";
+SignInDemoScreen.displayName = "SignInDemoScreen";

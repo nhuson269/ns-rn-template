@@ -21,7 +21,7 @@ export interface TextProps extends NSTextProps {
   /**
    * The text to display if not using `valueTx` or nested components.
    */
-  value?: string | undefined;
+  value?: string | number | undefined;
 
   /**
    * One of the different types of text presets.

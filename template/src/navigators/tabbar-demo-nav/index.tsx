@@ -1,6 +1,6 @@
 import React from "react";
 import { RouteName } from "navigators/shared/routes";
-import { AccountScreen, HomeScreen } from "screens";
+import { AccountDemoScreen, HomeDemoScreen } from "screens";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icons from "react-native-vector-icons/MaterialCommunityIcons";
 import { Text, View } from "components";
@@ -13,14 +13,14 @@ export type TabbarNavParamList = {
 
 const Tabbar = createBottomTabNavigator<TabbarNavParamList>();
 
-export const TabbarNavigator = () => {
+export const TabbarDemoNavigator = () => {
   const colors = colorStore().colors;
 
   return (
     <Tabbar.Navigator screenOptions={{ headerShown: false, tabBarActiveTintColor: colors.t_03 }}>
       <Tabbar.Screen
         name={RouteName.HOME_DEMO}
-        component={HomeScreen}
+        component={HomeDemoScreen}
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({ size, color }) => (
@@ -33,7 +33,7 @@ export const TabbarNavigator = () => {
       />
       <Tabbar.Screen
         name={RouteName.ACCOUNT_DEMO}
-        component={AccountScreen}
+        component={AccountDemoScreen}
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({ size, color }) => (
@@ -48,4 +48,4 @@ export const TabbarNavigator = () => {
   );
 };
 
-TabbarNavigator.displayName = "TabbarNavigator";
+TabbarDemoNavigator.displayName = "TabbarDemoNavigator";

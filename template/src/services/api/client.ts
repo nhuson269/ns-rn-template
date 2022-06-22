@@ -34,14 +34,8 @@ export class Client {
     axiosInterceptors.request.use(
       requestConfig => {
         // Do something before request is sent
-        if (config.id === "HEROKUAPP") {
-          console.debug(config.id, requestConfig.url);
-        }
-        if (config.id === "TYPICODE") {
-          console.debug(config.id, requestConfig.url);
-        }
         if (!requestConfig.headers.Authorization) {
-          requestConfig.headers.Authorization = userStore.getState().authToken?.accessToken;
+          requestConfig.headers.Authorization = `Bearer ${userStore.getState().authToken?.accessToken}`;
         }
         return requestConfig;
       },

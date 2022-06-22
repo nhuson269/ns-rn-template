@@ -23,7 +23,7 @@ export const greenColor: Color = {
   bg_02: "#F0F5FA",
   b_01: "#C9D9E0",
   b_02: "#F4F6F8",
-  line_01: "#F1E0DC",
+  line_01: "green",
   unactive_02: "#BBC3C6",
   error: "red",
 };
@@ -36,7 +36,7 @@ export const violetColor: Color = {
   bg_02: "#F0F5FA",
   b_01: "#C9D9E0",
   b_02: "#F4F6F8",
-  line_01: "#F1E0DC",
+  line_01: "violet",
   unactive_02: "#BBC3C6",
   error: "red",
 };
@@ -49,7 +49,7 @@ export const blueColor: Color = {
   bg_02: "#F0F5FA",
   b_01: "#C9D9E0",
   b_02: "#F4F6F8",
-  line_01: "#F1E0DC",
+  line_01: "blue",
   unactive_02: "#BBC3C6",
   error: "red",
 };

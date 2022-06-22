@@ -1,12 +1,12 @@
 import { useRoute } from "@react-navigation/native";
 import { Button, HeaderNav, Screen, TextInput } from "components";
-import { SignUpParams } from "navigators/shared/params";
+import { SignUpDemoParams } from "navigators/shared/params";
 import React, { memo, useEffect } from "react";
 import { signUpDemoStore } from "./sign-up.store";
 import { styles } from "./styles";
 
-export const SignUpScreen = memo(() => {
-  const { username } = useRoute().params as SignUpParams;
+export const SignUpDemoScreen = memo(() => {
+  const { username } = useRoute().params as SignUpDemoParams;
   const store = signUpDemoStore();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const SignUpScreen = memo(() => {
   return (
     <>
       <HeaderNav titleTx="common.signUp" />
-      <Screen style={styles.container} preset="scroll" statusBar="light-content" safe="rl">
+      <Screen statusBar="light-content" safe="rl" preset="scroll" style={styles.container}>
         <TextInput
           style={styles.username}
           marginBottom={16}
@@ -68,4 +68,4 @@ export const SignUpScreen = memo(() => {
   );
 });
 
-SignUpScreen.displayName = "SignUpScreen";
+SignUpDemoScreen.displayName = "SignUpDemoScreen";

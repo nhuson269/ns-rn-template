@@ -20,7 +20,7 @@ export const LaunchScreen = memo(() => {
   }, [isFocused]);
 
   return (
-    <Screen safe="full" statusBar="light-content" style={styles.container}>
+    <Screen statusBar="light-content" safe="full" style={styles.container}>
       <Text style={styles.title} value="HelloWorld" color={colors.t_03} />
       <ActivityIndicator
         style={[styles.activity, { bottom: indicatorBottom }]}

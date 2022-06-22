@@ -16,6 +16,7 @@
     "logout": "Đăng xuất",
     "logoutMsg": "Bạn có chắc chắn muốn đăng xuất không?",
     "fullname": "Họ tên",
+    "loading": "Đang tải...",
     "theme": "Chủ đề",
     "dark": "Tối",
     "light": "Sáng",
@@ -48,5 +49,11 @@
   "tabbar": {
     "home": "Trang chủ",
     "settings": "Cài đặt"
+  },
+  "todoList": {
+    "title": "Danh sách Todo"
+  },
+  "todoDetail": {
+    "title": "Chi tiết Todo"
   }
 }

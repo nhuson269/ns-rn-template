@@ -1,14 +1,14 @@
 import { Button, HeaderNav, Screen, Text, View } from "components";
 import React, { memo, useEffect, useMemo } from "react";
 import { userStore } from "stores";
-import { accoutDemoStore } from "./account-demo.store";
+import { accountDemoStore } from "./account-demo.store";
 import { styles } from "./styles";
 
-export const AccountScreen = memo(() => {
-  const stores = accoutDemoStore();
+export const AccountDemoScreen = memo(() => {
+  const stores = accountDemoStore();
 
   useEffect(() => {
-    return () => accoutDemoStore.getState().reset();
+    return () => accountDemoStore.getState().reset();
   }, []);
 
   const userInfoView = useMemo(() => {
@@ -29,10 +29,10 @@ export const AccountScreen = memo(() => {
   return (
     <>
       <HeaderNav isLeftView={false} titleTx="tabbar.settings" />
-      <Screen style={styles.container} statusBar="light-content" safe="rl">
+      <Screen safe="rl" statusBar="light-content" style={styles.container}>
         {userInfoView}
         <Text valueTx="common.theme" marginTop={20} marginBottom={8} />
-        <View flexRow skeleton>
+        <View flexRow>
           <Button titleTx="common.green" marginRight={16} backgroundColor="green" onPress={stores.setThemeGreen} />
           <Button titleTx="common.violet" marginRight={16} backgroundColor="violet" onPress={stores.setThemeViolet} />
           <Button titleTx="common.blue" backgroundColor="blue" onPress={stores.setThemeBlue} />
@@ -48,4 +48,4 @@ export const AccountScreen = memo(() => {
   );
 });
 
-AccountScreen.displayName = "AccountScreen";
+AccountDemoScreen.displayName = "AccountDemoScreen";

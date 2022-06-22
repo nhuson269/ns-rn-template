@@ -6,7 +6,7 @@ import { userService } from "services/herokuapp-service";
 import { userStore } from "stores";
 import create from "zustand";
 
-type SignUpDemoStore = {
+type SignUpStore = {
   isLoading: boolean;
   isFetched: boolean;
   username: string;
@@ -25,7 +25,7 @@ type SignUpDemoStore = {
   reset: () => void;
 };
 
-export const signUpDemoStore = create<SignUpDemoStore>((set, get) => ({
+export const signUpDemoStore = create<SignUpStore>((set, get) => ({
   isLoading: false,
   isFetched: false,
   username: "",
@@ -88,7 +88,7 @@ export const signUpDemoStore = create<SignUpDemoStore>((set, get) => ({
       const resultMe = await userService.userMe();
       if (resultMe.kind === "ok") {
         userStore.getState().setUser(resultMe.data);
-        navActions.navigateToMain();
+        navActions.navigateToMainDemo();
       } else if (resultMe.message) {
         alertHelper.show({ message: resultMe.message });
       }

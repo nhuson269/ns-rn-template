@@ -54,7 +54,7 @@ export const userStore = create<UserStore>((set, get) => ({
         authToken: isOK ? authToken : undefined,
       });
       if (isOK) {
-        navActions.navigateToMain();
+        navActions.navigateToMainDemo();
       } else {
         get().removeUser();
       }
@@ -77,7 +77,7 @@ export const userStore = create<UserStore>((set, get) => ({
     if (isSignIn || user !== undefined) {
       set({ isSignIn: false, user: undefined });
     }
-    navActions.navigateToAuth();
+    navActions.navigateToAuthDemo();
     storage.delete(StorageKey.USER_PROFILE);
     await Keychain.resetGenericPassword();
     if (authToken?.accessToken) {

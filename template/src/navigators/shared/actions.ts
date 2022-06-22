@@ -1,7 +1,7 @@
 import REGEX from "config/Regex";
 import { Linking, Platform } from "react-native";
 import navHelper from "./helper";
-import { ForgotPasswordParams, SignUpParams, WebParams } from "./params";
+import { ForgotPasswordDemoParams, SignUpDemoParams, WebParams } from "./params";
 import { RouteName } from "./routes";
 
 function navigateToWeb(params: WebParams) {
@@ -26,33 +26,38 @@ function navigateToWeb(params: WebParams) {
   );
 }
 
-function navigateToAuth() {
-  navHelper.replace(RouteName.AUTH_DEMO);
+function navigateToAuthDemo() {
+  navHelper.replace(RouteName.AUTH_NAV_DEMO);
 }
 
-function navigateToMain() {
-  navHelper.replace(RouteName.MAIN_DEMO);
+function navigateToMainDemo() {
+  navHelper.replace(RouteName.MAIN_NAV_DEMO);
 }
 
-function navigateToSignIn() {
-  navHelper.navigate(RouteName.AUTH_DEMO, { screen: RouteName.SIGN_IN_DEMO });
+function navigateToSignInDemo() {
+  navHelper.navigate(RouteName.AUTH_NAV_DEMO, { screen: RouteName.SIGN_IN_DEMO });
 }
 
-function navigateToSignUp(params?: SignUpParams) {
-  navHelper.navigate(RouteName.AUTH_DEMO, { screen: RouteName.SIGN_UP_DEMO, params: params });
+function navigateToSignUpDemo(params?: SignUpDemoParams) {
+  navHelper.navigate(RouteName.AUTH_NAV_DEMO, { screen: RouteName.SIGN_UP_DEMO, params: params });
 }
 
-function navigateToForgotPassword(params?: ForgotPasswordParams) {
-  navHelper.navigate(RouteName.AUTH_DEMO, { screen: RouteName.FORGOT_PASSWORD_DEMO, params: params });
+function navigateToForgotPasswordDemo(params?: ForgotPasswordDemoParams) {
+  navHelper.navigate(RouteName.AUTH_NAV_DEMO, { screen: RouteName.FORGOT_PASSWORD_DEMO, params: params });
+}
+
+function navigateToTodoListHeroDemo() {
+  navHelper.navigate(RouteName.TODO_HEROKUAPP_NAV_DEMO, { screen: RouteName.TODO_LIST_HEROKUAPP_DEMO });
 }
 
 const navActions = {
   navigateToWeb,
-  navigateToAuth,
-  navigateToMain,
-  navigateToSignIn,
-  navigateToSignUp,
-  navigateToForgotPassword,
+  navigateToAuthDemo,
+  navigateToMainDemo,
+  navigateToSignInDemo,
+  navigateToSignUpDemo,
+  navigateToForgotPasswordDemo,
+  navigateToTodoListHeroDemo,
 };
 
 export default navActions;

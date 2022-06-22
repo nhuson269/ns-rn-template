@@ -6,7 +6,7 @@ import { userService } from "services/herokuapp-service";
 import { userStore } from "stores";
 import create from "zustand";
 
-type SignInDemoStore = {
+type SignInStore = {
   isLoading: boolean;
   isFetched: boolean;
   username: string;
@@ -21,7 +21,7 @@ type SignInDemoStore = {
   reset: () => void;
 };
 
-export const signInDemoStore = create<SignInDemoStore>((set, get) => ({
+export const signInDemoStore = create<SignInStore>((set, get) => ({
   isLoading: false,
   isFetched: false,
   username: "muh.nurali43@gmail.com",
@@ -60,7 +60,7 @@ export const signInDemoStore = create<SignInDemoStore>((set, get) => ({
       const resultMe = await userService.userMe();
       if (resultMe.kind === "ok") {
         userStore.getState().setUser(resultMe.data);
-        navActions.navigateToMain();
+        navActions.navigateToMainDemo();
       } else if (resultMe.message) {
         alertHelper.show({ message: resultMe.message });
       }
@@ -70,10 +70,10 @@ export const signInDemoStore = create<SignInDemoStore>((set, get) => ({
     set({ isLoading: false });
   },
   goSignUp: () => {
-    navActions.navigateToSignUp({ username: get().username });
+    navActions.navigateToSignUpDemo({ username: get().username });
   },
   goForgotPassword: () => {
-    navActions.navigateToForgotPassword({ username: get().username });
+    navActions.navigateToForgotPasswordDemo({ username: get().username });
   },
   reset: () =>
     set({

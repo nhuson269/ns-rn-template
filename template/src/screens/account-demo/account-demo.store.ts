@@ -4,7 +4,7 @@ import alertHelper from "modals/alert/helper";
 import { colorStore, userStore } from "stores";
 import create from "zustand";
 
-type AccoutDemoStore = {
+type AccountStore = {
   setThemeGreen: () => void;
   setThemeViolet: () => void;
   setThemeBlue: () => void;
@@ -14,7 +14,7 @@ type AccoutDemoStore = {
   reset: () => void;
 };
 
-export const accoutDemoStore = create<AccoutDemoStore>(() => ({
+export const accountDemoStore = create<AccountStore>(() => ({
   setThemeGreen: () => colorStore.getState().setGreen(),
   setThemeViolet: () => colorStore.getState().setViolet(),
   setThemeBlue: () => colorStore.getState().setBlue(),
