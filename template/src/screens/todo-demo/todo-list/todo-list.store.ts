@@ -9,6 +9,7 @@ type TodoListStore = {
   isLoadingMore: boolean;
   data: TaskDemoModel[];
   getData: () => Promise<void>;
+  getDataMore: () => Promise<void>;
   reset: () => void;
 };
 
@@ -18,12 +19,11 @@ export const todoListDemoStore = create<TodoListStore>((set, get) => ({
   isLoadingMore: false,
   data: [],
   getData: async () => {
-    const { isLoading, data } = get();
-    if (isLoading) {
+    if (get().isLoading) {
       return;
     }
     set({ isLoading: true });
-    const result = await taskService.getTasks(data.length);
+    const result = await taskService.getTasks(get().data.length);
     if (result.kind === "ok") {
       set({ isLoading: false, isFetched: true, data: result.data, isLoadingMore: false });
     } else {
@@ -34,15 +34,14 @@ export const todoListDemoStore = create<TodoListStore>((set, get) => ({
     }
   },
   getDataMore: async () => {
-    const { isLoading, isLoadingMore, data } = get();
-    if (isLoading || isLoadingMore) {
+    if (get().isLoading || get().isLoadingMore) {
       return;
     }
     set({ isLoadingMore: true });
-    const result = await taskService.getTasks(data.length);
-    if (isLoadingMore) {
+    const result = await taskService.getTasks(get().data.length);
+    if (get().isLoadingMore) {
       if (result.kind === "ok") {
-        set({ isLoadingMore: false, data: data.concat(result.data) });
+        set({ isLoadingMore: false, data: get().data.concat(result.data) });
       } else {
         set({ isLoadingMore: false });
         if (result.message) {
@@ -55,6 +54,7 @@ export const todoListDemoStore = create<TodoListStore>((set, get) => ({
     set({
       isLoading: false,
       isFetched: false,
+      isLoadingMore: false,
       data: [],
     }),
 }));

@@ -9,6 +9,7 @@ export const TodoListDemoScreen = memo(() => {
 
   useEffect(() => {
     todoListDemoStore.getState().getData();
+    return () => todoListDemoStore.getState().reset();
   }, []);
 
   const renderItem = useCallback(({ item }: { item: TaskDemoModel }) => {
@@ -22,8 +23,11 @@ export const TodoListDemoScreen = memo(() => {
         <FlatList
           paddingTop={16}
           data={store.data}
+          fetching={store.isLoading}
+          fetchingMore={store.isLoadingMore}
           renderItem={renderItem}
-          fetchingMore={true}
+          onRefresh={store.getData}
+          onEndReached={store.getDataMore}
         />
       </Screen>
     </>
