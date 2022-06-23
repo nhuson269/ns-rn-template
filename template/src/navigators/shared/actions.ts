@@ -27,27 +27,27 @@ function navigateToWeb(params: WebParams) {
 }
 
 function navigateToAuthDemo() {
-  navHelper.replace(RouteName.AUTH_NAV_DEMO);
+  navHelper.replace(RouteName.AUTH_DEMO_NAV);
 }
 
 function navigateToMainDemo() {
-  navHelper.replace(RouteName.MAIN_NAV_DEMO);
+  navHelper.replace(RouteName.MAIN_DEMO_NAV);
 }
 
 function navigateToSignInDemo() {
-  navHelper.navigate(RouteName.AUTH_NAV_DEMO, { screen: RouteName.SIGN_IN_DEMO });
+  navHelper.navigate(RouteName.AUTH_DEMO_NAV, { screen: RouteName.SIGN_IN_DEMO });
 }
 
 function navigateToSignUpDemo(params?: SignUpDemoParams) {
-  navHelper.navigate(RouteName.AUTH_NAV_DEMO, { screen: RouteName.SIGN_UP_DEMO, params: params });
+  navHelper.navigate(RouteName.AUTH_DEMO_NAV, { screen: RouteName.SIGN_UP_DEMO, params: params });
 }
 
 function navigateToForgotPasswordDemo(params?: ForgotPasswordDemoParams) {
-  navHelper.navigate(RouteName.AUTH_NAV_DEMO, { screen: RouteName.FORGOT_PASSWORD_DEMO, params: params });
+  navHelper.navigate(RouteName.AUTH_DEMO_NAV, { screen: RouteName.FORGOT_PASSWORD_DEMO, params: params });
 }
 
-function navigateToTodoListHeroDemo() {
-  navHelper.navigate(RouteName.TODO_HEROKUAPP_NAV_DEMO, { screen: RouteName.TODO_LIST_HEROKUAPP_DEMO });
+function navigateToTodoListDemo() {
+  navHelper.navigate(RouteName.TODO_NAV_DEMO, { screen: RouteName.TODO_LIST_DEMO });
 }
 
 const navActions = {
@@ -57,7 +57,7 @@ const navActions = {
   navigateToSignInDemo,
   navigateToSignUpDemo,
   navigateToForgotPasswordDemo,
-  navigateToTodoListHeroDemo,
+  navigateToTodoListDemo,
 };
 
 export default navActions;

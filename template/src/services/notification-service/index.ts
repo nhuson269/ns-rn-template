@@ -1,5 +1,5 @@
 import { Platform } from "react-native";
-import { userStore } from "stores";
+import { userDemoStore } from "stores";
 import storage, { StorageKey } from "utils/storage-utils";
 import { NotifyLocalService } from "./notify-local-service";
 import { NotifyPushService } from "./notify-push-service";
@@ -27,7 +27,7 @@ class NotificationService {
   }
 
   checkDeeplink() {
-    const isSignIn = userStore.getState().isSignIn;
+    const isSignIn = userDemoStore.getState().isSignIn;
     if (this.deeplinkUrl && isSignIn) {
       // You SignIn
       // deeplink.go(this.deeplinkUrl);
@@ -73,7 +73,7 @@ class NotificationService {
     const newId = data?.new_id;
     const notifyId = data?.notification_id;
     const notifyUrl = data?.url;
-    const isSignIn = userStore.getState().isSignIn;
+    const isSignIn = userDemoStore.getState().isSignIn;
 
     if (notifyUrl) {
       if (notifyUrl && isSignIn) {

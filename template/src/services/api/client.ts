@@ -1,7 +1,7 @@
 import { ApisauceInstance, create } from "apisauce";
 import { ClientConfig } from "./client.config";
 import RNFetchBlob from "rn-fetch-blob";
-import { userStore } from "stores";
+import { userDemoStore } from "stores";
 
 export class Client {
   /**
@@ -35,7 +35,7 @@ export class Client {
       requestConfig => {
         // Do something before request is sent
         if (!requestConfig.headers.Authorization) {
-          requestConfig.headers.Authorization = `Bearer ${userStore.getState().authToken?.accessToken}`;
+          requestConfig.headers.Authorization = `Bearer ${userDemoStore.getState().authToken?.accessToken}`;
         }
         return requestConfig;
       },
