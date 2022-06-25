@@ -4,7 +4,7 @@ import { StyleProp, TextStyle } from "react-native";
 import { presets } from "./presets";
 import { TextProps } from "./props";
 import { useTranslation } from "react-i18next";
-import { colorStore } from "stores";
+import { colorDemoStore } from "stores";
 
 /**
  * For your text displaying needs.
@@ -36,7 +36,7 @@ export const Text = memo((props: TextProps) => {
     ...rest
   } = props;
 
-  const colors = colorStore().colors;
+  const colors = colorDemoStore().colors;
   const { t } = useTranslation();
 
   // figure out which content to use

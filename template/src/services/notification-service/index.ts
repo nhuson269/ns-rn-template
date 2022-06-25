@@ -1,29 +1,25 @@
 import { Platform } from "react-native";
 import { userDemoStore } from "stores";
-import storage, { StorageKey } from "utils/storage-utils";
-import { NotifyLocalService } from "./notify-local-service";
-import { NotifyPushService } from "./notify-push-service";
+import storageUtils, { StorageKey } from "utils/storage-utils";
+import notifyLocalService from "./notify-local-service";
+import notifyPushService, { NotifyDeviceModel } from "./notify-push-service";
 
 class NotificationService {
-  localService: NotifyLocalService;
-  pushService: NotifyPushService;
   notifyToken: string;
   deeplinkUrl?: string;
 
   constructor() {
-    this.localService = new NotifyLocalService();
-    this.pushService = new NotifyPushService();
-    this.notifyToken = storage.getString(StorageKey.NOTIFY_TOKEN) || "";
+    this.notifyToken = storageUtils.getString(StorageKey.NOTIFY_TOKEN) || "";
   }
 
   register() {
-    this.localService.configure(this.notifyOpen);
-    this.pushService.register(this.notifyRegister, this.notifyMessage, this.notifyOpen);
+    notifyLocalService.configure(this.onNotifyOpened);
+    notifyPushService.register(this.onToken, this.onMessage, this.onNotifyOpened);
   }
 
   unregister() {
-    this.localService.unregister();
-    this.pushService.unregister();
+    notifyLocalService.unregister();
+    notifyPushService.unregister();
   }
 
   checkDeeplink() {
@@ -36,39 +32,39 @@ class NotificationService {
   }
 
   // When there is a notification token
-  private async notifyRegister(token?: string) {
-    // console.debug("Notification Token: ", token);
-    if (!token) {
-      this.pushService.unsubscribeFromTopic("all");
-    } else {
-      this.pushService.subscribeToTopic("all");
-    }
+  onToken(token?: string) {
+    console.debug("Notification Token:", token);
     if (this.notifyToken !== token) {
       this.notifyToken = token || "";
-      storage.set(StorageKey.NOTIFY_TOKEN, this.notifyToken);
+      if (!token) {
+        notifyPushService.unsubscribeFromTopic("all");
+      } else {
+        notifyPushService.subscribeToTopic("all");
+      }
+      storageUtils.set(StorageKey.NOTIFY_TOKEN, this.notifyToken);
     }
   }
 
   // When there is a notification to the device
-  private notifyMessage(notify: any) {
-    // console.debug("Notification Msg: ", notify);
+  onMessage(notify: NotifyDeviceModel) {
+    // console.debug('Notification Message:', notify);
     const dataNotify = notify?.notification;
     const notifyTitle = dataNotify?.title;
     const notifyBody = dataNotify?.body;
     const notifyImage = Platform.OS !== "ios" ? dataNotify?.android?.imageUrl : dataNotify?.ios?.imageUrl;
     if (notifyTitle || notifyBody) {
-      this.localService.createNotify({
+      notifyLocalService.createNotify({
         title: notifyTitle,
         message: notifyBody,
         imageUrl: notifyImage,
-        data: notify?.data,
+        data: notify.data,
       });
     }
   }
 
   // When open notification
-  private notifyOpen(notify: any) {
-    // console.debug("Notification Open: ", notify);
+  onNotifyOpened(notify: NotifyDeviceModel) {
+    // console.debug('Notification Opened:', notify);
     const data = notify?.data || notify;
     const newId = data?.new_id;
     const notifyId = data?.notification_id;

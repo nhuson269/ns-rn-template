@@ -1,29 +1,29 @@
 import PushNotification, { Importance } from "react-native-push-notification";
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
 import { Platform } from "react-native";
+import { NotifyDeviceModel } from "./notify-push-service";
 
 const NOTIFY_LOCAL_CHANNEL = "notification_local_channel";
 const NOTIFY_PUSH_CHANNEL = "notification_push_channel";
 
-export class NotifyLocalService {
-  unregister() {
-    PushNotification.unregister();
-  }
-
-  configure(onOpenNotification: any) {
+class NotifyLocalService {
+  configure(onNotifyOpened: (notify: NotifyDeviceModel) => void) {
     this.createDefaultChannels();
     PushNotification.configure({
       onNotification(notification) {
-        // console.debug(notification);
-        const dataNotify = notification?.data as any;
+        // console.debug("[NotifyLocalService] onNotification:", notification);
+        const dataNotify = notification.data as any;
         // (required) Called when a remote is received or opened, or local notification is opened
         notification.finish(PushNotificationIOS.FetchResult.NoData);
         if (dataNotify && notification?.userInteraction === true) {
-          onOpenNotification(Platform.OS === "ios" ? dataNotify.data : dataNotify);
+          onNotifyOpened({
+            data: Platform.OS === "ios" ? dataNotify.data : dataNotify,
+            notification: notification,
+          });
         }
       },
       onRegistrationError() {
-        // console.debug(err.message, err);
+        // console.debug("[NotifyLocalService] onRegistrationError:", error);
       },
       permissions: {
         alert: true,
@@ -35,12 +35,16 @@ export class NotifyLocalService {
     });
   }
 
+  unregister() {
+    PushNotification.unregister();
+  }
+
   createNotify(params: { title?: string; message: string; imageUrl?: string; data?: any }) {
     PushNotification.localNotification({
       title: params.title,
       message: params.message,
       playSound: true,
-      userInfo: !params.data ? {} : { data: params.data },
+      userInfo: !params.data ? {} : params.data,
       channelId: NOTIFY_LOCAL_CHANNEL,
       // color: AppColors.red,
       largeIconUrl: params?.imageUrl,
@@ -61,7 +65,7 @@ export class NotifyLocalService {
       message: params.message,
       date: params.date,
       playSound: true,
-      userInfo: !params.data ? {} : { data: params.data },
+      userInfo: !params.data ? {} : params.data,
       channelId: NOTIFY_LOCAL_CHANNEL,
       // color: AppColors.red,
       // largeIcon: "ic_launcher_round",
@@ -91,10 +95,10 @@ export class NotifyLocalService {
           playSound: true,
           vibrate: true,
           importance: Importance.HIGH,
-          soundName: Platform.OS !== "ios" ? "file_name" : "file_name.wav",
+          // soundName: Platform.OS !== "ios" ? "file_name" : "file_name.wav",
         },
         () => {
-          // console.debug("CreateChannel Local Notification Channel: ", created);
+          // console.debug("CreateChannel Local Notification Channel:", created);
         },
       );
       // Push Notification Channel
@@ -106,12 +110,16 @@ export class NotifyLocalService {
           playSound: true,
           vibrate: true,
           importance: Importance.HIGH,
-          soundName: Platform.OS !== "ios" ? "file_name" : "file_name.wav",
+          // soundName: Platform.OS !== "ios" ? "file_name" : "file_name.wav",
         },
         () => {
-          // console.debug("CreateChannel Push Notification Channel: ", created);
+          // console.debug("CreateChannel Push Notification Channel:"", created);
         },
       );
     });
   }
 }
+
+const notifyLocalService = new NotifyLocalService();
+
+export default notifyLocalService;

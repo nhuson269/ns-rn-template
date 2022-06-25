@@ -1,4 +1,4 @@
-import storage, { StorageKey } from "utils/storage-utils";
+import storageUtils, { StorageKey } from "utils/storage-utils";
 
 class UserDemoModel {
   v: number;
@@ -32,7 +32,7 @@ export function getUserDemoData(dataJson: any) {
 }
 
 export async function getUserDemoStorage() {
-  const data = storage.getString(StorageKey.USER_DEMO_PROFILE);
+  const data = storageUtils.getString(StorageKey.USER_DEMO_PROFILE);
   try {
     const dataJson = !data ? undefined : await JSON.parse(data);
     if (dataJson?.id && dataJson?.name) {

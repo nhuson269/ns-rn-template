@@ -8,7 +8,6 @@ import create from "zustand";
 
 type SignUpStore = {
   isLoading: boolean;
-  isFetched: boolean;
   username: string;
   fullname: string;
   password: string;
@@ -27,7 +26,6 @@ type SignUpStore = {
 
 export const signUpDemoStore = create<SignUpStore>((set, get) => ({
   isLoading: false,
-  isFetched: false,
   username: "",
   fullname: "",
   password: "",
@@ -84,11 +82,11 @@ export const signUpDemoStore = create<SignUpStore>((set, get) => ({
     set({ isLoading: true, msgUsername: "", msgPassword: "", msgPasswordConfirm: "" });
     const resultRegister = await userService.register(fullname, username, password);
     if (resultRegister.kind === "ok") {
-      await userDemoStore.getState().setAuthToken(resultRegister.authToken);
+      userDemoStore.setState({ authToken: resultRegister.authToken });
       const resultMe = await userService.userMe();
       if (resultMe.kind === "ok") {
-        userDemoStore.getState().setUser(resultMe.data);
-        navActions.navigateToMainDemo();
+        userDemoStore.setState({ isSignIn: true, user: resultMe.data });
+        navActions.replaceToMainDemo();
       } else if (resultMe.message) {
         alertHelper.show({ message: resultMe.message });
       }
@@ -100,11 +98,12 @@ export const signUpDemoStore = create<SignUpStore>((set, get) => ({
   reset: () =>
     set({
       isLoading: false,
-      isFetched: false,
       username: "",
+      fullname: "",
       password: "",
       passwordConfirm: "",
       msgUsername: "",
+      msgFullname: "",
       msgPassword: "",
       msgPasswordConfirm: "",
     }),

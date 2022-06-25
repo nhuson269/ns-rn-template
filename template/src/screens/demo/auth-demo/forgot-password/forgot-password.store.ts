@@ -6,7 +6,6 @@ import create from "zustand";
 
 type ForgotPasswordStore = {
   isLoading: boolean;
-  isFetched: boolean;
   username: string;
   msgUsername: string | undefined;
   setUsername: (value: string) => void;
@@ -16,7 +15,6 @@ type ForgotPasswordStore = {
 
 export const forgotPasswordDemoStore = create<ForgotPasswordStore>((set, get) => ({
   isLoading: false,
-  isFetched: false,
   username: "",
   msgUsername: "",
   setUsername: value => {
@@ -42,7 +40,6 @@ export const forgotPasswordDemoStore = create<ForgotPasswordStore>((set, get) =>
   reset: () =>
     set({
       isLoading: false,
-      isFetched: false,
       username: "",
       msgUsername: "",
     }),

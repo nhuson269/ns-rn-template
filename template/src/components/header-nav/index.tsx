@@ -3,7 +3,7 @@ import navHelper from "navigators/shared/helper";
 import React, { memo, useMemo } from "react";
 import { StyleProp, ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { colorStore } from "stores";
+import { colorDemoStore } from "stores";
 import { HeaderNavProps } from "./props";
 import { styles } from "./styles";
 
@@ -18,7 +18,7 @@ export const HeaderNav = memo((props: HeaderNavProps) => {
     ignoreStatusBar = false,
   } = props;
 
-  const colors = colorStore().colors;
+  const colors = colorDemoStore().colors;
   const insets = useSafeAreaInsets();
   const styleStatusBar: StyleProp<ViewStyle> = [
     styles.statusBar,

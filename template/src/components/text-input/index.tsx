@@ -6,7 +6,7 @@ import { styles } from "./styles";
 import Icons from "react-native-vector-icons/MaterialCommunityIcons";
 import { Text, View } from "components";
 import { useTranslation } from "react-i18next";
-import { colorStore } from "stores";
+import { colorDemoStore } from "stores";
 
 /**
  * A component which has a label and an input together.
@@ -29,7 +29,7 @@ export const TextInput = memo((props: TextInputProps) => {
     ...rest
   } = props;
 
-  const colors = colorStore().colors;
+  const colors = colorDemoStore().colors;
   const [borderColor, setBorderColor] = useState<string>(colors.bg_02);
   const [bgColor, setBgColor] = useState<string>(colors.bg_02);
   const [isSecure, setIsSecure] = useState<boolean>(rest.secureTextEntry || false);

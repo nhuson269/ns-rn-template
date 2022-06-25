@@ -1,13 +1,13 @@
 import { Button, Text, View } from "components";
 import React, { memo } from "react";
 import Modal from "react-native-modal";
-import { colorStore } from "stores";
+import { colorDemoStore } from "stores";
 import { alertStore } from "./alert.store";
 import { styles } from "./styles";
 
 export const AlertModal = memo(() => {
   const store = alertStore();
-  const colors = colorStore().colors;
+  const colors = colorDemoStore().colors;
 
   return (
     <Modal

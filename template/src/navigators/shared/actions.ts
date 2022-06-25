@@ -1,7 +1,7 @@
 import REGEX from "config/Regex";
 import { Linking, Platform } from "react-native";
 import navHelper from "./helper";
-import { ForgotPasswordDemoParams, SignUpDemoParams, WebParams } from "./params";
+import { ForgotPasswordDemoParams, SignInDemoParams, SignUpDemoParams, TodoListDemoParams, WebParams } from "./params";
 import { RouteName } from "./routes";
 
 function navigateToWeb(params: WebParams) {
@@ -26,16 +26,16 @@ function navigateToWeb(params: WebParams) {
   );
 }
 
-function navigateToAuthDemo() {
+function replaceToAuthDemo() {
   navHelper.replace(RouteName.AUTH_DEMO_NAV);
 }
 
-function navigateToMainDemo() {
+function replaceToMainDemo() {
   navHelper.replace(RouteName.MAIN_DEMO_NAV);
 }
 
-function navigateToSignInDemo() {
-  navHelper.navigate(RouteName.AUTH_DEMO_NAV, { screen: RouteName.SIGN_IN_DEMO });
+function navigateToSignInDemo(params?: SignInDemoParams) {
+  navHelper.navigate(RouteName.AUTH_DEMO_NAV, { screen: RouteName.SIGN_IN_DEMO, params: params });
 }
 
 function navigateToSignUpDemo(params?: SignUpDemoParams) {
@@ -46,18 +46,31 @@ function navigateToForgotPasswordDemo(params?: ForgotPasswordDemoParams) {
   navHelper.navigate(RouteName.AUTH_DEMO_NAV, { screen: RouteName.FORGOT_PASSWORD_DEMO, params: params });
 }
 
-function navigateToTodoListDemo() {
-  navHelper.navigate(RouteName.TODO_NAV_DEMO, { screen: RouteName.TODO_LIST_DEMO });
+function navigateToTodoListDemo(params: TodoListDemoParams) {
+  navHelper.navigate(RouteName.TODO_NAV_DEMO, { screen: RouteName.TODO_LIST_DEMO, params: params });
+}
+
+function replaceToTodoListDemo(params: TodoListDemoParams) {
+  navHelper.replace(RouteName.MAIN_DEMO_NAV, {
+    screen: RouteName.TODO_NAV_DEMO,
+    params: { screen: RouteName.TODO_LIST_DEMO, params: params },
+  });
+}
+
+function navigateToTodoListTypicodeDemo() {
+  navHelper.navigate(RouteName.TODO_NAV_DEMO, { screen: RouteName.TODO_LIST_TYPICODE_DEMO });
 }
 
 const navActions = {
   navigateToWeb,
-  navigateToAuthDemo,
-  navigateToMainDemo,
+  replaceToAuthDemo,
+  replaceToMainDemo,
   navigateToSignInDemo,
   navigateToSignUpDemo,
   navigateToForgotPasswordDemo,
   navigateToTodoListDemo,
+  replaceToTodoListDemo,
+  navigateToTodoListTypicodeDemo,
 };
 
 export default navActions;

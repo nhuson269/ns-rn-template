@@ -3,7 +3,7 @@ import { ActivityIndicator, StyleProp, TextStyle, ViewStyle } from "react-native
 import { presets } from "./presets";
 import { ButtonProps } from "./props";
 import { styles } from "./styles";
-import { colorStore } from "stores";
+import { colorDemoStore } from "stores";
 import { Text } from "../text";
 import { View } from "../view";
 import { Pressable } from "../pressable";
@@ -32,7 +32,7 @@ export const Button = memo((props: ButtonProps) => {
     ...rest
   } = props;
 
-  const colors = colorStore().colors;
+  const colors = colorDemoStore().colors;
   const styleProps: StyleProp<ViewStyle> = {};
   if (marginTop) {
     styleProps.marginTop = marginTop;

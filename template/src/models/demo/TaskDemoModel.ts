@@ -1,7 +1,7 @@
 type TaskDemoModel = {
   id: number;
   des: string;
-  updatedTime: string;
+  updatedTime?: string;
 };
 
 export default TaskDemoModel;
@@ -35,14 +35,12 @@ export function getArrTaskHerokuappData(dataJson: any) {
 }
 
 export function getTaskTypicodeData(dataJson: any) {
-  const id = dataJson?._id;
-  const des = dataJson?.description;
-  const updatedTime = dataJson?.updatedAt;
+  const id = dataJson?.id;
+  const des = dataJson?.title;
   if (id && des) {
     const item: TaskDemoModel = {
       id: id,
       des: des,
-      updatedTime: updatedTime,
     };
     return item;
   }

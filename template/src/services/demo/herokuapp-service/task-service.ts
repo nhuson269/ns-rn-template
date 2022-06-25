@@ -9,11 +9,11 @@ class TaskService {
     this.client = new Client(HEROKUAPP_CLIENT_CONFIG);
   }
 
-  async getTasks(offset: number): Promise<GetTasksDemoResult> {
+  async getTasks(offset: number, limit: number = 15): Promise<GetTasksDemoResult> {
     try {
       // make the api call
       const response: ApiResponse<any> = await this.client.instance.get(routes.demo.herokuapp.task.url, {
-        limit: 15,
+        limit: limit,
         skip: offset,
       });
 

@@ -7,7 +7,7 @@ export const WebScreen = memo(() => {
     <>
       <HeaderNav isLeftView={false} title="WebView" />
       <Screen statusBar="light-content" safe="rl" style={styles.container}>
-        <Text value="iviec_manager" />
+        <Text value="HelloWorld" />
       </Screen>
     </>
   );

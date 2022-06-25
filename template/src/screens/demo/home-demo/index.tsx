@@ -17,7 +17,7 @@ export const HomeDemoScreen = memo(() => {
           <Pressable style={todoContainer} marginRight={16} onPress={store.goTodoListHerokuapp}>
             <Text style={styles.todoTitle} color={colors.t_01} value={`Todo\nApi Herokuapp`} />
           </Pressable>
-          <Pressable style={todoContainer}>
+          <Pressable style={todoContainer} onPress={store.goTodoListTypicode}>
             <Text style={styles.todoTitle} color={colors.t_01} value={`Todo\nApi Typicode`} />
           </Pressable>
         </View>

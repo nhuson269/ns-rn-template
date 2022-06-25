@@ -4,7 +4,7 @@ import { Edge as SafeEdge, SafeAreaView } from "react-native-safe-area-context";
 import { ScreenProps } from "./props";
 import { offsets, presets } from "./presets";
 import { useIsFocused } from "@react-navigation/native";
-import { colorStore } from "stores";
+import { colorDemoStore } from "stores";
 import { statusBarStore } from "../status-bar/status-bar.store";
 
 const isIos = Platform.OS === "ios";
@@ -19,7 +19,7 @@ const ScreenWithoutScrolling = memo((props: ScreenProps) => {
       ? ["top", "right", "left"]
       : ["right", "left"];
 
-  const colors = colorStore().colors;
+  const colors = colorDemoStore().colors;
   const styleContainer = [preset.outer, { backgroundColor: props.backgroundColor || colors.bg_01 }];
   const styleContent = [preset.inner, props.style || {}];
 
@@ -45,7 +45,7 @@ const ScreenWithScrolling = memo((props: ScreenProps) => {
       ? ["top", "right", "left"]
       : ["right", "left"];
 
-  const colors = colorStore().colors;
+  const colors = colorDemoStore().colors;
   const styleContainer = [preset.outer, { backgroundColor: props.backgroundColor || colors.bg_01 }];
   const styleContent = [preset.inner, props.style || {}];
 
@@ -76,7 +76,7 @@ export const Screen = memo((props: ScreenProps) => {
 
   useEffect(() => {
     if (isFocused) {
-      statusBarStore.getState().setStyle(props.statusBar || "dark-content");
+      statusBarStore.setState({ style: props.statusBar || "dark-content" });
     }
   }, [isFocused, props.statusBar]);
 

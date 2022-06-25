@@ -1,7 +1,7 @@
 import AuthTokenModel from "models/AuthTokenModel";
 import UserDemoModel from "models/demo/UserDemoModel";
 import navActions from "navigators/shared/actions";
-import storage, { StorageKey } from "utils/storage-utils";
+import storageUtils, { StorageKey } from "utils/storage-utils";
 import create from "zustand";
 import * as Keychain from "react-native-keychain";
 import { userService } from "services/demo/herokuapp-service";
@@ -54,7 +54,7 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
         authToken: isOK ? authToken : undefined,
       });
       if (isOK) {
-        navActions.navigateToMainDemo();
+        navActions.replaceToMainDemo();
       } else {
         get().removeUser();
       }
@@ -70,16 +70,15 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
   },
   setUser: value => {
     set({ user: value });
-    storage.set(StorageKey.USER_DEMO_PROFILE, JSON.stringify(value));
+    storageUtils.set(StorageKey.USER_DEMO_PROFILE, JSON.stringify(value));
   },
   removeUser: async () => {
     const { isSignIn, user, authToken } = get();
     if (isSignIn || user !== undefined) {
       set({ isSignIn: false, user: undefined });
     }
-    navActions.navigateToAuthDemo();
-    storage.delete(StorageKey.USER_DEMO_PROFILE);
-    storage.delete(StorageKey.NOTIFY_TOKEN);
+    navActions.replaceToAuthDemo();
+    storageUtils.cleanCache();
     await Keychain.resetGenericPassword();
     if (authToken?.accessToken) {
       await userService.logout();

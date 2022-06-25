@@ -2,15 +2,14 @@ import * as RNLocalize from "react-native-localize";
 import i18next, { StringMap } from "i18next";
 import moment from "moment";
 import { initReactI18next } from "react-i18next";
-import storage, { StorageKey } from "utils/storage-utils";
 import en from "./lang/en.json";
 import vi from "./lang/vi.json";
+import storageUtils, { StorageKey } from "utils/storage-utils";
 
 // TYPE
 type RecursiveKeyOf<TObj extends object> = {
   [TKey in keyof TObj & (string | number)]: RecursiveKeyOfHandleValue<TObj[TKey], `${TKey}`>;
 }[keyof TObj & (string | number)];
-
 type RecursiveKeyOfInner<TObj extends object> = {
   [TKey in keyof TObj & (string | number)]: RecursiveKeyOfHandleValue<TObj[TKey], `['${TKey}']` | `.${TKey}`>;
 }[keyof TObj & (string | number)];
@@ -37,7 +36,7 @@ i18next
     async: true,
     init: () => {},
     detect: async (callback: any) => {
-      const localLng = storage.getString(StorageKey.LANGUAGE);
+      const localLng = storageUtils.getString(StorageKey.LANGUAGE);
       if (localLng && listLang.includes(localLng)) {
         callback(localLng);
         return localLng;
@@ -48,7 +47,7 @@ i18next
       callback(finalLng);
       return finalLng;
     },
-    cacheUserLanguage: (lng: any) => storage.set(StorageKey.LANGUAGE, lng),
+    cacheUserLanguage: (lng: any) => storageUtils.set(StorageKey.LANGUAGE, lng),
   })
   .use(initReactI18next)
   .init({

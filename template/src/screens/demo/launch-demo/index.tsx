@@ -21,7 +21,7 @@ export const LaunchScreen = memo(() => {
 
   return (
     <Screen statusBar="light-content" safe="full" style={styles.container}>
-      <Text style={styles.title} value="iviec_manager" color={colors.t_03} />
+      <Text style={styles.title} value="HelloWorld" color={colors.t_03} />
       <ActivityIndicator
         style={[styles.activity, { bottom: indicatorBottom }]}
         size="large"

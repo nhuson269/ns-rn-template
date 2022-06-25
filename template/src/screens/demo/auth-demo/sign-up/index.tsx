@@ -10,14 +10,14 @@ export const SignUpDemoScreen = memo(() => {
   const store = signUpDemoStore();
 
   useEffect(() => {
-    return () => signUpDemoStore.getState().reset();
-  }, []);
-
-  useEffect(() => {
     if (username) {
-      signUpDemoStore.getState().setUsername(username);
+      signUpDemoStore.setState({ username: username });
     }
   }, [username]);
+
+  useEffect(() => {
+    return () => signUpDemoStore.getState().reset();
+  }, []);
 
   return (
     <>

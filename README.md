@@ -22,11 +22,33 @@
 - Elegant usage directly within the [React Native CLI](https://github.com/react-native-community/cli)
 - Consistent with the default React Native template
 - Minimal additional dependencies
+- Build basic authentication flow
+- Manage status by [Zustand](https://github.com/pmndrs/zustand)
+- Integrated default color theme management
+- Default integration of multi-language management
+- Firebase integration (analytics, crashlytics, messaging)
+- v.v
+
+## Tech Stack
+
+Ignite apps include the following rock-solid technical decisions out of the box:
+
+- React Native
+- React Navigation 6
+- [Zustand] (https://github.com/pmndrs/zustand)
+- TypeScript
+- react-native-mmkv (~30x faster than AsyncStorage!)
+- apisauce (to talk to REST servers)
+- i18next, react-i18next
+- @react-native-firebase (https://rnfb-docs.netlify.app/)
+- react-native-vector-icons
+- Flipper-ready
+- And more!
 
 ## :arrow_forward: Usage
 
 ```sh
-npx react-native init MyApp --template @nhuson269/react-native-template-typescript
+npx react-native init MyApp --template ns-rn-template
 ```
 
 ## :warning: React Native CLI

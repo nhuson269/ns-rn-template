@@ -1,22 +1,15 @@
-import { useRoute } from "@react-navigation/native";
 import { FlatList, HeaderNav, Screen, TodoDemoItem } from "components";
 import TaskDemoModel from "models/demo/TaskDemoModel";
-import { TodoListDemoParams } from "navigators";
 import React, { memo, useCallback, useEffect } from "react";
 import { styles } from "./styles";
-import { todoListDemoStore } from "./todo-list.store";
+import { todoListTypicodeDemoStore } from "./todo-list-typicode.store";
 
-export const TodoListDemoScreen = memo(() => {
-  const params = useRoute().params as TodoListDemoParams;
-  const store = todoListDemoStore();
-
-  useEffect(() => {
-    todoListDemoStore.setState({ params: params });
-  }, [params]);
+export const TodoListTypicodeDemoScreen = memo(() => {
+  const store = todoListTypicodeDemoStore();
 
   useEffect(() => {
-    todoListDemoStore.getState().getData();
-    return () => todoListDemoStore.getState().reset();
+    todoListTypicodeDemoStore.getState().getData();
+    return () => todoListTypicodeDemoStore.getState().reset();
   }, []);
 
   const renderItem = useCallback(({ item }: { item: TaskDemoModel }) => {
@@ -31,14 +24,12 @@ export const TodoListDemoScreen = memo(() => {
           paddingTop={16}
           data={store.data}
           fetching={store.isLoading}
-          fetchingMore={store.isLoadingMore}
           renderItem={renderItem}
           onRefresh={store.getData}
-          onEndReached={store.getDataMore}
         />
       </Screen>
     </>
   );
 });
 
-TodoListDemoScreen.displayName = "TodoListDemoScreen";
+TodoListTypicodeDemoScreen.displayName = "TodoListTypicodeDemoScreen";

@@ -8,30 +8,60 @@ import { MMKV } from "react-native-mmkv";
 
 const storage = new MMKV();
 
-function getItem(key: string) {
-  return storage.getString(key) as string | null | Promise<string | null>;
-}
-
-function setItem(key: string, value: string) {
-  return storage.set(key, value) as void | Promise<void>;
-}
-
-function removeItem(key: string) {
-  return storage.delete(key) as void | Promise<void>;
-}
-
 export const MMKVStorage = {
-  getItem,
-  setItem,
-  removeItem,
+  getItem: (key: string) => {
+    return storage.getString(key) as string | null | Promise<string | null>;
+  },
+  setItem: (key: string, value: string) => {
+    return storage.set(key, value) as void | Promise<void>;
+  },
+  removeItem: (key: string) => {
+    return storage.delete(key) as void | Promise<void>;
+  },
 };
 
 export enum StorageKey {
+  USER_DEMO_PROFILE = "user_demo_profile", // value is object
+  COLOR_DEMO_THEME = "color_demo_theme", // value is string
   LANGUAGE = "language", // value is string
-  ENVIRONMENT = "environment", // value is sting
   NOTIFY_TOKEN = "notification_token", // value is sting
-  USER_PROFILE = "user_profile", // value is object
-  COLOR_THEME = "color_theme", // value is string
 }
 
-export default storage;
+class StorageUtils {
+  contains(key: StorageKey) {
+    return storage.contains(key);
+  }
+
+  set(key: StorageKey, value: string | number | boolean) {
+    storage.set(key, value);
+  }
+
+  getBoolean(key: StorageKey) {
+    return storage.getBoolean(key);
+  }
+
+  getNumber(key: StorageKey) {
+    return storage.getNumber(key);
+  }
+
+  getString(key: StorageKey) {
+    return storage.getString(key);
+  }
+
+  delete(key: StorageKey) {
+    storage.delete(key);
+  }
+
+  cleanCache() {
+    const keys = storage.getAllKeys();
+    keys.forEach(value => {
+      if (value !== StorageKey.LANGUAGE && value !== StorageKey.COLOR_DEMO_THEME) {
+        storage.delete(value);
+      }
+    });
+  }
+}
+
+const storageUtils = new StorageUtils();
+
+export default storageUtils;

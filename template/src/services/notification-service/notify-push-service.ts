@@ -1,30 +1,53 @@
-import messaging from "@react-native-firebase/messaging";
 import { Platform } from "react-native";
+import messaging from "@react-native-firebase/messaging";
 import deviceInfoModule from "react-native-device-info";
 
-const AuthorizationStatus = messaging.AuthorizationStatus;
+export type NotifyDeviceModel = { data: any; notification?: any };
 
-export class NotifyPushService {
-  listener: { onMessage: any; onTokenRefresh: any } | undefined;
+class NotifyPushService {
   private isRegistering: boolean = false;
   private registerCount: number = 0;
   private unregisterCount: number = 0;
+  private listener: { onToken: () => void; onMessage: () => void } | undefined;
+  private notifyToken: string = "";
 
-  unregister() {
-    this.unregisterCount += 1;
-    if (!this.isRegistering) {
-      if (typeof this.listener?.onMessage === "function") {
-        this.listener?.onMessage();
+  async checkPermisstion() {
+    async function requestPermisstion() {
+      try {
+        const authStatus = await messaging().requestPermission();
+        switch (authStatus) {
+          case messaging.AuthorizationStatus.AUTHORIZED:
+          case messaging.AuthorizationStatus.PROVISIONAL:
+            return true;
+          default:
+            return false;
+        }
+      } catch {
+        return false;
       }
-      if (typeof this.listener?.onTokenRefresh === "function") {
-        this.listener?.onTokenRefresh();
+    }
+
+    try {
+      const authStatus = await messaging().hasPermission();
+      switch (authStatus) {
+        case messaging.AuthorizationStatus.AUTHORIZED:
+        case messaging.AuthorizationStatus.PROVISIONAL:
+          // console.debug("[FCMService] Check Permisstion: Success");
+          return true;
+        default:
+          // console.debug("[FCMService] Check Permisstion:", authStatus);
+          return await requestPermisstion();
       }
-      this.registerCount = 0;
-      this.unregisterCount = 0;
+    } catch {
+      return false;
     }
   }
 
-  async register(onRegister: any, onNotification: any, onOpenNotification: any) {
+  async register(
+    onToken: (token?: string) => void,
+    onMessage: (notify: NotifyDeviceModel) => void,
+    onNotifyOpened: (notify: NotifyDeviceModel) => void,
+  ) {
     this.registerCount += 1;
     if (!this.isRegistering && this.registerCount === 1) {
       this.isRegistering = true;
@@ -33,10 +56,24 @@ export class NotifyPushService {
         if (!messaging().isAutoInitEnabled) {
           await messaging().setAutoInitEnabled(true);
         }
-        await this.createNotificationListeners(onRegister, onNotification, onOpenNotification);
+        await this.createNotificationListeners(onToken, onMessage, onNotifyOpened);
       } else {
         this.isRegistering = false;
       }
+    }
+  }
+
+  unregister() {
+    this.unregisterCount += 1;
+    if (!this.isRegistering) {
+      if (typeof this.listener?.onMessage === "function") {
+        this.listener?.onMessage();
+      }
+      if (typeof this.listener?.onToken === "function") {
+        this.listener?.onToken();
+      }
+      this.registerCount = 0;
+      this.unregisterCount = 0;
     }
   }
 
@@ -48,93 +85,81 @@ export class NotifyPushService {
     await messaging().unsubscribeFromTopic(topic);
   }
 
-  private async requestPermisstion() {
+  private async createNotificationListeners(
+    onToken: (token?: string) => void,
+    onMessage: (notify: NotifyDeviceModel) => void,
+    onNotifyOpened: (notify: NotifyDeviceModel) => void,
+  ) {
     try {
-      const authStatus = await messaging().requestPermission();
-      if (authStatus === AuthorizationStatus.AUTHORIZED || authStatus === AuthorizationStatus.PROVISIONAL) {
-        return true;
+      const fcmToken = await messaging().getToken();
+      // console.debug("[FCMService] Get Token:", fcmToken);
+      if (this.notifyToken !== fcmToken) {
+        this.notifyToken = fcmToken;
+        onToken(fcmToken);
       }
-      return false;
-    } catch {
-      return false;
-    }
-  }
+    } catch {}
 
-  async checkPermisstion() {
-    try {
-      const authStatus = await messaging().hasPermission();
-      if (authStatus === AuthorizationStatus.AUTHORIZED || authStatus === AuthorizationStatus.PROVISIONAL) {
-        // console.debug("[FCMService] Check Permisstion: Success");
-        return true;
-      } else {
-        // console.debug("[FCMService] Check Permisstion: ", authStatus);
-        return await this.requestPermisstion();
-      }
-    } catch {
-      return false;
-    }
-  }
-
-  private async createNotificationListeners(onRegister: any, onNotification: any, onOpenNotification: any) {
-    messaging().onNotificationOpenedApp(remoteMessage => {
-      // console.debug("[FCMService] onNotificationOpenedApp Notification caused app to open", remoteMessage);
-      if (remoteMessage) {
-        const isEmulator = deviceInfoModule.isEmulatorSync();
-        const iosIsEmulator = Platform.OS === "ios" && isEmulator;
-        const dataMsg = remoteMessage.data as any;
-        onOpenNotification({
-          data: remoteMessage.data,
-          notification: iosIsEmulator ? dataMsg?.notification : remoteMessage.notification,
-        });
+    const listenerOnTokenRefresh = messaging().onTokenRefresh(fcmToken => {
+      // console.debug("[FCMService] New Token Refresh:", fcmToken);
+      if (this.notifyToken !== fcmToken) {
+        this.notifyToken = fcmToken;
+        onToken(fcmToken);
       }
     });
 
     const listenerOnMessage = messaging().onMessage(remoteMessage => {
-      // console.debug("[FCMService] a new FCM message: ", remoteMessage);
+      // console.debug("[FCMService] a new FCM message:", remoteMessage);
       if (remoteMessage) {
         const isEmulator = deviceInfoModule.isEmulatorSync();
         const iosIsEmulator = Platform.OS === "ios" && isEmulator;
         const dataMsg = remoteMessage.data as any;
-        onNotification({
+        onMessage({
           data: remoteMessage.data,
           notification: iosIsEmulator ? dataMsg?.notification : remoteMessage.notification,
         });
       }
     });
 
-    const listenerOnTokenRefresh = messaging().onTokenRefresh(fcmToken => {
-      // console.debug("[FCMService] New Token Refresh: ", fcmToken);
-      onRegister(fcmToken);
+    messaging().onNotificationOpenedApp(remoteMessage => {
+      // console.debug("[FCMService] onNotificationOpenedApp Notification caused app to open:", remoteMessage);
+      if (remoteMessage) {
+        const isEmulator = deviceInfoModule.isEmulatorSync();
+        const iosIsEmulator = Platform.OS === "ios" && isEmulator;
+        const dataMsg = remoteMessage.data as any;
+        onNotifyOpened({
+          data: remoteMessage.data,
+          notification: iosIsEmulator ? dataMsg?.notification : remoteMessage.notification,
+        });
+      }
     });
 
     try {
       const remoteMessage = await messaging().getInitialNotification();
-      // console.debug("[FCMService] Initial Notification: ", remoteMessage);
+      // console.debug("[FCMService] Initial Notification:", remoteMessage);
       if (remoteMessage) {
         const isEmulator = deviceInfoModule.isEmulatorSync();
         const iosIsEmulator = Platform.OS === "ios" && isEmulator;
         const dataMsg = remoteMessage.data as any;
-        onOpenNotification({
+        onNotifyOpened({
           data: remoteMessage.data,
           notification: iosIsEmulator ? dataMsg?.notification : remoteMessage.notification,
         });
       }
     } catch {}
 
-    try {
-      const fcmToken = await messaging().getToken();
-      // console.debug("[FCMService] Get Token: ", fcmToken);
-      onRegister(fcmToken);
-    } catch {}
-
     this.listener = {
+      onToken: listenerOnTokenRefresh,
       onMessage: listenerOnMessage,
-      onTokenRefresh: listenerOnTokenRefresh,
     };
 
+    // Check Register
     this.isRegistering = false;
     if (this.registerCount <= this.unregisterCount) {
       this.unregister();
     }
   }
 }
+
+const notifyPushService = new NotifyPushService();
+
+export default notifyPushService;

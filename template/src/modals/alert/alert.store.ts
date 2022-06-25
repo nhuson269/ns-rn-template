@@ -30,7 +30,7 @@ export const alertStore = create<AlertStore>((set, get) => ({
   btRightTitle: undefined,
   btLeftAction: () => set({ isVisible: false }),
   btRightAction: undefined,
-  open: (props: OpenProps) => {
+  open: props => {
     set({
       isVisible: true,
       title: props.title,

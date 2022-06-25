@@ -15,11 +15,12 @@ export const AccountDemoScreen = memo(() => {
     const user = userDemoStore(state => state.user);
     return user === undefined ? null : (
       <>
-        <Text valueTx="common.fullname" marginTop={6}>
+        <Text valueTx="common.fullname">
           {": "}
           <Text value={user.name} />
         </Text>
-        <Text value="Email: " marginTop={6}>
+        <Text marginTop={6}>
+          {"Email: "}
           <Text value={user.email} />
         </Text>
       </>

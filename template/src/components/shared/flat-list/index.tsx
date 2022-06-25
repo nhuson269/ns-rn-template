@@ -114,7 +114,7 @@ export const FlatList = memo((props: FlatListProps<any>) => {
       refreshing={refreshing}
       onLayout={onLayout}
       onEndReached={rest.onEndReached}
-      onEndReachedThreshold={0.1}
+      onEndReachedThreshold={0.3}
     />
   );
 });

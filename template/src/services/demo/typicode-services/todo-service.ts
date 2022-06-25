@@ -14,7 +14,7 @@ class TodoService {
       // make the api call
       const response: ApiResponse<any> = await this.client.instance.get(routes.demo.typicode.todos, {
         limit: 15,
-        skip: offset,
+        offset: offset,
       });
 
       // the typical ways to die when calling an api
@@ -25,7 +25,7 @@ class TodoService {
         }
       }
 
-      const items = getArrTaskTypicodeData(response.data.data);
+      const items = getArrTaskTypicodeData(response.data);
       return { kind: "ok", data: items };
     } catch (error: any) {
       return { kind: "bad-data", message: error };
