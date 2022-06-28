@@ -5,7 +5,7 @@ import create from "zustand";
 type HomeStore = {
   goTodoListHerokuapp: () => void;
   goTodoListTypicode: () => void;
-  goTodoDetailHerokuapp: () => void;
+  goToReaimationDemo: () => void;
   reset: () => void;
 };
 
@@ -21,6 +21,6 @@ export const homeDemoStore = create<HomeStore>(() => ({
     // navActions.navigateToTodoListDemo({ type: "Typicode" });
     navActions.navigateToTodoListTypicodeDemo();
   },
-  goTodoDetailHerokuapp: () => {},
+  goToReaimationDemo: () => navActions.navigateToReaimationDemo(),
   reset: () => {},
 }));

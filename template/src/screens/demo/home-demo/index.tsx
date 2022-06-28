@@ -21,6 +21,11 @@ export const HomeDemoScreen = memo(() => {
             <Text style={styles.todoTitle} color={colors.t_01} value={`Todo\nApi Typicode`} />
           </Pressable>
         </View>
+        <View flexRow marginTop={16}>
+          <Pressable style={todoContainer} onPress={store.goToReaimationDemo}>
+            <Text style={styles.todoTitle} color={colors.t_01} value="Reanimation Test Code" />
+          </Pressable>
+        </View>
       </Screen>
     </>
   );

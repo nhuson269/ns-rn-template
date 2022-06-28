@@ -61,6 +61,10 @@ function navigateToTodoListTypicodeDemo() {
   navHelper.navigate(RouteName.TODO_NAV_DEMO, { screen: RouteName.TODO_LIST_TYPICODE_DEMO });
 }
 
+function navigateToReaimationDemo() {
+  navHelper.navigate(RouteName.REANIMATION_DEMO);
+}
+
 const navActions = {
   navigateToWeb,
   replaceToAuthDemo,
@@ -71,6 +75,7 @@ const navActions = {
   navigateToTodoListDemo,
   replaceToTodoListDemo,
   navigateToTodoListTypicodeDemo,
+  navigateToReaimationDemo,
 };
 
 export default navActions;

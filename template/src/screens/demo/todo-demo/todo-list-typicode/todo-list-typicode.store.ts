@@ -6,6 +6,7 @@ import create from "zustand";
 type TodoListTypicodeStore = {
   isLoading: boolean;
   data: TaskDemoModel[];
+  dataDisplay: TaskDemoModel[];
   getData: () => Promise<void>;
   reset: () => void;
 };
@@ -13,6 +14,7 @@ type TodoListTypicodeStore = {
 export const todoListTypicodeDemoStore = create<TodoListTypicodeStore>((set, get) => ({
   isLoading: false,
   data: [],
+  dataDisplay: [],
   getData: async () => {
     if (get().isLoading) {
       return;
