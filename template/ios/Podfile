@@ -1,8 +1,11 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
+# react native firebase (https://rnfb-docs.netlify.app)
+$RNFirebaseAsStaticFramework = true
+$RNFirebaseAnalyticsWithoutAdIdSupport = true
+
 platform :ios, '11.0'
-use_frameworks! :linkage => :static
 install! 'cocoapods', :deterministic_uuids => false
 
 target 'HelloWorld' do
@@ -19,9 +22,6 @@ target 'HelloWorld' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-
-  # Disable Ad Id usage on iOS
-  $RNFirebaseAnalyticsWithoutAdIdSupport = true
 
   target 'HelloWorldTests' do
     inherit! :complete

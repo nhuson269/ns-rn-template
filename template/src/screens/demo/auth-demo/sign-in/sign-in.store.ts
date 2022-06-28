@@ -85,7 +85,13 @@ export const signInDemoStore = create<SignInStore>((set, get) => ({
   goForgotPassword: () => {
     navActions.navigateToForgotPasswordDemo({ username: get().username });
   },
-  onSkip: () => navActions.replaceToMainDemo(),
+  onSkip: () => {
+    if (!get().params?.onNavigateSuccess) {
+      navActions.replaceToMainDemo();
+    } else {
+      navActions.goBack();
+    }
+  },
   reset: () =>
     set({
       isLoading: false,

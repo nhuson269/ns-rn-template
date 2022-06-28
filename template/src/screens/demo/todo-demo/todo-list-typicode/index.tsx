@@ -22,10 +22,11 @@ export const TodoListTypicodeDemoScreen = memo(() => {
       <Screen statusBar="light-content" safe="rl" style={styles.container}>
         <FlatList
           paddingTop={16}
-          data={store.data}
+          data={store.dataDisplay}
           fetching={store.isLoading}
           renderItem={renderItem}
           onRefresh={store.getData}
+          onEndReached={store.getDataMore}
         />
       </Screen>
     </>

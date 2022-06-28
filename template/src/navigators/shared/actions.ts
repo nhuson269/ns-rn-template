@@ -4,6 +4,10 @@ import navHelper from "./helper";
 import { ForgotPasswordDemoParams, SignInDemoParams, SignUpDemoParams, TodoListDemoParams, WebParams } from "./params";
 import { RouteName } from "./routes";
 
+function goBack() {
+  navHelper.goBack();
+}
+
 function navigateToWeb(params: WebParams) {
   const url = params.url;
   if (typeof url !== "string") {
@@ -66,6 +70,7 @@ function navigateToReaimationDemo() {
 }
 
 const navActions = {
+  goBack,
   navigateToWeb,
   replaceToAuthDemo,
   replaceToMainDemo,

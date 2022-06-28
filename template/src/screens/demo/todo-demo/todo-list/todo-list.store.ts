@@ -46,7 +46,7 @@ export const todoListDemoStore = create<TodoListStore>((set, get) => ({
     }
   },
   getDataMore: async () => {
-    if (get().isLoading || get().isLoadingMore || get().data.length < get().limit) {
+    if (get().isLoading || get().isLoadingMore || get().isEndPage) {
       return;
     }
     set({ isLoadingMore: true });
