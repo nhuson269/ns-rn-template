@@ -52,7 +52,8 @@
     "settings": "Settings"
   },
   "todoList": {
-    "title": "Todo list"
+    "title": "Todo list",
+    "length": "Length"
   },
   "todoDetail": {
     "title": "Todo detail"

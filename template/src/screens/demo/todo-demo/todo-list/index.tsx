@@ -1,5 +1,5 @@
 import { useRoute } from "@react-navigation/native";
-import { FlatList, HeaderNav, Screen, TodoDemoItem } from "components";
+import { FlatList, HeaderNav, Screen, Text, TodoDemoItem } from "components";
 import TaskDemoModel from "models/demo/TaskDemoModel";
 import { TodoListDemoParams } from "navigators";
 import React, { memo, useCallback, useEffect } from "react";
@@ -27,6 +27,7 @@ export const TodoListDemoScreen = memo(() => {
     <>
       <HeaderNav titleTx="todoList.title" />
       <Screen statusBar="light-content" safe="rl" style={styles.container}>
+        <Text marginHorizontal={16} marginVertical={8} valueTx="todoList.length">{`: ${store.data.length}`}</Text>
         <FlatList
           paddingTop={16}
           data={store.data}

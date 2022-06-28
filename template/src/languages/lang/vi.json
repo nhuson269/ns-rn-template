@@ -52,7 +52,8 @@
     "settings": "Cài đặt"
   },
   "todoList": {
-    "title": "Danh sách Todo"
+    "title": "Danh sách Todo",
+    "length": "Chiều dài"
   },
   "todoDetail": {
     "title": "Chi tiết Todo"
