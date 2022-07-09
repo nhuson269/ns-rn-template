@@ -5,7 +5,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 $RNFirebaseAsStaticFramework = true
 $RNFirebaseAnalyticsWithoutAdIdSupport = true
 
-platform :ios, '11.0'
+platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 
 target 'HelloWorld' do
@@ -22,6 +22,8 @@ target 'HelloWorld' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+
+  $static_framework = ['Flipper-Boost-iOSX', 'Flipper-RSocket']
 
   target 'HelloWorldTests' do
     inherit! :complete
