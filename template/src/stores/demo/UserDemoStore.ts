@@ -32,6 +32,7 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
     let authToken: AuthTokenModel | undefined;
     try {
       const credentials = await Keychain.getGenericPassword();
+      console.debug(credentials);
       if (credentials) {
         authToken = { accessToken: credentials.username, refreshToken: credentials.password };
         set({ authToken: authToken });
@@ -61,6 +62,7 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
     }
   },
   setAuthToken: async (token: AuthTokenModel) => {
+    console.debug(token);
     if (token.accessToken) {
       await Keychain.setGenericPassword(token.accessToken, token.refreshToken || "refresh_token");
     } else {
@@ -69,7 +71,7 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
     set({ authToken: token });
   },
   setUser: value => {
-    set({ user: value });
+    set({ isSignIn: true, user: value });
     storageUtils.set(StorageKey.USER_DEMO_PROFILE, JSON.stringify(value));
   },
   removeUser: async () => {

@@ -60,10 +60,10 @@ export const signInDemoStore = create<SignInStore>((set, get) => ({
     set({ isLoading: true, msgUsername: "", msgPassword: "" });
     const resultLogin = await userService.login(username, password);
     if (resultLogin.kind === "ok") {
-      userDemoStore.setState({ authToken: resultLogin.authToken });
+      userDemoStore.getState().setAuthToken(resultLogin.authToken);
       const resultMe = await userService.userMe();
       if (resultMe.kind === "ok") {
-        userDemoStore.setState({ isSignIn: true, user: resultMe.data });
+        userDemoStore.getState().setUser(resultMe.data);
         if (params?.onNavigateSuccess === "goTodoListHerokuapp") {
           navActions.replaceToTodoListDemo({ type: "Herokuapp" });
         } else if (params?.onNavigateSuccess === "goTodoListTypicode") {

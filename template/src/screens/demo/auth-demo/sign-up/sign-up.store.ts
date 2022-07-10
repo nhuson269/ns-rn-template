@@ -82,10 +82,10 @@ export const signUpDemoStore = create<SignUpStore>((set, get) => ({
     set({ isLoading: true, msgUsername: "", msgPassword: "", msgPasswordConfirm: "" });
     const resultRegister = await userService.register(fullname, username, password);
     if (resultRegister.kind === "ok") {
-      userDemoStore.setState({ authToken: resultRegister.authToken });
+      userDemoStore.getState().setAuthToken(resultRegister.authToken);
       const resultMe = await userService.userMe();
       if (resultMe.kind === "ok") {
-        userDemoStore.setState({ isSignIn: true, user: resultMe.data });
+        userDemoStore.getState().setUser(resultMe.data);
         navActions.replaceToMainDemo();
       } else if (resultMe.message) {
         alertHelper.show({ message: resultMe.message });
