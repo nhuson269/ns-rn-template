@@ -82,7 +82,7 @@ export const signUpDemoStore = create<SignUpStore>((set, get) => ({
     set({ isLoading: true, msgUsername: "", msgPassword: "", msgPasswordConfirm: "" });
     const resultRegister = await userService.register(fullname, username, password);
     if (resultRegister.kind === "ok") {
-      userDemoStore.getState().setAuthToken(resultRegister.authToken);
+      await userDemoStore.getState().setAuthToken(resultRegister.authToken);
       const resultMe = await userService.userMe();
       if (resultMe.kind === "ok") {
         userDemoStore.getState().setUser(resultMe.data);
