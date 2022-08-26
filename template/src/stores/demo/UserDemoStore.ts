@@ -32,7 +32,6 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
     let authToken: AuthTokenModel | undefined;
     try {
       const credentials = await Keychain.getGenericPassword();
-      console.debug(credentials);
       if (credentials) {
         authToken = { accessToken: credentials.username, refreshToken: credentials.password };
         set({ authToken: authToken });
@@ -62,7 +61,6 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
     }
   },
   setAuthToken: async (token: AuthTokenModel) => {
-    console.debug(token);
     if (token.accessToken) {
       await Keychain.setGenericPassword(token.accessToken, token.refreshToken || "refresh_token");
     } else {
