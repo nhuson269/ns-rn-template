@@ -1,6 +1,6 @@
 {
   "name": "ns-rn-template",
-  "version": "2.0.3",
+  "version": "2.0.5",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
   "author": {
     "name": "Nguyen Nhu Son",
