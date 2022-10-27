@@ -48,9 +48,9 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   bridge.surfacePresenter = _bridgeAdapter.surfacePresenter;
 #endif
 
-  NSDictionary *appProperties = [RNFBMessagingModule addCustomPropsToUserProps:nil withLaunchOptions:launchOptions];
   NSDictionary *initProps = [self prepareInitialProps];
-  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"HelloWorld", initProps);
+  NSDictionary *appProperties = [RNFBMessagingModule addCustomPropsToUserProps:initProps withLaunchOptions:launchOptions];
+  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"HelloWorld", appProperties);
 
   if (@available(iOS 13.0, *)) {
     rootView.backgroundColor = [UIColor systemBackgroundColor];
