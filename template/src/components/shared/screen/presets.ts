@@ -1,4 +1,4 @@
-import { ViewStyle } from "react-native";
+import {ViewStyle} from 'react-native';
 
 /**
  * All screen keyboard offsets.
@@ -23,14 +23,14 @@ export const presets = {
   fixed: {
     outer: {
       flex: 1,
-      height: "100%",
+      height: '100%',
     } as ViewStyle,
     inner: {
-      justifyContent: "flex-start",
-      alignItems: "stretch",
+      justifyContent: 'flex-start',
+      alignItems: 'stretch',
       flex: 1,
-      height: "100%",
-      width: "100%",
+      height: '100%',
+      width: '100%',
     } as ViewStyle,
   },
 
@@ -42,9 +42,9 @@ export const presets = {
   scroll: {
     outer: {
       flex: 1,
-      height: "100%",
+      height: '100%',
     } as ViewStyle,
-    inner: { justifyContent: "flex-start", alignItems: "stretch" } as ViewStyle,
+    inner: {justifyContent: 'flex-start', alignItems: 'stretch'} as ViewStyle,
   },
 };
 

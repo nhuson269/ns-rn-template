@@ -1,33 +1,36 @@
-import React, { memo, useEffect } from "react";
-import { KeyboardAvoidingView, Platform, ScrollView } from "react-native";
-import { Edge as SafeEdge, SafeAreaView } from "react-native-safe-area-context";
-import { ScreenProps } from "./props";
-import { offsets, presets } from "./presets";
-import { useIsFocused } from "@react-navigation/native";
-import { colorDemoStore } from "stores";
-import { statusBarStore } from "../status-bar/status-bar.store";
+import React, {memo, useEffect} from 'react';
+import {KeyboardAvoidingView, Platform, ScrollView} from 'react-native';
+import {Edge as SafeEdge, SafeAreaView} from 'react-native-safe-area-context';
+import {ScreenProps} from './props';
+import {offsets, presets} from './presets';
+import {useIsFocused} from '@react-navigation/native';
+import {colorDemoStore} from 'stores';
+import {statusBarStore} from '../status-bar/status-bar.store';
 
-const isIos = Platform.OS === "ios";
+const isIos = Platform.OS === 'ios';
 
 const ScreenWithoutScrolling = memo((props: ScreenProps) => {
   const preset = presets.fixed;
-  const safe = props.safe || "trl";
+  const safe = props.safe || 'trl';
   const safeEdge: SafeEdge[] =
-    safe === "full"
-      ? ["top", "right", "bottom", "left"]
-      : safe === "trl"
-      ? ["top", "right", "left"]
-      : ["right", "left"];
+    safe === 'full'
+      ? ['top', 'right', 'bottom', 'left']
+      : safe === 'trl'
+      ? ['top', 'right', 'left']
+      : ['right', 'left'];
 
   const colors = colorDemoStore().colors;
-  const styleContainer = [preset.outer, { backgroundColor: props.backgroundColor || colors.bg_01 }];
+  const styleContainer = [
+    preset.outer,
+    {backgroundColor: props.backgroundColor || colors.bg_01},
+  ];
   const styleContent = [preset.inner, props.style || {}];
 
   return (
     <KeyboardAvoidingView
       style={styleContainer}
-      behavior={isIos ? "padding" : undefined}
-      keyboardVerticalOffset={offsets[props.keyboardOffset || "none"]}>
+      behavior={isIos ? 'padding' : undefined}
+      keyboardVerticalOffset={offsets[props.keyboardOffset || 'none']}>
       <SafeAreaView style={styleContent} edges={safeEdge}>
         {props.children}
       </SafeAreaView>
@@ -37,28 +40,33 @@ const ScreenWithoutScrolling = memo((props: ScreenProps) => {
 
 const ScreenWithScrolling = memo((props: ScreenProps) => {
   const preset = presets.scroll;
-  const safe = props.safe || "trl";
+  const safe = props.safe || 'trl';
   const safeEdge: SafeEdge[] =
-    safe === "full"
-      ? ["top", "right", "bottom", "left"]
-      : safe === "trl"
-      ? ["top", "right", "left"]
-      : ["right", "left"];
+    safe === 'full'
+      ? ['top', 'right', 'bottom', 'left']
+      : safe === 'trl'
+      ? ['top', 'right', 'left']
+      : ['right', 'left'];
 
   const colors = colorDemoStore().colors;
-  const styleContainer = [preset.outer, { backgroundColor: props.backgroundColor || colors.bg_01 }];
+  const styleContainer = [
+    preset.outer,
+    {backgroundColor: props.backgroundColor || colors.bg_01},
+  ];
   const styleContent = [preset.inner, props.style || {}];
 
   return (
     <KeyboardAvoidingView
       style={styleContainer}
-      behavior={isIos ? "padding" : undefined}
-      keyboardVerticalOffset={offsets[props.keyboardOffset || "none"]}>
+      behavior={isIos ? 'padding' : undefined}
+      keyboardVerticalOffset={offsets[props.keyboardOffset || 'none']}>
       <SafeAreaView style={styleContainer} edges={safeEdge}>
         <ScrollView
           style={styleContainer}
           contentContainerStyle={styleContent}
-          keyboardShouldPersistTaps={props.keyboardShouldPersistTaps || "handled"}>
+          keyboardShouldPersistTaps={
+            props.keyboardShouldPersistTaps || 'handled'
+          }>
           {props.children}
         </ScrollView>
       </SafeAreaView>
@@ -76,16 +84,16 @@ export const Screen = memo((props: ScreenProps) => {
 
   useEffect(() => {
     if (isFocused) {
-      statusBarStore.setState({ style: props.statusBar || "dark-content" });
+      statusBarStore.setState({style: props.statusBar || 'dark-content'});
     }
   }, [isFocused, props.statusBar]);
 
   switch (props.preset) {
-    case "scroll":
+    case 'scroll':
       return <ScreenWithScrolling {...props} />;
     default:
       return <ScreenWithoutScrolling {...props} />;
   }
 });
 
-Screen.displayName = "ScreenCustom";
+Screen.displayName = 'ScreenCustom';

@@ -1,4 +1,4 @@
-import create from "zustand";
+import {create} from 'zustand';
 
 export type OpenProps = {
   message: string;
@@ -25,36 +25,36 @@ type AlertStore = {
 export const alertStore = create<AlertStore>((set, get) => ({
   isVisible: false,
   title: undefined,
-  message: "",
-  btLeftTitle: "Ok",
+  message: '',
+  btLeftTitle: 'Ok',
   btRightTitle: undefined,
-  btLeftAction: () => set({ isVisible: false }),
+  btLeftAction: () => set({isVisible: false}),
   btRightAction: undefined,
   open: props => {
     set({
       isVisible: true,
       title: props.title,
       message: props.message,
-      btLeftTitle: props.btLeftTitle || "Ok",
+      btLeftTitle: props.btLeftTitle || 'Ok',
       btRightTitle: props.btRightTitle,
       btLeftAction: () => {
-        set({ isVisible: false });
+        set({isVisible: false});
         props.btLeftAction?.();
       },
       btRightAction: () => {
-        set({ isVisible: false });
+        set({isVisible: false});
         props.btRightAction?.();
       },
     });
   },
   onDismiss: () => {
     if (get().isVisible) {
-      set({ isVisible: false });
+      set({isVisible: false});
     }
   },
   onShow: () => {
     if (!get().isVisible) {
-      set({ isVisible: true });
+      set({isVisible: true});
     }
   },
 }));

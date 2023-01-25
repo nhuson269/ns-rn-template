@@ -1,4 +1,9 @@
-import { FlexAlignType, StyleProp, PressableProps as RNPressableProps, ViewStyle } from "react-native";
+import {
+  FlexAlignType,
+  StyleProp,
+  PressableProps as RNPressableProps,
+  ViewStyle,
+} from 'react-native';
 
 export interface PressableProps extends RNPressableProps {
   /**
@@ -24,7 +29,7 @@ export interface PressableProps extends RNPressableProps {
   /**
    * View style, overflow.
    */
-  overflow?: "visible" | "hidden" | "scroll";
+  overflow?: 'visible' | 'hidden' | 'scroll';
 
   /**
    * View style, position: "absolute".
@@ -134,7 +139,13 @@ export interface PressableProps extends RNPressableProps {
   /**
    * View style, justifyContent.
    */
-  justifyContent?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
+  justifyContent?:
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly';
 
   /**
    * View style, turn on shadow.

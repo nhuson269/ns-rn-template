@@ -1,14 +1,13 @@
-import { HeaderNav, Screen, View } from "components";
-import React, { memo } from "react";
-import { PanGestureHandler, TapGestureHandler } from "react-native-gesture-handler";
+import {HeaderNav, Screen} from 'components';
+import React, {memo} from 'react';
+import {PanGestureHandler} from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
-  withSpring,
-} from "react-native-reanimated";
-import { colorDemoStore } from "stores";
-import { styles } from "./styles";
+} from 'react-native-reanimated';
+import {colorDemoStore} from 'stores';
+import {styles} from './styles';
 
 export const ReanimationDemoScreen = memo(() => {
   const colors = colorDemoStore().colors;
@@ -49,8 +48,8 @@ export const ReanimationDemoScreen = memo(() => {
 
   const uas = useAnimatedStyle(() => {
     return {
-      backgroundColor: pressed.value ? "#FEEF86" : "#001972",
-      transform: [{ translateX: x.value }, { translateY: y.value }],
+      backgroundColor: pressed.value ? '#FEEF86' : '#001972',
+      transform: [{translateX: x.value}, {translateY: y.value}],
     };
   }, [x, y]);
 
@@ -60,7 +59,16 @@ export const ReanimationDemoScreen = memo(() => {
       <Screen statusBar="light-content" safe="rl" style={styles.container}>
         <PanGestureHandler onGestureEvent={eventHandler}>
           <Animated.View
-            style={[{ marginLeft: 44, marginTop: 44, height: 60, width: 60, backgroundColor: colors.t_03 }, uas]}
+            style={[
+              {
+                marginLeft: 44,
+                marginTop: 44,
+                height: 60,
+                width: 60,
+                backgroundColor: colors.t_03,
+              },
+              uas,
+            ]}
           />
         </PanGestureHandler>
       </Screen>
@@ -68,4 +76,4 @@ export const ReanimationDemoScreen = memo(() => {
   );
 });
 
-ReanimationDemoScreen.displayName = "ReanimationDemoScreen";
+ReanimationDemoScreen.displayName = 'ReanimationDemoScreen';

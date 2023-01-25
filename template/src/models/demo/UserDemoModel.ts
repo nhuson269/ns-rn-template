@@ -1,4 +1,4 @@
-import storageUtils, { StorageKey } from "utils/storage-utils";
+import storageUtils, {StorageKey} from 'utils/storage-utils';
 
 class UserDemoModel {
   v: number;

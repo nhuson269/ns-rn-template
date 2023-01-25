@@ -1,6 +1,12 @@
-import { ApiResponse } from "apisauce";
-import { getArrTaskTypicodeData } from "models/demo/TaskDemoModel";
-import { Client, getGeneralApiProblem, GetTasksDemoResult, routes, TYPICODE_CLIENT_CONFIG } from "services/api";
+import {ApiResponse} from 'apisauce';
+import {getArrTaskTypicodeData} from 'models/demo/TaskDemoModel';
+import {
+  Client,
+  getGeneralApiProblem,
+  GetTasksDemoResult,
+  routes,
+  TYPICODE_CLIENT_CONFIG,
+} from 'services/api';
 
 class TodoService {
   private client: Client;
@@ -12,10 +18,13 @@ class TodoService {
   async getList(offset: number): Promise<GetTasksDemoResult> {
     try {
       // make the api call
-      const response: ApiResponse<any> = await this.client.instance.get(routes.demo.typicode.todos, {
-        limit: 15,
-        offset: offset,
-      });
+      const response: ApiResponse<any> = await this.client.instance.get(
+        routes.demo.typicode.todos,
+        {
+          limit: 15,
+          offset: offset,
+        },
+      );
 
       // the typical ways to die when calling an api
       if (!response.ok) {
@@ -26,9 +35,9 @@ class TodoService {
       }
 
       const items = getArrTaskTypicodeData(response.data);
-      return { kind: "ok", data: items };
+      return {kind: 'ok', data: items};
     } catch (error: any) {
-      return { kind: "bad-data", message: error };
+      return {kind: 'bad-data', message: error};
     }
   }
 }

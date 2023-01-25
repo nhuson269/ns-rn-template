@@ -1,17 +1,17 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {},
   statusBar: {},
   header: {
     height: 44,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   title: {
-    position: "absolute",
+    position: 'absolute',
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     left: 16,
     right: 76,
   },

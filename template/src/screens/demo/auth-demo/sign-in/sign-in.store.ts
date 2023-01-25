@@ -1,11 +1,11 @@
-import { translate } from "languages";
-import alertHelper from "modals/alert/helper";
-import { SignInDemoParams } from "navigators";
-import navActions from "navigators/shared/actions";
-import { Keyboard } from "react-native";
-import { userService } from "services/demo/herokuapp-service";
-import { userDemoStore } from "stores";
-import create from "zustand";
+import {translate} from 'languages';
+import alertHelper from 'modals/alert/helper';
+import {SignInDemoParams} from 'navigators';
+import navActions from 'navigators/shared/actions';
+import {Keyboard} from 'react-native';
+import {userService} from 'services/demo/herokuapp-service';
+import {userDemoStore} from 'stores';
+import {create} from 'zustand';
 
 type SignInStore = {
   isLoading: boolean;
@@ -27,63 +27,63 @@ type SignInStore = {
 export const signInDemoStore = create<SignInStore>((set, get) => ({
   isLoading: false,
   params: undefined,
-  username: "muh.nurali43@gmail.com",
-  password: "12345678",
-  msgUsername: "",
-  msgPassword: "",
-  setParams: value => set({ params: value }),
+  username: 'muh.nurali43@gmail.com',
+  password: '12345678',
+  msgUsername: '',
+  msgPassword: '',
+  setParams: value => set({params: value}),
   setUsername: value => {
     if (value !== get().username) {
-      set({ username: value, msgUsername: "" });
+      set({username: value, msgUsername: ''});
     }
   },
   setPassword: value => {
     if (value !== get().password) {
-      set({ password: value, msgPassword: "" });
+      set({password: value, msgPassword: ''});
     }
   },
   login: async () => {
     Keyboard.dismiss();
-    const { isLoading, username, password, params } = get();
+    const {isLoading, username, password, params} = get();
     if (isLoading) {
       return;
     }
     if (!username || !password) {
       if (!username) {
-        set({ msgUsername: translate("errors.emptyUsername") });
+        set({msgUsername: translate('errors.emptyUsername')});
       }
       if (!password) {
-        set({ msgPassword: translate("errors.emptyPassword") });
+        set({msgPassword: translate('errors.emptyPassword')});
       }
       return;
     }
-    set({ isLoading: true, msgUsername: "", msgPassword: "" });
+    set({isLoading: true, msgUsername: '', msgPassword: ''});
     const resultLogin = await userService.login(username, password);
-    if (resultLogin.kind === "ok") {
+    if (resultLogin.kind === 'ok') {
       await userDemoStore.getState().setAuthToken(resultLogin.authToken);
       const resultMe = await userService.userMe();
-      if (resultMe.kind === "ok") {
+      if (resultMe.kind === 'ok') {
         userDemoStore.getState().setUser(resultMe.data);
-        if (params?.onNavigateSuccess === "goTodoListHerokuapp") {
-          navActions.replaceToTodoListDemo({ type: "Herokuapp" });
-        } else if (params?.onNavigateSuccess === "goTodoListTypicode") {
-          navActions.replaceToTodoListDemo({ type: "Typicode" });
+        if (params?.onNavigateSuccess === 'goTodoListHerokuapp') {
+          navActions.replaceToTodoListDemo({type: 'Herokuapp'});
+        } else if (params?.onNavigateSuccess === 'goTodoListTypicode') {
+          navActions.replaceToTodoListDemo({type: 'Typicode'});
         } else {
           navActions.replaceToMainDemo();
         }
       } else if (resultMe.message) {
-        alertHelper.show({ message: resultMe.message });
+        alertHelper.show({message: resultMe.message});
       }
     } else if (resultLogin.message) {
-      alertHelper.show({ message: resultLogin.message });
+      alertHelper.show({message: resultLogin.message});
     }
-    set({ isLoading: false });
+    set({isLoading: false});
   },
   goSignUp: () => {
-    navActions.navigateToSignUpDemo({ username: get().username });
+    navActions.navigateToSignUpDemo({username: get().username});
   },
   goForgotPassword: () => {
-    navActions.navigateToForgotPasswordDemo({ username: get().username });
+    navActions.navigateToForgotPasswordDemo({username: get().username});
   },
   onSkip: () => {
     if (!get().params?.onNavigateSuccess) {
@@ -96,9 +96,9 @@ export const signInDemoStore = create<SignInStore>((set, get) => ({
     set({
       isLoading: false,
       params: undefined,
-      username: "muh.nurali43@gmail.com",
-      password: "12345678",
-      msgUsername: "",
-      msgPassword: "",
+      username: 'muh.nurali43@gmail.com',
+      password: '12345678',
+      msgUsername: '',
+      msgPassword: '',
     }),
 }));

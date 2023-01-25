@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
@@ -6,13 +6,13 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
   },
   title: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 8,
   },
   message: {},
   actionsView: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
     marginTop: 16,
   },
   btAction: {

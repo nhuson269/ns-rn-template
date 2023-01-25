@@ -1,8 +1,8 @@
-import { translate } from "languages";
-import alertHelper from "modals/alert/helper";
-import { Keyboard } from "react-native";
-import { delay } from "utils/delay";
-import create from "zustand";
+import {translate} from 'languages';
+import alertHelper from 'modals/alert/helper';
+import {Keyboard} from 'react-native';
+import {delay} from 'utils/delay';
+import {create} from 'zustand';
 
 type ForgotPasswordStore = {
   isLoading: boolean;
@@ -13,34 +13,36 @@ type ForgotPasswordStore = {
   reset: () => void;
 };
 
-export const forgotPasswordDemoStore = create<ForgotPasswordStore>((set, get) => ({
-  isLoading: false,
-  username: "",
-  msgUsername: "",
-  setUsername: value => {
-    if (value !== get().username) {
-      set({ username: value, msgUsername: "" });
-    }
-  },
-  goConfirm: async () => {
-    Keyboard.dismiss();
-    const { isLoading, username } = get();
-    if (isLoading) {
-      return;
-    }
-    if (!username) {
-      set({ msgUsername: translate("errors.emptyUsername") });
-      return;
-    }
-    set({ isLoading: true, msgUsername: "" });
-    await delay(1500);
-    set({ isLoading: false });
-    alertHelper.show({ message: translate("errors.featureBeingWorked") || "" });
-  },
-  reset: () =>
-    set({
-      isLoading: false,
-      username: "",
-      msgUsername: "",
-    }),
-}));
+export const forgotPasswordDemoStore = create<ForgotPasswordStore>(
+  (set, get) => ({
+    isLoading: false,
+    username: '',
+    msgUsername: '',
+    setUsername: value => {
+      if (value !== get().username) {
+        set({username: value, msgUsername: ''});
+      }
+    },
+    goConfirm: async () => {
+      Keyboard.dismiss();
+      const {isLoading, username} = get();
+      if (isLoading) {
+        return;
+      }
+      if (!username) {
+        set({msgUsername: translate('errors.emptyUsername')});
+        return;
+      }
+      set({isLoading: true, msgUsername: ''});
+      await delay(1500);
+      set({isLoading: false});
+      alertHelper.show({message: translate('errors.featureBeingWorked') || ''});
+    },
+    reset: () =>
+      set({
+        isLoading: false,
+        username: '',
+        msgUsername: '',
+      }),
+  }),
+);

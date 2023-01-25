@@ -7,7 +7,7 @@ export default AuthTokenModel;
 
 export function getAuthTokenData(dataJson: any) {
   const accessToken = dataJson?.token;
-  const refreshToken = dataJson?.refresh_token || "";
+  const refreshToken = dataJson?.refresh_token || '';
   if (accessToken) {
     const item: AuthTokenModel = {
       accessToken: accessToken,

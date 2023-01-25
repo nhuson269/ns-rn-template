@@ -1,19 +1,19 @@
-import React, { memo, useMemo } from "react";
-import { ActivityIndicator, StyleProp, TextStyle, ViewStyle } from "react-native";
-import { presets } from "./presets";
-import { ButtonProps } from "./props";
-import { styles } from "./styles";
-import { colorDemoStore } from "stores";
-import { Text } from "../text";
-import { View } from "../view";
-import { Pressable } from "../pressable";
+import React, {memo, useMemo} from 'react';
+import {ActivityIndicator, StyleProp, TextStyle, ViewStyle} from 'react-native';
+import {presets} from './presets';
+import {ButtonProps} from './props';
+import {styles} from './styles';
+import {colorDemoStore} from 'stores';
+import {Text} from '../text';
+import {View} from '../view';
+import {Pressable} from '../pressable';
 
 /**
  * A component which has a label and an input together.
  */
 export const Button = memo((props: ButtonProps) => {
   const {
-    preset = "default",
+    preset = 'default',
     titleTx,
     title,
     titleColor,
@@ -55,24 +55,38 @@ export const Button = memo((props: ButtonProps) => {
   const styleContainer = [styles.container, styleOverride, styleProps];
 
   const MessageText = useMemo(() => {
-    return message ? <Text style={styles.message} value={message} color={colors.error} /> : null;
+    return message ? (
+      <Text style={styles.message} value={message} color={colors.error} />
+    ) : null;
   }, [message, colors.error]);
 
   const ContentView = useMemo(() => {
     const stylePreset = presets[preset] || presets.default;
     const styleButton: StyleProp<ViewStyle> = [
-      { backgroundColor: backgroundColor || colors.t_03 },
+      {backgroundColor: backgroundColor || colors.t_03},
       stylePreset,
       buttonStyleOverride,
     ];
-    const colorTitle = titleColor || preset === "default" ? colors.t_01 : colors.t_03;
-    const styleTitle: StyleProp<TextStyle> = [styles.title, { color: colorTitle }, titleStyleOverride];
+    const colorTitle =
+      titleColor || preset === 'default' ? colors.t_01 : colors.t_03;
+    const styleTitle: StyleProp<TextStyle> = [
+      styles.title,
+      {color: colorTitle},
+      titleStyleOverride,
+    ];
 
     if (loading) {
       return (
         <View style={styleButton}>
-          <Text style={[styleTitle, { opacity: 0 }]} valueTx={titleTx} value={title} />
-          <ActivityIndicator style={{ position: "absolute" }} color={colorTitle} />
+          <Text
+            style={[styleTitle, {opacity: 0}]}
+            valueTx={titleTx}
+            value={title}
+          />
+          <ActivityIndicator
+            style={{position: 'absolute'}}
+            color={colorTitle}
+          />
         </View>
       );
     }
@@ -103,4 +117,4 @@ export const Button = memo((props: ButtonProps) => {
   );
 });
 
-Button.displayName = "ButtonCustom";
+Button.displayName = 'ButtonCustom';

@@ -1,4 +1,4 @@
-import { MMKV } from "react-native-mmkv";
+import {MMKV} from 'react-native-mmkv';
 
 // interface AsyncStorage {
 //   getItem: (key: string) => string | null | Promise<string | null>;
@@ -21,10 +21,10 @@ export const MMKVStorage = {
 };
 
 export enum StorageKey {
-  USER_DEMO_PROFILE = "user_demo_profile", // value is object
-  COLOR_DEMO_THEME = "color_demo_theme", // value is string
-  LANGUAGE = "language", // value is string
-  NOTIFY_TOKEN = "notification_token", // value is sting
+  USER_DEMO_PROFILE = 'user_demo_profile', // value is object
+  COLOR_DEMO_THEME = 'color_demo_theme', // value is string
+  LANGUAGE = 'language', // value is string
+  NOTIFY_TOKEN = 'notification_token', // value is sting
 }
 
 class StorageUtils {
@@ -55,7 +55,10 @@ class StorageUtils {
   cleanCache() {
     const keys = storage.getAllKeys();
     keys.forEach(value => {
-      if (value !== StorageKey.LANGUAGE && value !== StorageKey.COLOR_DEMO_THEME) {
+      if (
+        value !== StorageKey.LANGUAGE &&
+        value !== StorageKey.COLOR_DEMO_THEME
+      ) {
         storage.delete(value);
       }
     });

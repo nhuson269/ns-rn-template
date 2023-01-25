@@ -1,12 +1,17 @@
-import useIsMounted from "hooks/useIsMounted";
-import React, { memo, useCallback, useMemo, useState } from "react";
-import { Pressable, StyleProp, TextInput as RNTextInput, ViewStyle } from "react-native";
-import { TextInputProps } from "./props";
-import { styles } from "./styles";
-import Icons from "react-native-vector-icons/MaterialCommunityIcons";
-import { Text, View } from "components";
-import { useTranslation } from "react-i18next";
-import { colorDemoStore } from "stores";
+import useIsMounted from 'hooks/useIsMounted';
+import React, {memo, useCallback, useMemo, useState} from 'react';
+import {
+  Pressable,
+  StyleProp,
+  TextInput as RNTextInput,
+  ViewStyle,
+} from 'react-native';
+import {TextInputProps} from './props';
+import {styles} from './styles';
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Text, View} from 'components';
+import {useTranslation} from 'react-i18next';
+import {colorDemoStore} from 'stores';
 
 /**
  * A component which has a label and an input together.
@@ -32,9 +37,11 @@ export const TextInput = memo((props: TextInputProps) => {
   const colors = colorDemoStore().colors;
   const [borderColor, setBorderColor] = useState<string>(colors.bg_02);
   const [bgColor, setBgColor] = useState<string>(colors.bg_02);
-  const [isSecure, setIsSecure] = useState<boolean>(rest.secureTextEntry || false);
+  const [isSecure, setIsSecure] = useState<boolean>(
+    rest.secureTextEntry || false,
+  );
   const isMounted = useIsMounted();
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   const actualPlaceholder = placeholderTx ? t(placeholderTx) : placeholder;
 
@@ -58,7 +65,11 @@ export const TextInput = memo((props: TextInputProps) => {
     styleProps.marginVertical = marginVertical;
   }
   const styleContainer = [styles.container, styleOverride, styleProps];
-  const styleInput = [styles.textInput, inputStyleOverride, { backgroundColor: bgColor, borderColor: borderColor }];
+  const styleInput = [
+    styles.textInput,
+    inputStyleOverride,
+    {backgroundColor: bgColor, borderColor: borderColor},
+  ];
 
   const keyboardDidShow = useCallback(() => {
     if (isMounted()) {
@@ -79,19 +90,28 @@ export const TextInput = memo((props: TextInputProps) => {
   }, [isSecure]);
 
   const LabelText = useMemo(() => {
-    return label || labelTx ? <Text style={styles.label} value={label} valueTx={labelTx} color={colors.t_02} /> : null;
+    return label || labelTx ? (
+      <Text
+        style={styles.label}
+        value={label}
+        valueTx={labelTx}
+        color={colors.t_02}
+      />
+    ) : null;
   }, [label, labelTx, colors.t_02]);
 
   const SecureView = useMemo(() => {
     return !rest.secureTextEntry ? null : (
       <Pressable style={styles.btEye} onPress={changeIsSecure}>
-        <Icons name={isSecure ? "eye-off" : "eye"} size={16} />
+        <Icons name={isSecure ? 'eye-off' : 'eye'} size={16} />
       </Pressable>
     );
   }, [rest.secureTextEntry, isSecure, changeIsSecure]);
 
   const MessageText = useMemo(() => {
-    return message ? <Text style={styles.message} value={message} color={colors.error} /> : null;
+    return message ? (
+      <Text style={styles.message} value={message} color={colors.error} />
+    ) : null;
   }, [message, colors.error]);
 
   return (
@@ -114,4 +134,4 @@ export const TextInput = memo((props: TextInputProps) => {
   );
 });
 
-TextInput.displayName = "TextInputCustom";
+TextInput.displayName = 'TextInputCustom';

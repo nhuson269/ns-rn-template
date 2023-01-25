@@ -1,7 +1,7 @@
-import { Button, HeaderNav, Screen, TextInput } from "components";
-import React, { memo, useEffect } from "react";
-import { forgotPasswordDemoStore } from "./forgot-password.store";
-import { styles } from "./styles";
+import {Button, HeaderNav, Screen, TextInput} from 'components';
+import React, {memo, useEffect} from 'react';
+import {forgotPasswordDemoStore} from './forgot-password.store';
+import {styles} from './styles';
 
 export const ForgotPasswordDemoScreen = memo(() => {
   const store = forgotPasswordDemoStore();
@@ -13,7 +13,11 @@ export const ForgotPasswordDemoScreen = memo(() => {
   return (
     <>
       <HeaderNav titleTx="common.forgotPassword" />
-      <Screen statusBar="light-content" safe="rl" preset="scroll" style={styles.container}>
+      <Screen
+        statusBar="light-content"
+        safe="rl"
+        preset="scroll"
+        style={styles.container}>
         <TextInput
           style={styles.username}
           marginBottom={16}
@@ -24,10 +28,15 @@ export const ForgotPasswordDemoScreen = memo(() => {
           onChangeText={store.setUsername}
           onSubmitEditing={store.goConfirm}
         />
-        <Button style={styles.btConfirm} titleTx="common.confirm" loading={store.isLoading} onPress={store.goConfirm} />
+        <Button
+          style={styles.btConfirm}
+          titleTx="common.confirm"
+          loading={store.isLoading}
+          onPress={store.goConfirm}
+        />
       </Screen>
     </>
   );
 });
 
-ForgotPasswordDemoScreen.displayName = "ForgotPasswordDemoScreen";
+ForgotPasswordDemoScreen.displayName = 'ForgotPasswordDemoScreen';

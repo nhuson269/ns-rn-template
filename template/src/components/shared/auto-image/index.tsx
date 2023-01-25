@@ -1,5 +1,10 @@
-import React, { memo, useLayoutEffect, useState } from "react";
-import { Image as RNImage, ImageProps as DefaultImageProps, ImageURISource, Platform } from "react-native";
+import React, {memo, useLayoutEffect, useState} from 'react';
+import {
+  Image as RNImage,
+  ImageProps as DefaultImageProps,
+  ImageURISource,
+  Platform,
+} from 'react-native';
 
 type ImageProps = DefaultImageProps & {
   source: ImageURISource;
@@ -19,7 +24,7 @@ type ImageProps = DefaultImageProps & {
  * component and are web-ready if not explicitly sized in the style property.
  */
 export const AutoImage = memo((props: ImageProps) => {
-  const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
+  const [imageSize, setImageSize] = useState({width: 0, height: 0});
 
   useLayoutEffect(() => {
     let mounted = true;
@@ -27,19 +32,19 @@ export const AutoImage = memo((props: ImageProps) => {
     if (props.source?.uri) {
       RNImage.getSize(props.source.uri as any, (width, height) => {
         if (mounted) {
-          setImageSize({ width, height });
+          setImageSize({width, height});
         }
       });
-    } else if (Platform.OS === "web") {
+    } else if (Platform.OS === 'web') {
       // web requires a different method to get it's size
       RNImage.getSize(props.source as any, (width, height) => {
         if (mounted) {
-          setImageSize({ width, height });
+          setImageSize({width, height});
         }
       });
     } else {
-      const { width, height } = RNImage.resolveAssetSource(props.source);
-      setImageSize({ width, height });
+      const {width, height} = RNImage.resolveAssetSource(props.source);
+      setImageSize({width, height});
     }
 
     return () => {
@@ -50,4 +55,4 @@ export const AutoImage = memo((props: ImageProps) => {
   return <RNImage {...props} style={[imageSize, props.style]} />;
 });
 
-AutoImage.displayName = "AutoImage";
+AutoImage.displayName = 'AutoImage';

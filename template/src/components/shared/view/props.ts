@@ -1,4 +1,9 @@
-import { FlexAlignType, StyleProp, ViewProps as RNViewProps, ViewStyle } from "react-native";
+import {
+  FlexAlignType,
+  StyleProp,
+  ViewProps as RNViewProps,
+  ViewStyle,
+} from 'react-native';
 
 export interface ViewProps extends RNViewProps {
   /**
@@ -24,7 +29,7 @@ export interface ViewProps extends RNViewProps {
   /**
    * View style, overflow.
    */
-  overflow?: "visible" | "hidden" | "scroll";
+  overflow?: 'visible' | 'hidden' | 'scroll';
 
   /**
    * View style, position: "absolute".
@@ -134,7 +139,13 @@ export interface ViewProps extends RNViewProps {
   /**
    * View style, justifyContent.
    */
-  justifyContent?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
+  justifyContent?:
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly';
 
   /**
    * View style, turn on shadow.

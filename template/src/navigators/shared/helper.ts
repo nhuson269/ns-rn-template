@@ -1,15 +1,19 @@
-import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
-import { NavigationContainerRef, StackActions, TabActions } from "@react-navigation/native";
-import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
-import { TransitionPresets } from "@react-navigation/stack";
-import { createRef } from "react";
-import { Keyboard } from "react-native";
-import analyticsService from "services/analytics-service";
-import { RouteName } from "./routes";
+import {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs';
+import {
+  NavigationContainerRef,
+  StackActions,
+  TabActions,
+} from '@react-navigation/native';
+import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
+import {TransitionPresets} from '@react-navigation/stack';
+import {createRef} from 'react';
+import {Keyboard} from 'react-native';
+// import analyticsService from 'services/analytics-service';
+import {RouteName} from './routes';
 
 let previousRouteName: string | undefined;
 
-type ParamBase = { [key: string]: object | string | number | undefined };
+type ParamBase = {[key: string]: object | string | number | undefined};
 export const navigationRef = createRef<NavigationContainerRef<ParamBase>>();
 
 function getRef(hideKeyboard?: boolean) {
@@ -34,7 +38,7 @@ function popToTop() {
 }
 
 function reset(name: RouteName, params?: ParamBase) {
-  getRef(true)?.reset({ index: 1, routes: [{ name, params }] });
+  getRef(true)?.reset({index: 1, routes: [{name, params}]});
 }
 
 function navigate(routeName: RouteName, params?: ParamBase) {
@@ -56,7 +60,7 @@ function jumpTo(screen: RouteName) {
 export function navOnStateChange() {
   const currentRoute = getRoute();
   if (currentRoute?.name && previousRouteName !== currentRoute.name) {
-    analyticsService.logScreenView(currentRoute.name, currentRoute.params);
+    // analyticsService.logScreenView(currentRoute.name, currentRoute.params);
   }
   previousRouteName = currentRoute?.name;
 }
@@ -64,20 +68,23 @@ export function navOnStateChange() {
 export const StackOption: NativeStackNavigationOptions = {
   ...TransitionPresets.SlideFromRightIOS,
   headerShown: false,
-  animationTypeForReplace: "push",
+  animationTypeForReplace: 'push',
+  gestureDirection: 'horizontal',
 };
 
 export const ModalPresentationOption: NativeStackNavigationOptions = {
   ...TransitionPresets.ModalPresentationIOS,
   headerShown: false,
-  animationTypeForReplace: "push",
+  animationTypeForReplace: 'push',
+  gestureDirection: 'horizontal',
 };
 
 export const ModalSlideOption: NativeStackNavigationOptions = {
   ...TransitionPresets.ModalSlideFromBottomIOS,
   headerShown: false,
   gestureEnabled: false,
-  animationTypeForReplace: "push",
+  animationTypeForReplace: 'push',
+  gestureDirection: 'horizontal',
 };
 
 export const TabOption: BottomTabNavigationOptions = {

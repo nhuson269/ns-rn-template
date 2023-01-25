@@ -4,7 +4,7 @@ export type WebParams = {
 
 export type SignInDemoParams = {
   username?: string;
-  onNavigateSuccess?: "goTodoListHerokuapp" | "goTodoListTypicode";
+  onNavigateSuccess?: 'goTodoListHerokuapp' | 'goTodoListTypicode';
 };
 
 export type SignUpDemoParams = {
@@ -16,5 +16,5 @@ export type ForgotPasswordDemoParams = {
 };
 
 export type TodoListDemoParams = {
-  type: "Herokuapp" | "Typicode";
+  type: 'Herokuapp' | 'Typicode';
 };

@@ -1,16 +1,16 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
-    position: "absolute",
+    position: 'absolute',
     fontSize: 28,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   activity: {
-    position: "absolute",
+    position: 'absolute',
   },
 });

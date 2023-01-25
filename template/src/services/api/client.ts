@@ -1,7 +1,7 @@
-import { ApisauceInstance, create } from "apisauce";
-import { ClientConfig } from "./client.config";
-import RNFetchBlob from "rn-fetch-blob";
-import { userDemoStore } from "stores";
+import {ApisauceInstance, create} from 'apisauce';
+import {ClientConfig} from './client.config';
+import RNFetchBlob from 'rn-fetch-blob';
+import {userDemoStore} from 'stores';
 
 export class Client {
   /**
@@ -25,7 +25,7 @@ export class Client {
       baseURL: config.url,
       timeout: config.timeout,
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
     });
 
@@ -35,7 +35,9 @@ export class Client {
       requestConfig => {
         // Do something before request is sent
         if (!requestConfig.headers.Authorization) {
-          requestConfig.headers.Authorization = `Bearer ${userDemoStore.getState().authToken?.accessToken}`;
+          requestConfig.headers.Authorization = `Bearer ${
+            userDemoStore.getState().authToken?.accessToken
+          }`;
         }
         return requestConfig;
       },
@@ -61,16 +63,16 @@ export class Client {
   async upload(
     route: string,
     props?: {
-      headers?: { [key: string]: string };
+      headers?: {[key: string]: string};
       body?: any;
       onLoading?: (written: number, total: number) => void;
       onSuccess?: (data: any) => void;
       onError?: (error: any) => void;
     },
   ) {
-    return await RNFetchBlob.config({ timeout: this.config.timeout })
-      .fetch("POST", route, props?.headers, props?.body)
-      .uploadProgress({ interval: 1000 }, (written, total) => {
+    return await RNFetchBlob.config({timeout: this.config.timeout})
+      .fetch('POST', route, props?.headers, props?.body)
+      .uploadProgress({interval: 1000}, (written, total) => {
         props?.onLoading?.(written, total);
       })
       .then(res => {

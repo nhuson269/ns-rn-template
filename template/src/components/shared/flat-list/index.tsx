@@ -1,7 +1,13 @@
-import React, { memo, useCallback, useMemo, useState } from "react";
-import { ActivityIndicator, FlatList as RNFlatList, LayoutChangeEvent, StyleProp, ViewStyle } from "react-native";
-import { View } from "../view";
-import { FlatListProps } from "./props";
+import React, {memo, useCallback, useMemo, useState} from 'react';
+import {
+  ActivityIndicator,
+  FlatList as RNFlatList,
+  LayoutChangeEvent,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
+import {View} from '../view';
+import {FlatListProps} from './props';
 
 export const FlatList = memo((props: FlatListProps<any>) => {
   const {
@@ -64,21 +70,33 @@ export const FlatList = memo((props: FlatListProps<any>) => {
     contentContainerStyleProps.paddingVertical = paddingVertical;
   }
 
-  const [layout, setLayout] = useState<{ height: number; width: number }>({ height: 0, width: 0 });
+  const [layout, setLayout] = useState<{height: number; width: number}>({
+    height: 0,
+    width: 0,
+  });
 
-  const styleContainer: StyleProp<ViewStyle> = [styleOverride, styleProps, { backgroundColor: backgroundColor }];
-  const styleContentContainer = [contentContainerStyleOverride, contentContainerStyleProps];
-  const isFetching = fetching || ((rest.data?.length ?? 0) === 0 && rest.refreshing);
-  const refreshing = rest.refreshing || ((rest.data?.length ?? 0) > 0 && fetching);
+  const styleContainer: StyleProp<ViewStyle> = [
+    styleOverride,
+    styleProps,
+    {backgroundColor: backgroundColor},
+  ];
+  const styleContentContainer = [
+    contentContainerStyleOverride,
+    contentContainerStyleProps,
+  ];
+  const isFetching =
+    fetching || ((rest.data?.length ?? 0) === 0 && rest.refreshing);
+  const refreshing =
+    rest.refreshing || ((rest.data?.length ?? 0) > 0 && fetching);
 
   const fetchingMoreComponent = useMemo(() => {
-    return <ActivityIndicator style={{ marginBottom: 16 }} />;
+    return <ActivityIndicator style={{marginBottom: 16}} />;
   }, []);
 
   const fetchingComponent = useMemo(() => {
     return (
-      <View center style={{ width: layout.width, height: layout.height }}>
-        <ActivityIndicator size="large" style={{ marginBottom: 16 }} />
+      <View center style={{width: layout.width, height: layout.height}}>
+        <ActivityIndicator size="large" style={{marginBottom: 16}} />
       </View>
     );
   }, [layout.height, layout.width]);
@@ -119,4 +137,4 @@ export const FlatList = memo((props: FlatListProps<any>) => {
   );
 });
 
-FlatList.displayName = "FlatListCustom";
+FlatList.displayName = 'FlatListCustom';

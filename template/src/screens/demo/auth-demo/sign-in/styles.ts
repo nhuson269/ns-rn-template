@@ -1,10 +1,10 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   title: {
     fontSize: 28,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
     marginVertical: 100,
   },
   contentView: {

@@ -1,125 +1,135 @@
-import PushNotification, { Importance } from "react-native-push-notification";
-import PushNotificationIOS from "@react-native-community/push-notification-ios";
-import { Platform } from "react-native";
-import { NotifyDeviceModel } from "./notify-push-service";
+// import PushNotification, {Importance} from 'react-native-push-notification';
+// import PushNotificationIOS from '@react-native-community/push-notification-ios';
+// import {Platform} from 'react-native';
+// import {NotifyDeviceModel} from './notify-push-service';
 
-const NOTIFY_LOCAL_CHANNEL = "notification_local_channel";
-const NOTIFY_PUSH_CHANNEL = "notification_push_channel";
+// const NOTIFY_LOCAL_CHANNEL = 'notification_local_channel';
+// const NOTIFY_PUSH_CHANNEL = 'notification_push_channel';
 
-class NotifyLocalService {
-  configure(onNotifyOpened: (notify: NotifyDeviceModel) => void) {
-    this.createDefaultChannels();
-    PushNotification.configure({
-      onNotification(notification) {
-        // console.debug("[NotifyLocalService] onNotification:", notification);
-        const dataNotify = notification.data as any;
-        // (required) Called when a remote is received or opened, or local notification is opened
-        notification.finish(PushNotificationIOS.FetchResult.NoData);
-        if (dataNotify && notification?.userInteraction === true) {
-          onNotifyOpened({
-            data: Platform.OS === "ios" ? dataNotify.data : dataNotify,
-            notification: notification,
-          });
-        }
-      },
-      onRegistrationError() {
-        // console.debug("[NotifyLocalService] onRegistrationError:", error);
-      },
-      permissions: {
-        alert: true,
-        badge: true,
-        sound: true,
-      },
-      popInitialNotification: true,
-      requestPermissions: true,
-    });
-  }
+// class NotifyLocalService {
+//   configure(onNotifyOpened: (notify: NotifyDeviceModel) => void) {
+//     this.createDefaultChannels();
+//     PushNotification.configure({
+//       onNotification(notification) {
+//         // console.debug("[NotifyLocalService] onNotification:", notification);
+//         const dataNotify = notification.data as any;
+//         // (required) Called when a remote is received or opened, or local notification is opened
+//         notification.finish(PushNotificationIOS.FetchResult.NoData);
+//         if (dataNotify && notification?.userInteraction === true) {
+//           onNotifyOpened({
+//             data: Platform.OS === 'ios' ? dataNotify.data : dataNotify,
+//             notification: notification,
+//           });
+//         }
+//       },
+//       onRegistrationError() {
+//         // console.debug("[NotifyLocalService] onRegistrationError:", error);
+//       },
+//       permissions: {
+//         alert: true,
+//         badge: true,
+//         sound: true,
+//       },
+//       popInitialNotification: true,
+//       requestPermissions: true,
+//     });
+//   }
 
-  unregister() {
-    PushNotification.unregister();
-  }
+//   unregister() {
+//     PushNotification.unregister();
+//   }
 
-  createNotify(params: { title?: string; message: string; imageUrl?: string; data?: any }) {
-    PushNotification.localNotification({
-      title: params.title,
-      message: params.message,
-      playSound: true,
-      userInfo: !params.data ? {} : params.data,
-      channelId: NOTIFY_LOCAL_CHANNEL,
-      // color: AppColors.red,
-      largeIconUrl: params?.imageUrl,
-      bigPictureUrl: params?.imageUrl,
-      // largeIcon: "ic_launcher_round",
-      // smallIcon: "logo_white",
-      vibrate: true,
-      vibration: 300,
-      priority: "high",
-      importance: "high",
-      // soundName: !isIOS ? "imap_notify" : "imap_notify.wav",
-    });
-  }
+//   createNotify(params: {
+//     title?: string;
+//     message: string;
+//     imageUrl?: string;
+//     data?: any;
+//   }) {
+//     PushNotification.localNotification({
+//       title: params.title,
+//       message: params.message,
+//       playSound: true,
+//       userInfo: !params.data ? {} : params.data,
+//       channelId: NOTIFY_LOCAL_CHANNEL,
+//       // color: AppColors.red,
+//       largeIconUrl: params?.imageUrl,
+//       bigPictureUrl: params?.imageUrl,
+//       // largeIcon: "ic_launcher_round",
+//       // smallIcon: "logo_white",
+//       vibrate: true,
+//       vibration: 300,
+//       priority: 'high',
+//       importance: 'high',
+//       // soundName: !isIOS ? "imap_notify" : "imap_notify.wav",
+//     });
+//   }
 
-  createNotifySchedule(params: { title?: string; message: string; date: Date; data?: any }) {
-    PushNotification.localNotificationSchedule({
-      title: params.title,
-      message: params.message,
-      date: params.date,
-      playSound: true,
-      userInfo: !params.data ? {} : params.data,
-      channelId: NOTIFY_LOCAL_CHANNEL,
-      // color: AppColors.red,
-      // largeIcon: "ic_launcher_round",
-      // smallIcon: "logo_white",
-      vibrate: true,
-      vibration: 300,
-      priority: "high",
-      importance: "high",
-      // soundName: !isIOS ? "imap_notify" : "imap_notify.wav",
-    });
-  }
+//   createNotifySchedule(params: {
+//     title?: string;
+//     message: string;
+//     date: Date;
+//     data?: any;
+//   }) {
+//     PushNotification.localNotificationSchedule({
+//       title: params.title,
+//       message: params.message,
+//       date: params.date,
+//       playSound: true,
+//       userInfo: !params.data ? {} : params.data,
+//       channelId: NOTIFY_LOCAL_CHANNEL,
+//       // color: AppColors.red,
+//       // largeIcon: "ic_launcher_round",
+//       // smallIcon: "logo_white",
+//       vibrate: true,
+//       vibration: 300,
+//       priority: 'high',
+//       importance: 'high',
+//       // soundName: !isIOS ? "imap_notify" : "imap_notify.wav",
+//     });
+//   }
 
-  createDefaultChannels() {
-    PushNotification.getChannels(channelIds => {
-      for (let i = 0; i < channelIds.length; i++) {
-        const itemId = channelIds[i] || "";
-        if (itemId) {
-          PushNotification.deleteChannel(itemId);
-        }
-      }
-      // Local Notification Channel
-      PushNotification.createChannel(
-        {
-          channelId: NOTIFY_LOCAL_CHANNEL, // (required)
-          channelName: "Local Notification", // (required)
-          channelDescription: "Local Notification description",
-          playSound: true,
-          vibrate: true,
-          importance: Importance.HIGH,
-          // soundName: Platform.OS !== "ios" ? "file_name" : "file_name.wav",
-        },
-        () => {
-          // console.debug("CreateChannel Local Notification Channel:", created);
-        },
-      );
-      // Push Notification Channel
-      PushNotification.createChannel(
-        {
-          channelId: NOTIFY_PUSH_CHANNEL, // (required)
-          channelName: "Push Notification", // (required)
-          channelDescription: "Push Notification description",
-          playSound: true,
-          vibrate: true,
-          importance: Importance.HIGH,
-          // soundName: Platform.OS !== "ios" ? "file_name" : "file_name.wav",
-        },
-        () => {
-          // console.debug("CreateChannel Push Notification Channel:"", created);
-        },
-      );
-    });
-  }
-}
+//   createDefaultChannels() {
+//     PushNotification.getChannels(channelIds => {
+//       for (let i = 0; i < channelIds.length; i++) {
+//         const itemId = channelIds[i] || '';
+//         if (itemId) {
+//           PushNotification.deleteChannel(itemId);
+//         }
+//       }
+//       // Local Notification Channel
+//       PushNotification.createChannel(
+//         {
+//           channelId: NOTIFY_LOCAL_CHANNEL, // (required)
+//           channelName: 'Local Notification', // (required)
+//           channelDescription: 'Local Notification description',
+//           playSound: true,
+//           vibrate: true,
+//           importance: Importance.HIGH,
+//           // soundName: Platform.OS !== "ios" ? "file_name" : "file_name.wav",
+//         },
+//         () => {
+//           // console.debug("CreateChannel Local Notification Channel:", created);
+//         },
+//       );
+//       // Push Notification Channel
+//       PushNotification.createChannel(
+//         {
+//           channelId: NOTIFY_PUSH_CHANNEL, // (required)
+//           channelName: 'Push Notification', // (required)
+//           channelDescription: 'Push Notification description',
+//           playSound: true,
+//           vibrate: true,
+//           importance: Importance.HIGH,
+//           // soundName: Platform.OS !== "ios" ? "file_name" : "file_name.wav",
+//         },
+//         () => {
+//           // console.debug("CreateChannel Push Notification Channel:"", created);
+//         },
+//       );
+//     });
+//   }
+// }
 
-const notifyLocalService = new NotifyLocalService();
+// const notifyLocalService = new NotifyLocalService();
 
-export default notifyLocalService;
+// export default notifyLocalService;

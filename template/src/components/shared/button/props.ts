@@ -1,6 +1,6 @@
-import { TxKeyPath } from "languages";
-import { StyleProp, PressableProps, ViewStyle, TextStyle } from "react-native";
-import { ButtonPresets } from "./presets";
+import {TxKeyPath} from 'languages';
+import {StyleProp, PressableProps, ViewStyle, TextStyle} from 'react-native';
+import {ButtonPresets} from './presets';
 
 export interface ButtonProps extends PressableProps {
   /**

@@ -1,18 +1,18 @@
-import { ViewStyle } from "react-native";
+import {ViewStyle} from 'react-native';
 
 /**
  * All text will start off looking like this.
  */
 const DEFAULT: ViewStyle = {
   height: 44,
-  alignItems: "center",
-  justifyContent: "center",
+  alignItems: 'center',
+  justifyContent: 'center',
   borderRadius: 8,
   paddingHorizontal: 12,
 };
 
 const TRANSPARENT: ViewStyle = {
-  backgroundColor: "transparent",
+  backgroundColor: 'transparent',
 };
 
 /**

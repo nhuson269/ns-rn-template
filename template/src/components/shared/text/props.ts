@@ -1,6 +1,6 @@
-import { StyleProp, TextProps as NSTextProps, TextStyle } from "react-native";
-import { TextPresets } from "./presets";
-import { TxKeyPath } from "languages";
+import {StyleProp, TextProps as NSTextProps, TextStyle} from 'react-native';
+import {TextPresets} from './presets';
+import {TxKeyPath} from 'languages';
 
 export interface TextProps extends NSTextProps {
   /**
@@ -61,12 +61,12 @@ export interface TextProps extends NSTextProps {
   /**
    * Style textAlign of text.
    */
-  textAlign?: "auto" | "left" | "right" | "center" | "justify";
+  textAlign?: 'auto' | 'left' | 'right' | 'center' | 'justify';
 
   /**
    * Style textAlignVertical of text.
    */
-  textAlignVertical?: "auto" | "top" | "bottom" | "center";
+  textAlignVertical?: 'auto' | 'top' | 'bottom' | 'center';
 
   /**
    * Text style, marginTop.

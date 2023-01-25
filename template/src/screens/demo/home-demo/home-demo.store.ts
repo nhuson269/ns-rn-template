@@ -1,6 +1,6 @@
-import navActions from "navigators/shared/actions";
-import { userDemoStore } from "stores";
-import create from "zustand";
+import navActions from 'navigators/shared/actions';
+import {userDemoStore} from 'stores';
+import {create} from 'zustand';
 
 type HomeStore = {
   goTodoListHerokuapp: () => void;
@@ -12,9 +12,11 @@ type HomeStore = {
 export const homeDemoStore = create<HomeStore>(() => ({
   goTodoListHerokuapp: () => {
     if (userDemoStore.getState().isSignIn) {
-      navActions.navigateToTodoListDemo({ type: "Herokuapp" });
+      navActions.navigateToTodoListDemo({type: 'Herokuapp'});
     } else {
-      navActions.navigateToSignInDemo({ onNavigateSuccess: "goTodoListHerokuapp" });
+      navActions.navigateToSignInDemo({
+        onNavigateSuccess: 'goTodoListHerokuapp',
+      });
     }
   },
   goTodoListTypicode: () => {

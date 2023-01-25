@@ -1,10 +1,10 @@
-import Reanimated from "react-native-reanimated";
-import React, { memo } from "react";
-import { StyleProp, TextStyle } from "react-native";
-import { presets } from "./presets";
-import { TextProps } from "./props";
-import { useTranslation } from "react-i18next";
-import { colorDemoStore } from "stores";
+import Reanimated from 'react-native-reanimated';
+import React, {memo} from 'react';
+import {StyleProp, TextStyle} from 'react-native';
+import {presets} from './presets';
+import {TextProps} from './props';
+import {useTranslation} from 'react-i18next';
+import {colorDemoStore} from 'stores';
 
 /**
  * For your text displaying needs.
@@ -14,7 +14,7 @@ import { colorDemoStore } from "stores";
 
 export const Text = memo((props: TextProps) => {
   const {
-    preset = "default",
+    preset = 'default',
     valueTx,
     value,
     size,
@@ -37,7 +37,7 @@ export const Text = memo((props: TextProps) => {
   } = props;
 
   const colors = colorDemoStore().colors;
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   // figure out which content to use
   const i18nValue = valueTx && t(valueTx);
@@ -54,13 +54,13 @@ export const Text = memo((props: TextProps) => {
     styleProps.flex = 1;
   }
   if (italic) {
-    styleProps.fontStyle = "italic";
+    styleProps.fontStyle = 'italic';
   }
   if (lineHeight) {
     styleProps.lineHeight = lineHeight;
   }
   if (underline) {
-    styleProps.textDecorationLine = "underline";
+    styleProps.textDecorationLine = 'underline';
   }
   if (textAlign) {
     styleProps.textAlign = textAlign;
@@ -87,22 +87,29 @@ export const Text = memo((props: TextProps) => {
     styleProps.marginVertical = marginVertical;
   }
   const style = presets[preset] || presets.default;
-  const styles: StyleProp<TextStyle> = [{ color: colors.t_02 }, style, styleOverride, styleProps];
+  const styles: StyleProp<TextStyle> = [
+    {color: colors.t_02},
+    style,
+    styleOverride,
+    styleProps,
+  ];
 
   return (
     <Reanimated.Text {...rest} style={styles}>
       {content}
       {React.Children.map(children, (child: any) => {
         const childValue = child?.valueOf();
-        if (typeof childValue === "string" || typeof childValue === "number") {
+        if (typeof childValue === 'string' || typeof childValue === 'number') {
           return childValue;
         }
-        return typeof childValue === "object"
-          ? React.cloneElement(child, { style: [styles, childValue.props?.style || {}] })
+        return typeof childValue === 'object'
+          ? React.cloneElement(child, {
+              style: [styles, childValue.props?.style || {}],
+            })
           : null;
       })}
     </Reanimated.Text>
   );
 });
 
-Text.displayName = "TextCustom";
+Text.displayName = 'TextCustom';

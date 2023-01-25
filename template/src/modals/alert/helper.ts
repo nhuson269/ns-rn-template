@@ -1,4 +1,4 @@
-import { alertStore, OpenProps } from "./alert.store";
+import {alertStore, OpenProps} from './alert.store';
 
 function show(props: OpenProps) {
   alertStore.getState().open(props);

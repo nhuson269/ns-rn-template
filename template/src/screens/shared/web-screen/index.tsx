@@ -1,6 +1,6 @@
-import { HeaderNav, Screen, Text } from "components";
-import React, { memo } from "react";
-import { styles } from "./styles";
+import {HeaderNav, Screen, Text} from 'components';
+import React, {memo} from 'react';
+import {styles} from './styles';
 
 export const WebScreen = memo(() => {
   return (
@@ -13,4 +13,4 @@ export const WebScreen = memo(() => {
   );
 });
 
-WebScreen.displayName = "WebScreen";
+WebScreen.displayName = 'WebScreen';

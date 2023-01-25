@@ -1,7 +1,7 @@
-import Reanimated from "react-native-reanimated";
-import React, { memo } from "react";
-import { StyleProp, ViewStyle } from "react-native";
-import { ViewProps } from "./props";
+import Reanimated from 'react-native-reanimated';
+import React, {memo} from 'react';
+import {StyleProp, ViewStyle} from 'react-native';
+import {ViewProps} from './props';
 
 export const View = memo((props: ViewProps) => {
   const {
@@ -41,16 +41,16 @@ export const View = memo((props: ViewProps) => {
     styleProps.flex = 1;
   }
   if (flexRow) {
-    styleProps.flexDirection = "row";
+    styleProps.flexDirection = 'row';
   }
   if (overflow) {
     styleProps.overflow = overflow;
   }
   if (absolute) {
-    styleProps.position = "absolute";
+    styleProps.position = 'absolute';
   }
   if (absoluteFill) {
-    styleProps.position = "absolute";
+    styleProps.position = 'absolute';
     styleProps.top = 0;
     styleProps.right = 0;
     styleProps.bottom = 0;
@@ -115,14 +115,14 @@ export const View = memo((props: ViewProps) => {
     styleProps.paddingVertical = paddingVertical;
   }
   if (center) {
-    styleProps.alignItems = "center";
-    styleProps.justifyContent = "center";
+    styleProps.alignItems = 'center';
+    styleProps.justifyContent = 'center';
   }
   if (shadow) {
-    styleProps.shadowColor = "rgba(0, 0, 0, 0.1)";
+    styleProps.shadowColor = 'rgba(0, 0, 0, 0.1)';
     styleProps.shadowOpacity = 1;
     styleProps.shadowRadius = 4;
-    styleProps.shadowOffset = { width: 0, height: 2 };
+    styleProps.shadowOffset = {width: 0, height: 2};
     styleProps.elevation = 4;
   }
 
@@ -133,4 +133,4 @@ export const View = memo((props: ViewProps) => {
   );
 });
 
-View.displayName = "ViewCustom";
+View.displayName = 'ViewCustom';

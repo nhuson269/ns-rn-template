@@ -1,8 +1,8 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   textInput: {
     fontSize: 14,
@@ -23,9 +23,9 @@ export const styles = StyleSheet.create({
     fontSize: 14,
   },
   btEye: {
-    position: "absolute",
-    alignItems: "center",
-    justifyContent: "center",
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 44,
     height: 44,
     right: 0,

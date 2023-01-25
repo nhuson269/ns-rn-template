@@ -1,10 +1,10 @@
-import React, { memo, useMemo } from "react";
-import { Pressable, Text, View } from "components";
-import TaskDemoModel from "models/demo/TaskDemoModel";
-import { PressableProps } from "components/shared/pressable/props";
-import Icons from "react-native-vector-icons/MaterialCommunityIcons";
-import moment from "moment";
-import { colorDemoStore } from "stores";
+import React, {memo, useMemo} from 'react';
+import {Pressable, Text, View} from 'components';
+import TaskDemoModel from 'models/demo/TaskDemoModel';
+import {PressableProps} from 'components/shared/pressable/props';
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
+import moment from 'moment';
+import {colorDemoStore} from 'stores';
 
 interface Props extends PressableProps {
   data: TaskDemoModel;
@@ -12,7 +12,9 @@ interface Props extends PressableProps {
 
 export const TodoDemoItem = memo((props: Props) => {
   const colors = colorDemoStore().colors;
-  const updatedTime = props.data.updatedTime ? moment(props.data.updatedTime).format("H:mm D/M/Y") : undefined;
+  const updatedTime = props.data.updatedTime
+    ? moment(props.data.updatedTime).format('H:mm D/M/Y')
+    : undefined;
 
   const updatedTimeView = useMemo(() => {
     return updatedTime ? (
@@ -39,4 +41,4 @@ export const TodoDemoItem = memo((props: Props) => {
   );
 });
 
-TodoDemoItem.displayName = "TodoDemoItem";
+TodoDemoItem.displayName = 'TodoDemoItem';

@@ -1,4 +1,9 @@
-import { FlexAlignType, StyleProp, TouchableOpacityProps as RNTouchableOpacityProps, ViewStyle } from "react-native";
+import {
+  FlexAlignType,
+  StyleProp,
+  TouchableOpacityProps as RNTouchableOpacityProps,
+  ViewStyle,
+} from 'react-native';
 
 export interface TouchableOpacityProps extends RNTouchableOpacityProps {
   /**
@@ -24,7 +29,7 @@ export interface TouchableOpacityProps extends RNTouchableOpacityProps {
   /**
    * View style, overflow.
    */
-  overflow?: "visible" | "hidden" | "scroll";
+  overflow?: 'visible' | 'hidden' | 'scroll';
 
   /**
    * View style, position: "absolute".
@@ -134,7 +139,13 @@ export interface TouchableOpacityProps extends RNTouchableOpacityProps {
   /**
    * View style, justifyContent.
    */
-  justifyContent?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
+  justifyContent?:
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly';
 
   /**
    * View style, turn on shadow.

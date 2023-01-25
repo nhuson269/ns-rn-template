@@ -1,11 +1,11 @@
-import AuthTokenModel from "models/AuthTokenModel";
-import UserDemoModel from "models/demo/UserDemoModel";
-import navActions from "navigators/shared/actions";
-import storageUtils, { StorageKey } from "utils/storage-utils";
-import create from "zustand";
-import * as Keychain from "react-native-keychain";
-import { userService } from "services/demo/herokuapp-service";
-import { delay } from "utils/delay";
+import AuthTokenModel from 'models/AuthTokenModel';
+import UserDemoModel from 'models/demo/UserDemoModel';
+import navActions from 'navigators/shared/actions';
+import storageUtils, {StorageKey} from 'utils/storage-utils';
+import {create} from 'zustand';
+import * as Keychain from 'react-native-keychain';
+import {userService} from 'services/demo/herokuapp-service';
+import {delay} from 'utils/delay';
 
 type UserDemoStore = {
   isLoading: boolean;
@@ -28,13 +28,16 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
     if (isLoading) {
       return;
     }
-    set({ isLoading: true });
+    set({isLoading: true});
     let authToken: AuthTokenModel | undefined;
     try {
       const credentials = await Keychain.getGenericPassword();
       if (credentials) {
-        authToken = { accessToken: credentials.username, refreshToken: credentials.password };
-        set({ authToken: authToken });
+        authToken = {
+          accessToken: credentials.username,
+          refreshToken: credentials.password,
+        };
+        set({authToken: authToken});
       }
     } catch {}
     if (authToken?.refreshToken) {
@@ -42,11 +45,11 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
     }
     if (!authToken?.accessToken) {
       await delay(1000);
-      set({ isLoading: false, isSignIn: false, user: undefined });
+      set({isLoading: false, isSignIn: false, user: undefined});
       get().removeUser();
     } else {
       const resultMe = await userService.userMe();
-      const isOK = resultMe.kind === "ok";
+      const isOK = resultMe.kind === 'ok';
       set({
         isLoading: false,
         isSignIn: isOK,
@@ -62,20 +65,23 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
   },
   setAuthToken: async (token: AuthTokenModel) => {
     if (token.accessToken) {
-      await Keychain.setGenericPassword(token.accessToken, token.refreshToken || "refresh_token");
+      await Keychain.setGenericPassword(
+        token.accessToken,
+        token.refreshToken || 'refresh_token',
+      );
     } else {
       await Keychain.resetGenericPassword();
     }
-    set({ authToken: token });
+    set({authToken: token});
   },
   setUser: value => {
-    set({ isSignIn: true, user: value });
+    set({isSignIn: true, user: value});
     storageUtils.set(StorageKey.USER_DEMO_PROFILE, JSON.stringify(value));
   },
   removeUser: async () => {
-    const { isSignIn, user, authToken } = get();
+    const {isSignIn, user, authToken} = get();
     if (isSignIn || user !== undefined) {
-      set({ isSignIn: false, user: undefined });
+      set({isSignIn: false, user: undefined});
     }
     navActions.replaceToAuthDemo();
     storageUtils.cleanCache();

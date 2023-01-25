@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
@@ -8,11 +8,11 @@ export const styles = StyleSheet.create({
   todoContainer: {
     flex: 1,
     height: 88,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   todoTitle: {
-    textAlign: "center",
+    textAlign: 'center',
     lineHeight: 21,
   },
 });

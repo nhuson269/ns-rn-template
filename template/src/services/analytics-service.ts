@@ -1,82 +1,84 @@
-import analytics, { FirebaseAnalyticsTypes } from "@react-native-firebase/analytics";
-import { RouteName } from "navigators/shared/routes";
+// import analytics, {
+//   FirebaseAnalyticsTypes,
+// } from '@react-native-firebase/analytics';
+// import {RouteName} from 'navigators/shared/routes';
 
-class AnalyticsService {
-  anaModule: FirebaseAnalyticsTypes.Module;
+// class AnalyticsService {
+//   anaModule: FirebaseAnalyticsTypes.Module;
 
-  constructor() {
-    this.anaModule = analytics();
-  }
+//   constructor() {
+//     this.anaModule = analytics();
+//   }
 
-  setUserId(userId: number) {
-    const userIdStr = userId.toString();
-    this.anaModule.setUserId(userIdStr);
-    this.anaModule.setUserProperty("user_id", userIdStr);
-    this.anaModule.setDefaultEventParameters({ user_id: userIdStr });
-  }
+//   setUserId(userId: number) {
+//     const userIdStr = userId.toString();
+//     this.anaModule.setUserId(userIdStr);
+//     this.anaModule.setUserProperty('user_id', userIdStr);
+//     this.anaModule.setDefaultEventParameters({user_id: userIdStr});
+//   }
 
-  removeUserId() {
-    this.anaModule.setUserId(null);
-    this.anaModule.setUserProperty("user_id", null);
-    this.anaModule.setDefaultEventParameters({ user_id: null });
-  }
+//   removeUserId() {
+//     this.anaModule.setUserId(null);
+//     this.anaModule.setUserProperty('user_id', null);
+//     this.anaModule.setDefaultEventParameters({user_id: null});
+//   }
 
-  signUp() {
-    this.anaModule.logEvent("sign_up");
-  }
+//   signUp() {
+//     this.anaModule.logEvent('sign_up');
+//   }
 
-  signUpConfirm() {
-    this.anaModule.logEvent("sign_up_confirm");
-  }
+//   signUpConfirm() {
+//     this.anaModule.logEvent('sign_up_confirm');
+//   }
 
-  forgotPassword() {
-    this.anaModule.logEvent("forgot_password");
-  }
+//   forgotPassword() {
+//     this.anaModule.logEvent('forgot_password');
+//   }
 
-  forgotPasswordConfirm() {
-    this.anaModule.logEvent("forgot_password_confirm");
-  }
+//   forgotPasswordConfirm() {
+//     this.anaModule.logEvent('forgot_password_confirm');
+//   }
 
-  buttonSignIn() {
-    this.anaModule.logEvent("sign_in");
-  }
+//   buttonSignIn() {
+//     this.anaModule.logEvent('sign_in');
+//   }
 
-  changePassword() {
-    this.anaModule.logEvent("change_password");
-  }
+//   changePassword() {
+//     this.anaModule.logEvent('change_password');
+//   }
 
-  buttonSignOut() {
-    this.anaModule.logEvent("sign_out");
-  }
+//   buttonSignOut() {
+//     this.anaModule.logEvent('sign_out');
+//   }
 
-  logScreenView(screenName: string, params?: any) {
-    let sName: string | undefined;
-    switch (screenName) {
-      case RouteName.SIGN_IN_DEMO:
-        // sName = "Signin";
-        break;
-      case RouteName.SIGN_UP_DEMO:
-        // sName = "Signup";
-        break;
-      case RouteName.FORGOT_PASSWORD_DEMO:
-        // sName = "Forgotpassword";
-        break;
-      case RouteName.HOME_DEMO:
-        if (params?.roomId) {
-          // sName = "Zoom";
-        } else {
-          // sName = "Home";
-        }
-        break;
-      default:
-        break;
-    }
-    if (sName) {
-      analytics().logScreenView({ screen_class: screenName, screen_name: sName });
-    }
-  }
-}
+//   logScreenView(screenName: string, params?: any) {
+//     let sName: string | undefined;
+//     switch (screenName) {
+//       case RouteName.SIGN_IN_DEMO:
+//         // sName = "Signin";
+//         break;
+//       case RouteName.SIGN_UP_DEMO:
+//         // sName = "Signup";
+//         break;
+//       case RouteName.FORGOT_PASSWORD_DEMO:
+//         // sName = "Forgotpassword";
+//         break;
+//       case RouteName.HOME_DEMO:
+//         if (params?.roomId) {
+//           // sName = "Zoom";
+//         } else {
+//           // sName = "Home";
+//         }
+//         break;
+//       default:
+//         break;
+//     }
+//     if (sName) {
+//       analytics().logScreenView({screen_class: screenName, screen_name: sName});
+//     }
+//   }
+// }
 
-const analyticsService = new AnalyticsService();
+// const analyticsService = new AnalyticsService();
 
-export default analyticsService;
+// export default analyticsService;

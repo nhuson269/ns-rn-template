@@ -1,4 +1,8 @@
-import { StyleProp, FlatListProps as RNFlatListProps, ViewStyle } from "react-native";
+import {
+  StyleProp,
+  FlatListProps as RNFlatListProps,
+  ViewStyle,
+} from 'react-native';
 
 export interface FlatListProps<ItemT> extends RNFlatListProps<ItemT> {
   /**

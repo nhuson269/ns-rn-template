@@ -1,5 +1,10 @@
-import { TxKeyPath } from "languages";
-import { StyleProp, TextInputProps as RNTextInputProps, TextStyle, ViewStyle } from "react-native";
+import {TxKeyPath} from 'languages';
+import {
+  StyleProp,
+  TextInputProps as RNTextInputProps,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
 
 export interface TextInputProps extends RNTextInputProps {
   /**
