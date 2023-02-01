@@ -1,11 +1,9 @@
-import {FlashListProps as RNFlashListProps} from '@shopify/flash-list';
-import {StyleProp, ViewStyle} from 'react-native';
+import {
+  ContentStyle,
+  FlashListProps as RNFlashListProps,
+} from '@shopify/flash-list';
 
 export interface FlashListProps<ItemT> extends RNFlashListProps<ItemT> {
-  /**
-   * Optional container style overrides useful for margins & padding.
-   */
-  style?: StyleProp<ViewStyle>;
   /**
    * List fetching data.
    */
@@ -17,39 +15,14 @@ export interface FlashListProps<ItemT> extends RNFlashListProps<ItemT> {
   fetchingMore?: boolean;
 
   /**
+   * Optional content container style overrides useful for margins & padding.
+   */
+  contentContainerStyle?: ContentStyle;
+
+  /**
    * Optional backgroundColor overrides for the button.
    */
   backgroundColor?: string;
-
-  /**
-   * Container style, marginTop.
-   */
-  marginTop?: number;
-
-  /**
-   * Container style, marginRight.
-   */
-  marginRight?: number;
-
-  /**
-   * Container style, marginBottom.
-   */
-  marginBottom?: number;
-
-  /**
-   * Container style, marginLeft.
-   */
-  marginLeft?: number;
-
-  /**
-   * Container style, marginHorizontal.
-   */
-  marginHorizontal?: number;
-
-  /**
-   * Container style, marginVertical.
-   */
-  marginVertical?: number;
 
   /**
    * Content container style, padding.

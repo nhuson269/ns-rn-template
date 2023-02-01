@@ -16,7 +16,7 @@ class TaskService {
   }
 
   async getTasks(
-    offset: number,
+    offset: number = 0,
     limit: number = 15,
   ): Promise<GetTasksDemoResult> {
     try {

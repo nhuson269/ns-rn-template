@@ -15,7 +15,7 @@ class TodoService {
     this.client = new Client(TYPICODE_CLIENT_CONFIG);
   }
 
-  async getList(offset: number): Promise<GetTasksDemoResult> {
+  async getList(offset: number = 0): Promise<GetTasksDemoResult> {
     try {
       // make the api call
       const response: ApiResponse<any> = await this.client.instance.get(

@@ -27,16 +27,15 @@ export const todoListTypicodeDemoStore = create<TodoListTypicodeStore>(
         return;
       }
       set({isLoading: true});
-      const result = await todoService.getList(get().data.length);
+      const result = await todoService.getList();
       if (result.kind === 'ok') {
         const dataResult = result.data;
-        const {dataDisplay, limit} = get();
-        const displayData = getDataDisplay(dataResult, dataDisplay, limit);
+        const displayData = getDataDisplay(dataResult, [], get().limit);
         set({
           isLoading: false,
           data: dataResult,
           dataDisplay: displayData,
-          isEndPage: dataDisplay.length < limit,
+          isEndPage: displayData.length >= dataResult.length,
         });
       } else {
         set({isLoading: false});
@@ -47,9 +46,17 @@ export const todoListTypicodeDemoStore = create<TodoListTypicodeStore>(
     },
     getDataMore: async () => {
       const {data, dataDisplay, limit, isLoading, isEndPage} = get();
-      if (!isLoading && !isEndPage && data.length > 0) {
+      if (
+        !isLoading &&
+        !isEndPage &&
+        data.length > 0 &&
+        dataDisplay.length > 0
+      ) {
         const displayData = getDataDisplay(data, dataDisplay, limit);
-        set({isEndPage: dataDisplay.length < limit, dataDisplay: displayData});
+        set({
+          isEndPage: displayData.length >= data.length,
+          dataDisplay: displayData,
+        });
       }
     },
     reset: () =>

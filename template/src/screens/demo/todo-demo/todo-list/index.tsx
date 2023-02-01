@@ -1,5 +1,5 @@
 import {useRoute} from '@react-navigation/native';
-import {FlashList, HeaderNav, Screen, Text, TodoDemoItem} from 'components';
+import {FlatList, HeaderNav, Screen, Text, TodoDemoItem} from 'components';
 import TaskDemoModel from 'models/demo/TaskDemoModel';
 import {TodoListDemoParams} from 'navigators';
 import React, {memo, useCallback, useEffect} from 'react';
@@ -19,6 +19,10 @@ export const TodoListDemoScreen = memo(() => {
     return () => todoListDemoStore.getState().reset();
   }, []);
 
+  const keyExtractor = useCallback((item: TaskDemoModel) => {
+    return item.id.toString();
+  }, []);
+
   const renderItem = useCallback(({item}: {item: TaskDemoModel}) => {
     return <TodoDemoItem data={item} marginHorizontal={16} marginBottom={16} />;
   }, []);
@@ -31,9 +35,10 @@ export const TodoListDemoScreen = memo(() => {
           marginHorizontal={16}
           marginVertical={8}
           valueTx="todoList.length">{`: ${store.data.length}`}</Text>
-        <FlashList
+        <FlatList
           paddingTop={16}
           data={store.data}
+          keyExtractor={keyExtractor}
           fetching={store.isLoading}
           fetchingMore={store.isLoadingMore}
           renderItem={renderItem}

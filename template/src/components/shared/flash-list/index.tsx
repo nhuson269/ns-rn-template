@@ -1,11 +1,6 @@
 import {ContentStyle, FlashList as RNFlashList} from '@shopify/flash-list';
 import React, {memo, useCallback, useMemo, useState} from 'react';
-import {
-  ActivityIndicator,
-  LayoutChangeEvent,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
+import {ActivityIndicator, LayoutChangeEvent} from 'react-native';
 import {View} from '../view';
 import {FlashListProps} from './props';
 
@@ -14,12 +9,6 @@ export const FlashList = memo((props: FlashListProps<any>) => {
     fetching,
     fetchingMore,
     backgroundColor,
-    marginTop,
-    marginRight,
-    marginBottom,
-    marginLeft,
-    marginHorizontal,
-    marginVertical,
     padding,
     paddingTop,
     paddingRight,
@@ -27,54 +16,43 @@ export const FlashList = memo((props: FlashListProps<any>) => {
     paddingLeft,
     paddingHorizontal,
     paddingVertical,
-    style: styleOverride,
-    contentContainerStyle: contentContainerStyleOverride,
+    contentContainerStyle,
     ...rest
   } = props;
 
-  const styleProps: StyleProp<ViewStyle> = {};
-  if (marginTop) {
-    styleProps.marginTop = marginTop;
-  }
-  if (marginRight) {
-    styleProps.marginRight = marginRight;
-  }
-  if (marginBottom) {
-    styleProps.marginBottom = marginBottom;
-  }
-  if (marginLeft) {
-    styleProps.marginLeft = marginLeft;
-  }
-  if (marginHorizontal) {
-    styleProps.marginHorizontal = marginHorizontal;
-  }
-  if (marginVertical) {
-    styleProps.marginVertical = marginVertical;
-  }
-  const contentContainerStyleProps: ContentStyle = {};
-  if (backgroundColor) {
-    contentContainerStyleProps.backgroundColor = backgroundColor;
-  }
-  if (padding) {
-    contentContainerStyleProps.padding = padding;
-  }
-  if (paddingTop) {
-    contentContainerStyleProps.paddingTop = paddingTop;
-  }
-  if (paddingRight) {
-    contentContainerStyleProps.paddingRight = paddingRight;
-  }
-  if (paddingBottom) {
-    contentContainerStyleProps.paddingBottom = paddingBottom;
-  }
-  if (paddingLeft) {
-    contentContainerStyleProps.paddingLeft = paddingLeft;
-  }
-  if (paddingHorizontal) {
-    contentContainerStyleProps.paddingHorizontal = paddingHorizontal;
-  }
-  if (paddingVertical) {
-    contentContainerStyleProps.paddingVertical = paddingVertical;
+  let contentContainerStyleProps: ContentStyle | undefined;
+  const bgColorProps =
+    backgroundColor ?? contentContainerStyle?.backgroundColor;
+  const paddingProps = padding ?? contentContainerStyle?.padding;
+  const paddingTopProps = paddingTop ?? contentContainerStyle?.paddingTop;
+  const paddingRightProps = paddingRight ?? contentContainerStyle?.paddingRight;
+  const paddingBottomProps =
+    paddingBottom ?? contentContainerStyle?.paddingBottom;
+  const paddingLeftProps = paddingLeft ?? contentContainerStyle?.paddingLeft;
+  const paddingHorizontalProps =
+    paddingHorizontal ?? contentContainerStyle?.paddingHorizontal;
+  const paddingVerticalProps =
+    paddingVertical ?? contentContainerStyle?.paddingVertical;
+  if (
+    bgColorProps ||
+    paddingProps ||
+    paddingTopProps ||
+    paddingRightProps ||
+    paddingBottomProps ||
+    paddingLeftProps ||
+    paddingHorizontalProps ||
+    paddingVerticalProps
+  ) {
+    contentContainerStyleProps = {
+      backgroundColor: bgColorProps,
+      padding: paddingProps,
+      paddingTop: paddingTopProps,
+      paddingRight: paddingRightProps,
+      paddingBottom: paddingBottomProps,
+      paddingLeft: paddingLeftProps,
+      paddingHorizontal: paddingHorizontalProps,
+      paddingVertical: paddingVerticalProps,
+    };
   }
 
   const [layout, setLayout] = useState<{height: number; width: number}>({
@@ -82,11 +60,6 @@ export const FlashList = memo((props: FlashListProps<any>) => {
     width: 0,
   });
 
-  const styleContainer: StyleProp<ViewStyle> = [styleOverride, styleProps];
-  const styleContentContainer = {
-    contentContainerStyleOverride,
-    ...contentContainerStyleProps,
-  };
   const isFetching =
     fetching || ((rest.data?.length ?? 0) === 0 && rest.refreshing);
   const refreshing =
@@ -128,8 +101,7 @@ export const FlashList = memo((props: FlashListProps<any>) => {
   return (
     <RNFlashList
       {...rest}
-      style={styleContainer}
-      contentContainerStyle={styleContentContainer}
+      contentContainerStyle={contentContainerStyleProps}
       ListFooterComponent={listFooterComponent}
       ListEmptyComponent={listEmptyComponent}
       refreshing={refreshing}
