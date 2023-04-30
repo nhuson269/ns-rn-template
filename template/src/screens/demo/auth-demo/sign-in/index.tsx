@@ -35,7 +35,7 @@ export const SignInDemoScreen = memo(() => {
         <TextInput
           marginBottom={16}
           secureTextEntry={true}
-          labelTx="common.blue"
+          labelTx="common.password"
           placeholderTx="common.password"
           value={store.password}
           message={store.msgPassword}
