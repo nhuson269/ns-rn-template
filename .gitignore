@@ -4,3 +4,4 @@ node_modules/
 .idea/
 yarn.lock
 template/yarn.lock
+template/ios/Podfile.lock
