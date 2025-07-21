@@ -1,3 +1,21 @@
 {
-  "extends": "@react-native/typescript-config"
+  "extends": "@react-native/typescript-config",
+  "compilerOptions": {
+    "rootDir": "./",
+    "baseUrl": "./src",
+    "paths": {
+      "@components": ["/components"],
+      "@config": ["/config"],
+      "@hooks": ["/hooks"],
+      "@languages": ["/languages"],
+      "@modals": ["/modals"],
+      "@models": ["/models"],
+      "@navigators": ["/navigators"],
+      "@features": ["/features"],
+      "@services": ["/services"],
+      "@stores": ["/stores"],
+      "@theme": ["/theme"],
+      "@utils": ["/utils"]
+    },       
+  },
 }
