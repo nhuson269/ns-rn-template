@@ -152,4 +152,9 @@ export interface ViewProps extends RNViewProps {
    * View style, turn on shadow.
    */
   shadow?: boolean;
+
+  /**
+   * View style, gap.
+   */
+  gap?: number;
 }

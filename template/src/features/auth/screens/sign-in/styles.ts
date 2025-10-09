@@ -13,4 +13,8 @@ export const styles = StyleSheet.create({
   btSignIn: {
     marginVertical: 16,
   },
+  btSignInBottom: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }
 });

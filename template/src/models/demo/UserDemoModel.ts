@@ -39,7 +39,7 @@ export async function getUserDemoStorage() {
       return dataJson;
     }
     return undefined;
-  } catch (error) {
+  } catch {
     return undefined;
   }
 }

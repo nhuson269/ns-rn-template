@@ -1,66 +1,85 @@
-import {ContentStyle, FlashList as RNFlashList} from '@shopify/flash-list';
-import React, {memo, useCallback, useMemo, useState} from 'react';
-import {ActivityIndicator, LayoutChangeEvent} from 'react-native';
-import {View} from '../view';
-import {FlashListProps} from './props';
-import {styles} from './styles';
+import { FlashList as RNFlashList } from '@shopify/flash-list';
+import React, { memo, useCallback, useMemo, useState } from 'react';
+import { ActivityIndicator, LayoutChangeEvent, StyleProp, ViewStyle } from 'react-native';
+import { View } from '../view';
+import { FlashListProps } from './props';
+import { styles } from './styles';
 
 export const FlashList = memo((props: FlashListProps<any>) => {
   const {
     fetching,
     fetchingMore,
     backgroundColor,
-    padding,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginHorizontal,
+    marginVertical,
     paddingTop,
     paddingRight,
     paddingBottom,
     paddingLeft,
     paddingHorizontal,
     paddingVertical,
-    contentContainerStyle,
+    style: styleOverride,
+    contentContainerStyle: contentContainerStyleOverride,
     ...rest
   } = props;
 
-  let contentContainerStyleProps: ContentStyle | undefined;
-  const bgColorProps =
-    backgroundColor ?? contentContainerStyle?.backgroundColor;
-  const paddingProps = padding ?? contentContainerStyle?.padding;
-  const paddingTopProps = paddingTop ?? contentContainerStyle?.paddingTop;
-  const paddingRightProps = paddingRight ?? contentContainerStyle?.paddingRight;
-  const paddingBottomProps =
-    paddingBottom ?? contentContainerStyle?.paddingBottom;
-  const paddingLeftProps = paddingLeft ?? contentContainerStyle?.paddingLeft;
-  const paddingHorizontalProps =
-    paddingHorizontal ?? contentContainerStyle?.paddingHorizontal;
-  const paddingVerticalProps =
-    paddingVertical ?? contentContainerStyle?.paddingVertical;
-  if (
-    bgColorProps ||
-    paddingProps ||
-    paddingTopProps ||
-    paddingRightProps ||
-    paddingBottomProps ||
-    paddingLeftProps ||
-    paddingHorizontalProps ||
-    paddingVerticalProps
-  ) {
-    contentContainerStyleProps = {
-      backgroundColor: bgColorProps,
-      padding: paddingProps,
-      paddingTop: paddingTopProps,
-      paddingRight: paddingRightProps,
-      paddingBottom: paddingBottomProps,
-      paddingLeft: paddingLeftProps,
-      paddingHorizontal: paddingHorizontalProps,
-      paddingVertical: paddingVerticalProps,
-    };
+  const styleProps: StyleProp<ViewStyle> = {};
+  if (marginTop) {
+    styleProps.marginTop = marginTop;
+  }
+  if (marginRight) {
+    styleProps.marginRight = marginRight;
+  }
+  if (marginBottom) {
+    styleProps.marginBottom = marginBottom;
+  }
+  if (marginLeft) {
+    styleProps.marginLeft = marginLeft;
+  }
+  if (marginHorizontal) {
+    styleProps.marginHorizontal = marginHorizontal;
+  }
+  if (marginVertical) {
+    styleProps.marginVertical = marginVertical;
+  }
+  const contentContainerStyleProps: StyleProp<ViewStyle> = {};
+  if (paddingTop) {
+    contentContainerStyleProps.paddingTop = paddingTop;
+  }
+  if (paddingRight) {
+    contentContainerStyleProps.paddingRight = paddingRight;
+  }
+  if (paddingBottom) {
+    contentContainerStyleProps.paddingBottom = paddingBottom;
+  }
+  if (paddingLeft) {
+    contentContainerStyleProps.paddingLeft = paddingLeft;
+  }
+  if (paddingHorizontal) {
+    contentContainerStyleProps.paddingHorizontal = paddingHorizontal;
+  }
+  if (paddingVertical) {
+    contentContainerStyleProps.paddingVertical = paddingVertical;
   }
 
-  const [layout, setLayout] = useState<{height: number; width: number}>({
+  const [layout, setLayout] = useState<{ height: number; width: number }>({
     height: 0,
     width: 0,
   });
 
+  const styleContainer: StyleProp<ViewStyle> = [
+    styleOverride,
+    styleProps,
+    { backgroundColor: backgroundColor },
+  ];
+  const styleContentContainer = [
+    contentContainerStyleOverride,
+    contentContainerStyleProps,
+  ];
   const isFetching =
     fetching || ((rest.data?.length ?? 0) === 0 && rest.refreshing);
   const refreshing =
@@ -72,7 +91,7 @@ export const FlashList = memo((props: FlashListProps<any>) => {
 
   const fetchingComponent = useMemo(() => {
     return (
-      <View center style={{width: layout.width, height: layout.height}}>
+      <View center style={{ width: layout.width, height: layout.height }}>
         <ActivityIndicator size="large" style={styles.activityIndicator} />
       </View>
     );
@@ -102,7 +121,8 @@ export const FlashList = memo((props: FlashListProps<any>) => {
   return (
     <RNFlashList
       {...rest}
-      contentContainerStyle={contentContainerStyleProps}
+      style={styleContainer}
+      contentContainerStyle={styleContentContainer}
       ListFooterComponent={listFooterComponent}
       ListEmptyComponent={listEmptyComponent}
       refreshing={refreshing}

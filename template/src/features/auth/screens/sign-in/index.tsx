@@ -42,7 +42,7 @@ export const SignInDemoScreen = memo(() => {
           onChangeText={store.setPassword}
           onSubmitEditing={store.login}
         />
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <View style={styles.btSignInBottom}>
           <Button
             preset="transparent"
             titleTx="common.signUp"
