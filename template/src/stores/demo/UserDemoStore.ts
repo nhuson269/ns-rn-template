@@ -1,11 +1,11 @@
-import AuthTokenModel from 'models/AuthTokenModel';
-import UserDemoModel from 'models/demo/UserDemoModel';
-import navActions from 'navigators/shared/actions';
-import storageUtils, {StorageKey} from 'utils/storage-utils';
+import AuthTokenModel from '@/models/AuthTokenModel';
+import UserDemoModel from '@/models/demo/UserDemoModel';
+import navActions from '@/navigators/shared/actions';
+import storageUtils, {StorageKey} from '@/utils/storage-utils';
 import {create} from 'zustand';
 import * as Keychain from 'react-native-keychain';
-import {userService} from 'services/demo/herokuapp-service';
-import {delay} from 'utils/delay';
+import {userService} from '@/services/demo/herokuapp-service';
+import {delay} from '@/utils/delay';
 
 type UserDemoStore = {
   isLoading: boolean;

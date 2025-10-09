@@ -1,6 +1,6 @@
-import AuthTokenModel from 'models/AuthTokenModel';
-import TaskDemoModel from 'models/demo/TaskDemoModel';
-import UserDemoModel from 'models/demo/UserDemoModel';
+import AuthTokenModel from '@/models/AuthTokenModel';
+import TaskDemoModel from '@/models/demo/TaskDemoModel';
+import UserDemoModel from '@/models/demo/UserDemoModel';
 import {GeneralApiProblem} from './client.problem';
 
 // START - DEMO

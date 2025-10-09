@@ -1,7 +1,7 @@
 import {ApisauceInstance, create} from 'apisauce';
 import {ClientConfig} from './client.config';
 import RNFetchBlob from 'react-native-blob-util';
-import {userDemoStore} from 'stores';
+import {userDemoStore} from '@/stores';
 
 export class Client {
   /**

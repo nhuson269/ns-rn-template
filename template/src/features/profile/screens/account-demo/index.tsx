@@ -1,6 +1,6 @@
-import {Button, HeaderNav, Screen, Text, View} from 'components';
+import {Button, HeaderNav, Screen, Text, View} from '@/components';
 import React, {memo, useEffect, useMemo} from 'react';
-import {userDemoStore} from 'stores';
+import {userDemoStore} from '@/stores';
 import {accountDemoStore} from './account-demo.store';
 import {styles} from './styles';
 

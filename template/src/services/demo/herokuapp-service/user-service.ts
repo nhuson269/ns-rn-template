@@ -1,7 +1,7 @@
 import {ApiResponse} from 'apisauce';
-import {translate} from 'languages';
-import {getAuthTokenData} from 'models/AuthTokenModel';
-import {getUserDemoData} from 'models/demo/UserDemoModel';
+import {translate} from '@/languages';
+import {getAuthTokenData} from '@/models/AuthTokenModel';
+import {getUserDemoData} from '@/models/demo/UserDemoModel';
 import {
   Client,
   GetDemoUserResult,
@@ -11,7 +11,7 @@ import {
   LoginDemoResult,
   LogoutDemoResult,
   routes,
-} from 'services/api';
+} from '@/services/api';
 
 class UserService {
   private client: Client;

@@ -1,6 +1,6 @@
 // import {Platform} from 'react-native';
-// import {userDemoStore} from 'stores';
-// import storageUtils, {StorageKey} from 'utils/storage-utils';
+// import {userDemoStore} from '@/stores';
+// import storageUtils, {StorageKey} from '@/utils/storage-utils';
 // import notifyLocalService from './notify-local-service';
 // import notifyPushService, {NotifyDeviceModel} from './notify-push-service';
 

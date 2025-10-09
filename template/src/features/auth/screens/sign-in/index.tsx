@@ -1,8 +1,8 @@
 import {useRoute} from '@react-navigation/native';
-import {Button, Screen, Text, TextInput, View} from 'components';
-import {SignInDemoParams} from 'navigators';
+import {Button, Screen, Text, TextInput, View} from '@/components';
+import {SignInDemoParams} from '@/navigators';
 import React, {memo, useEffect} from 'react';
-import {colorDemoStore} from 'stores';
+import {colorDemoStore} from '@/stores';
 import {signInDemoStore} from './sign-in.store';
 import {styles} from './styles';
 

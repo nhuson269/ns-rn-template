@@ -1,11 +1,11 @@
-import { HeaderNav, Screen } from 'components';
+import { HeaderNav, Screen } from '@/components';
 import React, { memo, useMemo } from 'react';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
-import { colorDemoStore } from 'stores';
+import { colorDemoStore } from '@/stores';
 import { styles } from './styles';
 
 export const ReanimationDemoScreen = memo(() => {
@@ -13,23 +13,26 @@ export const ReanimationDemoScreen = memo(() => {
   const startingPosition = 100;
   const x = useSharedValue(startingPosition);
   const y = useSharedValue(startingPosition);
+  const offsetX = useSharedValue(0);
+  const offsetY = useSharedValue(0);
   const pressed = useSharedValue(false);
 
   const eventHandler = useMemo(() => Gesture.Pan()
     .onStart(() => {
       pressed.value = true;
+      offsetX.value = x.value;
+      offsetY.value = y.value;
     })
     .onUpdate((event) => {
-      x.value = event.translationX;
-      y.value = event.translationY;
+      x.value = offsetX.value + event.translationX;
+      y.value = offsetY.value + event.translationY;
     })
     .onEnd(() => {
       pressed.value = false;
     })
     .onFinalize(() => {
-      // tương đương onFinish / onCancel
       pressed.value = false;
-    }), [pressed, x, y]);
+    }), [offsetX, offsetY, pressed, x, y]);
 
   const uas = useAnimatedStyle(() => {
     return {

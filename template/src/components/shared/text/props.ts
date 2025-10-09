@@ -1,6 +1,6 @@
 import {StyleProp, TextProps as NSTextProps, TextStyle} from 'react-native';
 import {TextPresets} from './presets';
-import {TxKeyPath} from 'languages';
+import {TxKeyPath} from '@/languages';
 
 export interface TextProps extends NSTextProps {
   /**

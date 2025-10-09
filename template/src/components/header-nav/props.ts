@@ -1,5 +1,5 @@
 import {StyleProp, ViewStyle} from 'react-native';
-import {TxKeyPath} from 'languages';
+import {TxKeyPath} from '@/languages';
 
 export interface HeaderNavProps {
   /**

@@ -3,7 +3,7 @@ import {ActivityIndicator, StyleProp, TextStyle, ViewStyle} from 'react-native';
 import {presets} from './presets';
 import {ButtonProps} from './props';
 import {styles} from './styles';
-import {colorDemoStore} from 'stores';
+import {colorDemoStore} from '@/stores';
 import {Text} from '../text';
 import {View} from '../view';
 import {Pressable} from '../pressable';

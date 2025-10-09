@@ -1,11 +1,11 @@
 import React, {useCallback} from 'react';
-import {RouteName} from 'navigators/shared/routes';
+import {RouteName} from '@/navigators/shared/routes';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {colorDemoStore} from 'stores';
-import { translate } from 'languages';
-import { HomeDemoScreen } from 'features/home/screens';
-import { AccountDemoScreen } from 'features/profile/screens';
+import {colorDemoStore} from '@/stores';
+import { translate } from '@/languages';
+import { HomeDemoScreen } from '@/features/home/screens';
+import { AccountDemoScreen } from '@/features/profile/screens';
 
 export type TabbarNavParamList = {
   [RouteName.HOME_DEMO]: undefined;

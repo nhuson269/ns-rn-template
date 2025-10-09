@@ -1,4 +1,4 @@
-import {HeaderNav, Screen, Text} from 'components';
+import {HeaderNav, Screen, Text} from '@/components';
 import React, {memo} from 'react';
 import {styles} from './styles';
 

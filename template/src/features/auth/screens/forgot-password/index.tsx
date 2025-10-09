@@ -1,4 +1,4 @@
-import {Button, HeaderNav, Screen, TextInput} from 'components';
+import {Button, HeaderNav, Screen, TextInput} from '@/components';
 import React, {memo, useEffect} from 'react';
 import {forgotPasswordDemoStore} from './forgot-password.store';
 import {styles} from './styles';

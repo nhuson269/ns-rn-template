@@ -1,8 +1,8 @@
-import alertHelper from 'modals/alert/helper';
-import TaskDemoModel from 'models/demo/TaskDemoModel';
-import {TodoListDemoParams} from 'navigators';
-import {taskService} from 'services/demo/herokuapp-service';
-import {todoService} from 'services/demo/typicode-services';
+import alertHelper from '@/modals/alert/helper';
+import TaskDemoModel from '@/models/demo/TaskDemoModel';
+import {TodoListDemoParams} from '@/navigators';
+import {taskService} from '@/services/demo/herokuapp-service';
+import {todoService} from '@/services/demo/typicode-services';
 import {create} from 'zustand';
 
 type TodoListStore = {

@@ -1,12 +1,12 @@
 import {ApiResponse} from 'apisauce';
-import {getArrTaskTypicodeData} from 'models/demo/TaskDemoModel';
+import {getArrTaskTypicodeData} from '@/models/demo/TaskDemoModel';
 import {
   Client,
   getGeneralApiProblem,
   GetTasksDemoResult,
   routes,
   TYPICODE_CLIENT_CONFIG,
-} from 'services/api';
+} from '@/services/api';
 
 class TodoService {
   private client: Client;
@@ -25,7 +25,7 @@ class TodoService {
           offset: offset,
         },
       );
-
+      console.log(response)
       // the typical ways to die when calling an api
       if (!response.ok) {
         const problem = getGeneralApiProblem(response);
@@ -37,6 +37,7 @@ class TodoService {
       const items = getArrTaskTypicodeData(response.data);
       return {kind: 'ok', data: items};
     } catch (error: any) {
+      console.log(error)
       return {kind: 'bad-data', message: error};
     }
   }

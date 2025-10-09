@@ -4,7 +4,7 @@ import {StyleProp, TextStyle} from 'react-native';
 import {presets} from './presets';
 import {TextProps} from './props';
 import {useTranslation} from 'react-i18next';
-import {colorDemoStore} from 'stores';
+import {colorDemoStore} from '@/stores';
 
 /**
  * For your text displaying needs.

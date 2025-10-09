@@ -1,9 +1,9 @@
 import React, {memo, useMemo} from 'react';
-import {Pressable, Text, View} from 'components';
-import TaskDemoModel from 'models/demo/TaskDemoModel';
-import {PressableProps} from 'components/shared/pressable/props';
+import {Pressable, Text, View} from '@/components';
+import TaskDemoModel from '@/models/demo/TaskDemoModel';
+import {PressableProps} from '@/components/shared/pressable/props';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {colorDemoStore} from 'stores';
+import {colorDemoStore} from '@/stores';
 import dayjs from 'dayjs';
 
 interface Props extends PressableProps {

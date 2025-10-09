@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {AuthDemoNavigator, MainDemoNavigator} from 'navigators';
-import {navigationRef, navOnStateChange} from 'navigators/shared/helper';
-import {RouteName} from 'navigators/shared/routes';
-import {LaunchScreen} from 'features/shared';
+import {AuthDemoNavigator, MainDemoNavigator} from '@/navigators';
+import {navigationRef, navOnStateChange} from '@/navigators/shared/helper';
+import {RouteName} from '@/navigators/shared/routes';
+import {LaunchScreen} from '@/features/shared';
 import { enableScreens } from 'react-native-screens';
 
 enableScreens();

@@ -1,4 +1,4 @@
-import {TxKeyPath} from 'languages';
+import {TxKeyPath} from '@/languages';
 import {
   StyleProp,
   TextInputProps as RNTextInputProps,

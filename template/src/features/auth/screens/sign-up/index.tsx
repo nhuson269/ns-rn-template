@@ -1,6 +1,6 @@
 import {useRoute} from '@react-navigation/native';
-import {Button, HeaderNav, Screen, TextInput} from 'components';
-import {SignUpDemoParams} from 'navigators/shared/params';
+import {Button, HeaderNav, Screen, TextInput} from '@/components';
+import {SignUpDemoParams} from '@/navigators/shared/params';
 import React, {memo, useEffect} from 'react';
 import {signUpDemoStore} from './sign-up.store';
 import {styles} from './styles';

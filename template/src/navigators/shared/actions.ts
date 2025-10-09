@@ -1,4 +1,4 @@
-import REGEX from 'config/Regex';
+import REGEX from '@/config/Regex';
 import {Linking, Platform} from 'react-native';
 import navHelper from './helper';
 import {

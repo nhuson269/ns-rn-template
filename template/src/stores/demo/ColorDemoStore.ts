@@ -1,5 +1,5 @@
-import {blueDemoColor, ColorDemo, greenDemoColor, violetDemoColor} from 'theme';
-import {MMKVStorage, StorageKey} from 'utils/storage-utils';
+import {blueDemoColor, ColorDemo, greenDemoColor, violetDemoColor} from '@/theme';
+import {MMKVStorage, StorageKey} from '@/utils/storage-utils';
 import {create} from 'zustand';
 import {createJSONStorage, persist} from 'zustand/middleware';
 

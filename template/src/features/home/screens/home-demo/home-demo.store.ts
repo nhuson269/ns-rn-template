@@ -1,5 +1,5 @@
-import navActions from 'navigators/shared/actions';
-import {userDemoStore} from 'stores';
+import navActions from '@/navigators/shared/actions';
+import {userDemoStore} from '@/stores';
 import {create} from 'zustand';
 
 type HomeStore = {

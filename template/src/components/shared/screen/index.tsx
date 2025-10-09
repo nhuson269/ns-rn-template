@@ -4,7 +4,7 @@ import {Edge as SafeEdge, SafeAreaView} from 'react-native-safe-area-context';
 import {ScreenProps} from './props';
 import {offsets, presets} from './presets';
 import {useIsFocused} from '@react-navigation/native';
-import {colorDemoStore} from 'stores';
+import {colorDemoStore} from '@/stores';
 import {statusBarStore} from '../status-bar/status-bar.store';
 
 const isIos = Platform.OS === 'ios';

@@ -1,9 +1,9 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { RouteName } from 'navigators/shared/routes';
+import { RouteName } from '@/navigators/shared/routes';
 import { TabbarDemoNavigator } from '../tabbar-demo-nav';
 import { TodoDemoNavigator } from '../todo-demo-nav';
-import { ReanimationDemoScreen } from 'features/home/screens';
+import { ReanimationDemoScreen } from '@/features/home/screens';
 
 export type MainDemoNavParamList = {
   [RouteName.TABBAR_DEMO]: undefined;

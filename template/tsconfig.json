@@ -3,21 +3,9 @@
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["**/node_modules", "**/Pods"],
   "compilerOptions": {
-    "rootDir": "./",
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@components": ["/components"],
-      "@config": ["/config"],
-      "@hooks": ["/hooks"],
-      "@languages": ["/languages"],
-      "@modals": ["/modals"],
-      "@models": ["/models"],
-      "@navigators": ["/navigators"],
-      "@features": ["/features"],
-      "@services": ["/services"],
-      "@stores": ["/stores"],
-      "@theme": ["/theme"],
-      "@utils": ["/utils"]
-    },       
+      "@/*": ["src/*"]
+    }     
   },
 }

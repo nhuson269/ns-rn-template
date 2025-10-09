@@ -1,7 +1,7 @@
-import {translate} from 'languages';
-import alertHelper from 'modals/alert/helper';
+import {translate} from '@/languages';
+import alertHelper from '@/modals/alert/helper';
 import {Keyboard} from 'react-native';
-import {delay} from 'utils/delay';
+import {delay} from '@/utils/delay';
 import {create} from 'zustand';
 
 type ForgotPasswordStore = {

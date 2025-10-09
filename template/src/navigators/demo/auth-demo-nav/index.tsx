@@ -1,11 +1,11 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {RouteName} from 'navigators/shared/routes';
+import {RouteName} from '@/navigators/shared/routes';
 import {
   ForgotPasswordDemoParams,
   SignUpDemoParams,
-} from 'navigators/shared/params';
-import { ForgotPasswordDemoScreen, SignInDemoScreen, SignUpDemoScreen } from 'features/auth/screens';
+} from '@/navigators/shared/params';
+import { ForgotPasswordDemoScreen, SignInDemoScreen, SignUpDemoScreen } from '@/features/auth/screens';
 
 export type AuthDemoNavParamList = {
   [RouteName.SIGN_IN_DEMO]: undefined;

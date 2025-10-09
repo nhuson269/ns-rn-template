@@ -1,9 +1,9 @@
-import {Button, Text, View} from 'components';
-import navHelper from 'navigators/shared/helper';
+import {Button, Text, View} from '@/components';
+import navHelper from '@/navigators/shared/helper';
 import React, {memo, useMemo} from 'react';
 import {StyleProp, ViewStyle} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {colorDemoStore} from 'stores';
+import {colorDemoStore} from '@/stores';
 import {HeaderNavProps} from './props';
 import {styles} from './styles';
 

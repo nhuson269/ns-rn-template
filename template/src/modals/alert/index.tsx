@@ -1,7 +1,7 @@
-import {Button, Text, View} from 'components';
+import {Button, Text, View} from '@/components';
 import React, {memo} from 'react';
 import Modal from 'react-native-modal';
-import {colorDemoStore} from 'stores';
+import {colorDemoStore} from '@/stores';
 import {alertStore} from './alert.store';
 import {styles} from './styles';
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {RouteName} from 'navigators/shared/routes';
+import {RouteName} from '@/navigators/shared/routes';
 import {
   TodoDetailDemoScreen,
   TodoListDemoScreen,
   TodoListTypicodeDemoScreen,
-} from 'features/todo-demo/screens';
-import {TodoListDemoParams} from 'navigators/shared';
+} from '@/features/todo-demo/screens';
+import {TodoListDemoParams} from '@/navigators/shared';
 
 export type TodoDemoNavParamList = {
   [RouteName.TODO_LIST_DEMO]: TodoListDemoParams;

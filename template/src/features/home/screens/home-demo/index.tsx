@@ -1,6 +1,6 @@
-import {HeaderNav, Pressable, Screen, Text, View} from 'components';
+import {HeaderNav, Pressable, Screen, Text, View} from '@/components';
 import React, {memo} from 'react';
-import {colorDemoStore} from 'stores';
+import {colorDemoStore} from '@/stores';
 import {homeDemoStore} from './home-demo.store';
 import {styles} from './styles';
 

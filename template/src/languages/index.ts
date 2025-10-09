@@ -3,7 +3,7 @@ import i18next from 'i18next';
 import {initReactI18next} from 'react-i18next';
 import en from './lang/en.json';
 import vi from './lang/vi.json';
-import storageUtils, {StorageKey} from 'utils/storage-utils';
+import storageUtils, {StorageKey} from '@/utils/storage-utils';
 import dayjs from 'dayjs';
 
 // TYPE

@@ -1,7 +1,7 @@
 import i18next from 'i18next';
-import {translate} from 'languages';
-import alertHelper from 'modals/alert/helper';
-import {colorDemoStore, userDemoStore} from 'stores';
+import {translate} from '@/languages';
+import alertHelper from '@/modals/alert/helper';
+import {colorDemoStore, userDemoStore} from '@/stores';
 import {create} from 'zustand';
 
 type AccountStore = {

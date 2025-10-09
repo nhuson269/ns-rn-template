@@ -1,5 +1,5 @@
 import {ApiResponse} from 'apisauce';
-import {translate} from 'languages';
+import {translate} from '@/languages';
 
 export type GeneralApiProblem =
   /**

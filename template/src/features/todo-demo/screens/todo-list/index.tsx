@@ -1,7 +1,7 @@
 import {useRoute} from '@react-navigation/native';
-import {FlatList, HeaderNav, Screen, Text, TodoDemoItem} from 'components';
-import TaskDemoModel from 'models/demo/TaskDemoModel';
-import {TodoListDemoParams} from 'navigators';
+import {FlatList, HeaderNav, Screen, Text, TodoDemoItem} from '@/components';
+import TaskDemoModel from '@/models/demo/TaskDemoModel';
+import {TodoListDemoParams} from '@/navigators';
 import React, {memo, useCallback, useEffect} from 'react';
 import {styles} from './styles';
 import {todoListDemoStore} from './todo-list.store';

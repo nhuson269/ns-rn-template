@@ -1,12 +1,12 @@
 import {ApiResponse} from 'apisauce';
-import {getArrTaskHerokuappData} from 'models/demo/TaskDemoModel';
+import {getArrTaskHerokuappData} from '@/models/demo/TaskDemoModel';
 import {
   Client,
   getGeneralApiProblem,
   GetTasksDemoResult,
   HEROKUAPP_CLIENT_CONFIG,
   routes,
-} from 'services/api';
+} from '@/services/api';
 
 class TaskService {
   private client: Client;

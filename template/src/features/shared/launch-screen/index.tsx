@@ -1,9 +1,9 @@
 import {useIsFocused} from '@react-navigation/native';
-import {Screen, Text} from 'components';
+import {Screen, Text} from '@/components';
 import React, {memo, useCallback, useEffect} from 'react';
 import {ActivityIndicator} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {colorDemoStore, userDemoStore} from 'stores';
+import {colorDemoStore, userDemoStore} from '@/stores';
 import {styles} from './styles';
 
 export const LaunchScreen = memo(() => {

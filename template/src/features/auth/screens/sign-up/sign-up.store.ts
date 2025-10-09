@@ -1,9 +1,9 @@
-import {translate} from 'languages';
-import alertHelper from 'modals/alert/helper';
-import navActions from 'navigators/shared/actions';
+import {translate} from '@/languages';
+import alertHelper from '@/modals/alert/helper';
+import navActions from '@/navigators/shared/actions';
 import {Keyboard} from 'react-native';
-import {userService} from 'services/demo/herokuapp-service';
-import {userDemoStore} from 'stores';
+import {userService} from '@/services/demo/herokuapp-service';
+import {userDemoStore} from '@/stores';
 import {create} from 'zustand';
 
 type SignUpStore = {

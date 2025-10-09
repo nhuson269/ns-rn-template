@@ -1,5 +1,5 @@
-import {FlashList, HeaderNav, Screen, Text, TodoDemoItem} from 'components';
-import TaskDemoModel from 'models/demo/TaskDemoModel';
+import {FlashList, HeaderNav, Screen, Text, TodoDemoItem} from '@/components';
+import TaskDemoModel from '@/models/demo/TaskDemoModel';
 import React, {memo, useCallback, useEffect} from 'react';
 import {styles} from './styles';
 import {todoListTypicodeDemoStore} from './todo-list-typicode.store';
