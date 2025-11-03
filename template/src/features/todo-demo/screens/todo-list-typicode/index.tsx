@@ -1,4 +1,4 @@
-import {FlashList, HeaderNav, Screen, Text, TodoDemoItem} from '@/components';
+import {FlatList, HeaderNav, Screen, Text, TodoDemoItem} from '@/components';
 import TaskDemoModel from '@/models/demo/TaskDemoModel';
 import React, {memo, useCallback, useEffect} from 'react';
 import {styles} from './styles';
@@ -28,7 +28,7 @@ export const TodoListTypicodeDemoScreen = memo(() => {
           marginHorizontal={16}
           marginVertical={8}
           valueTx="todoList.length">{`: ${store.data.length}`}</Text>
-        <FlashList
+        <FlatList
           paddingTop={16}
           data={store.dataDisplay}
           keyExtractor={keyExtractor}

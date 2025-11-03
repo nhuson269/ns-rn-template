@@ -1,4 +1,4 @@
-import {MMKV} from 'react-native-mmkv';
+import {createMMKV} from 'react-native-mmkv';
 
 // interface AsyncStorage {
 //   getItem: (key: string) => string | null | Promise<string | null>;
@@ -6,7 +6,7 @@ import {MMKV} from 'react-native-mmkv';
 //   removeItem: (key: string) => void | Promise<void>;
 // }
 
-const storage = new MMKV();
+const storage = createMMKV();
 
 export const MMKVStorage = {
   getItem: (key: string) => {
@@ -16,7 +16,7 @@ export const MMKVStorage = {
     return storage.set(key, value) as void | Promise<void>;
   },
   removeItem: (key: string) => {
-    return storage.delete(key) as void | Promise<void>;
+    return storage.remove(key) as boolean | Promise<boolean>;
   },
 };
 
@@ -49,7 +49,7 @@ class StorageUtils {
   }
 
   delete(key: StorageKey) {
-    storage.delete(key);
+    storage.remove(key);
   }
 
   cleanCache() {
@@ -59,7 +59,7 @@ class StorageUtils {
         value !== StorageKey.LANGUAGE &&
         value !== StorageKey.COLOR_DEMO_THEME
       ) {
-        storage.delete(value);
+        storage.remove(value);
       }
     });
   }

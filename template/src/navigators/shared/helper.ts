@@ -63,6 +63,13 @@ export function navOnStateChange() {
     // analyticsService.logScreenView(currentRoute.name, currentRoute.params);
   }
   previousRouteName = currentRoute?.name;
+  if (__DEV__) {
+    console.log(`🧭 [NAVIGATION INFO]`);
+    console.log(`KEY - ${currentRoute?.key}`);
+    console.log(`NAME - ${currentRoute?.name}`);
+    console.log(`PATH - ${currentRoute?.path}`);
+    console.log(`PARAMS - ${currentRoute?.params}`);
+  }
 }
 
 export const StackOption: NativeStackNavigationOptions = {
