@@ -23,14 +23,15 @@ export const todoListTypicodeDemoStore = create<TodoListTypicodeStore>(
     data: [],
     dataDisplay: [],
     getData: async () => {
-      if (get().isLoading) {
+      const {isLoading, limit} = get();
+      if (isLoading) {
         return;
       }
       set({isLoading: true});
       const result = await todoService.getList();
       if (result.kind === 'ok') {
         const dataResult = result.data;
-        const displayData = getDataDisplay(dataResult, [], get().limit);
+        const displayData = getDataDisplay(dataResult, [], limit);
         set({
           isLoading: false,
           data: dataResult,

@@ -44,7 +44,7 @@ class StorageUtils {
   }
 
   delete(key: StorageKey) {
-    storage.remove(key);
+    return storage.remove(key);
   }
 
   cleanCache() {

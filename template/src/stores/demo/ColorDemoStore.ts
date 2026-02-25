@@ -10,10 +10,7 @@ type ColorDemoStore = {
   setViolet: () => void;
 };
 
-export const colorDemoStore = create<
-  ColorDemoStore,
-  [['zustand/persist', ColorDemoStore]]
->(
+export const colorDemoStore = create<ColorDemoStore>()(
   persist(
     set => ({
       colors: greenDemoColor,

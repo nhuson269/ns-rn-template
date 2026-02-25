@@ -24,7 +24,7 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
   authToken: undefined,
   user: undefined,
   getCache: async () => {
-    const isLoading = get().isLoading;
+    const {isLoading, removeUser} = get();
     if (isLoading) {
       return;
     }
@@ -46,7 +46,7 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
     if (!authToken?.accessToken) {
       await delay(1000);
       set({isLoading: false, isSignIn: false, user: undefined});
-      get().removeUser();
+      removeUser();
     } else {
       const resultMe = await userService.userMe();
       const isOK = resultMe.kind === 'ok';
@@ -59,7 +59,7 @@ export const userDemoStore = create<UserDemoStore>((set, get) => ({
       if (isOK) {
         navActions.replaceToMainDemo();
       } else {
-        get().removeUser();
+        removeUser();
       }
     }
   },

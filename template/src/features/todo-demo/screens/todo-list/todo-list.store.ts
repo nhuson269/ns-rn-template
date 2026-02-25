@@ -1,9 +1,9 @@
 import alertHelper from '@/modals/alert/helper';
 import TaskDemoModel from '@/models/demo/TaskDemoModel';
-import {TodoListDemoParams} from '@/navigators';
-import {taskService} from '@/services/demo/herokuapp-service';
-import {todoService} from '@/services/demo/typicode-services';
-import {create} from 'zustand';
+import { TodoListDemoParams } from '@/navigators';
+import { taskService } from '@/services/demo/herokuapp-service';
+import { todoService } from '@/services/demo/typicode-services';
+import { create } from 'zustand';
 
 type TodoListStore = {
   params: TodoListDemoParams | undefined;
@@ -25,52 +25,54 @@ export const todoListDemoStore = create<TodoListStore>((set, get) => ({
   isEndPage: false,
   limit: 15,
   data: [],
-  setParams: value => set({params: value}),
+  setParams: value => set({ params: value }),
   getData: async () => {
-    if (get().isLoading) {
+    const { isLoading, limit, data, params } = get();
+    if (isLoading) {
       return;
     }
-    set({isLoading: true});
+    set({ isLoading: true });
     const result =
-      get().params?.type === 'Herokuapp'
-        ? await taskService.getTasks(get().data.length)
-        : await todoService.getList(get().data.length);
+      params?.type === 'Herokuapp'
+        ? await taskService.getTasks(data.length)
+        : await todoService.getList(data.length);
     if (result.kind === 'ok') {
       const dataResult = result.data;
       set({
         isLoading: false,
         data: dataResult,
         isLoadingMore: false,
-        isEndPage: dataResult.length < get().limit,
+        isEndPage: dataResult.length < limit,
       });
     } else {
-      set({isLoading: false});
+      set({ isLoading: false });
       if (result.message) {
-        alertHelper.show({message: result.message});
+        alertHelper.show({ message: result.message });
       }
     }
   },
   getDataMore: async () => {
-    if (get().isLoading || get().isLoadingMore || get().isEndPage) {
+    const { isLoading, isLoadingMore, isEndPage, limit, data, params } = get();
+    if (isLoading || isLoadingMore || isEndPage) {
       return;
     }
-    set({isLoadingMore: true});
+    set({ isLoadingMore: true });
     const result =
-      get().params?.type === 'Herokuapp'
-        ? await taskService.getTasks(get().data.length)
-        : await todoService.getList(get().data.length);
-    if (get().isLoadingMore) {
+      params?.type === 'Herokuapp'
+        ? await taskService.getTasks(data.length)
+        : await todoService.getList(data.length);
+    if (isLoadingMore) {
       if (result.kind === 'ok') {
         const dataResult = result.data;
         set({
           isLoadingMore: false,
-          isEndPage: dataResult.length < get().limit,
-          data: get().data.concat(dataResult),
+          isEndPage: dataResult.length < limit,
+          data: data.concat(dataResult),
         });
       } else {
-        set({isLoadingMore: false});
+        set({ isLoadingMore: false });
         if (result.message) {
-          alertHelper.show({message: result.message});
+          alertHelper.show({ message: result.message });
         }
       }
     }

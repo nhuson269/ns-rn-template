@@ -19,7 +19,8 @@ export const forgotPasswordDemoStore = create<ForgotPasswordStore>(
     username: '',
     msgUsername: '',
     setUsername: value => {
-      if (value !== get().username) {
+      const {username} = get();
+      if (value !== username) {
         set({username: value, msgUsername: ''});
       }
     },

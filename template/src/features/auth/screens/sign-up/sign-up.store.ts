@@ -35,22 +35,26 @@ export const signUpDemoStore = create<SignUpStore>((set, get) => ({
   msgPassword: '',
   msgPasswordConfirm: '',
   setUsername: value => {
-    if (value !== get().username) {
+    const {username} = get();
+    if (value !== username) {
       set({username: value, msgUsername: ''});
     }
   },
   setFullname: value => {
-    if (value !== get().fullname) {
+    const {fullname} = get();
+    if (value !== fullname) {
       set({fullname: value, msgFullname: ''});
     }
   },
   setPassword: value => {
-    if (value !== get().password) {
+    const {password} = get();
+    if (value !== password) {
       set({password: value, msgPassword: ''});
     }
   },
   setPasswordConfirm: value => {
-    if (value !== get().passwordConfirm) {
+    const {passwordConfirm} = get();
+    if (value !== passwordConfirm) {
       set({passwordConfirm: value, msgPasswordConfirm: ''});
     }
   },

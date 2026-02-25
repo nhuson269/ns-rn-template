@@ -48,12 +48,14 @@ export const alertStore = create<AlertStore>((set, get) => ({
     });
   },
   onDismiss: () => {
-    if (get().isVisible) {
+    const {isVisible} = get();
+    if (isVisible) {
       set({isVisible: false});
     }
   },
   onShow: () => {
-    if (!get().isVisible) {
+    const {isVisible} = get();
+    if (!isVisible) {
       set({isVisible: true});
     }
   },
