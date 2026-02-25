@@ -1,22 +1,17 @@
 import {createMMKV} from 'react-native-mmkv';
-
-// interface AsyncStorage {
-//   getItem: (key: string) => string | null | Promise<string | null>;
-//   setItem: (key: string, value: string) => void | Promise<void>;
-//   removeItem: (key: string) => void | Promise<void>;
-// }
+import type {StateStorage} from 'zustand/middleware';
 
 const storage = createMMKV();
 
-export const MMKVStorage = {
+export const MMKVStorage: StateStorage = {
   getItem: (key: string) => {
-    return storage.getString(key) as string | null | Promise<string | null>;
+    return storage.getString(key) ?? null;
   },
   setItem: (key: string, value: string) => {
-    return storage.set(key, value) as void | Promise<void>;
+    storage.set(key, value);
   },
   removeItem: (key: string) => {
-    return storage.remove(key) as boolean | Promise<boolean>;
+    storage.remove(key);
   },
 };
 

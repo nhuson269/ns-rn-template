@@ -11,11 +11,14 @@ import {
 import {AlertModal} from '@/modals';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import { StatusBar } from '@/components';
+import { useColorScheme } from 'react-native';
 
 const App = () => {
+  const isDarkMode = useColorScheme() === 'dark';
+  
   return (
     <>
-      <StatusBar />
+      <StatusBar  />
       <I18nextProvider i18n={i18next}>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           <GestureHandlerRootView>

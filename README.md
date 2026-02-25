@@ -1,68 +1,46 @@
-# :space_invader: custom React Native Template TypeScript for nhuson269
+# React Native Community Template
 
-<p>
-  <a href="https://github.com/react-native-community/react-native-template-typescript/actions/workflows/npm-publish.yml">
-    <img alt="Build Status" src="https://github.com/react-native-community/react-native-template-typescript/actions/workflows/npm-publish.yml/badge.svg" />
-  </a>
-  <a href="https://github.com/react-native-community/react-native-template-typescript#readme">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
-  </a>
-  <a href="https://github.com/react-native-community/react-native-template-typescript/graphs/commit-activity">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
-  </a>
-  <a href="https://github.com/react-native-community/react-native-template-typescript/blob/master/LICENSE">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  </a>
-</p>
+The template used by `npx @react-native-community/cli init` to bootstrap a React Native application.
 
-> Clean and minimalist React Native template for a quick start with TypeScript.
+[![Build Status][build-badge]][build] [![Version][version-badge]][package] [![MIT License][license-badge]][license] [![PRs Welcome][prs-welcome-badge]][prs-welcome]
 
-## :star: Features
+# Create Latest CLI Project
 
-- Elegant usage directly within the [React Native CLI](https://github.com/react-native-community/cli)
-- Consistent with the default React Native template
-- Minimal additional dependencies
-- Build basic authentication flow
-- Manage status by [Zustand](https://github.com/pmndrs/zustand)
-- Integrated default color theme management
-- Default integration of multi-language management
-- Firebase integration (analytics, crashlytics, messaging)
-- v.v
+Using this command create latest react-native project with this template
 
-## Tech Stack
-
-Ignite apps include the following rock-solid technical decisions out of the box:
-
-- React Native
-- React Navigation 6
-- [Zustand] (https://github.com/pmndrs/zustand)
-- TypeScript
-- react-native-mmkv (~30x faster than AsyncStorage!)
-- apisauce (to talk to REST servers)
-- i18next, react-i18next
-- @react-native-firebase (https://rnfb-docs.netlify.app/)
-- react-native-vector-icons
-- Flipper-ready
-- And more!
-
-## :arrow_forward: Usage
-
-```sh
-npx react-native init MyApp --template ns-rn-template
+```
+npx @react-native-community/cli@latest init TestApp
 ```
 
-## :warning: React Native CLI
+# Create Specific Version React-Native CLI Project
 
-This template only works with the new CLI. Make sure you have uninstalled the legacy `react-native-cli` first (`npm uninstall -g react-native-cli`) for the below command to work. If you wish to not use `npx`, you can also install the new CLI globally (`npm i -g @react-native-community/cli` or `yarn global add @react-native-community/cli`).
+Add version flag and specify that existing version of react-native to create project.
+Note that this command will create a new project from the template using the specific version passed to the flag
 
-If you tried the above and still get the react-native-template-react- native-template-typescript: Not found error, please try adding the `--ignore-existing` flag to [force npx to ignore](https://github.com/npm/npx#description) any locally installed versions of the CLI and use the latest.
+    npx @react-native-community/cli init TestApp --version <VERSION>
 
-Further information can be found here: https://github.com/react-native-community/cli#about
+Replace `<VERSION>` with the version number you need. For example: 0.75.2.
 
-## :computer: Contributing
+## Contents
 
-Contributions are very welcome. Please check out the [contributing document](CONTRIBUTING.md).
+- [About](#about)
+- [License](#license)
 
-## :bookmark: License
+## About
 
-This project is [MIT](LICENSE) licensed.
+This repository contains the template used by the React Native Community's Command Line Tool (or CLI) to bootstrap a React Native project.
+
+## License
+
+Everything inside this repository is [MIT licensed](./LICENSE).
+
+<!-- badges -->
+
+[build-badge]: https://img.shields.io/github/actions/workflow/status/react-native-community/template/test.yml?branch=main&style=flat-square
+[build]: https://github.com/react-native-community/template/actions/workflows/test.yml
+[version-badge]: https://img.shields.io/npm/v/@react-native-community/template.svg?style=flat-square
+[package]: https://www.npmjs.com/package/@react-native-community/template
+[license-badge]: https://img.shields.io/npm/l/@react-native-community/template.svg?style=flat-square
+[license]: https://opensource.org/licenses/MIT
+[prs-welcome-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
+[prs-welcome]: http://makeapullrequest.com
