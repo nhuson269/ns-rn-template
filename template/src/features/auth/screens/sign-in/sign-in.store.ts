@@ -33,12 +33,14 @@ export const signInDemoStore = create<SignInStore>((set, get) => ({
   msgPassword: '',
   setParams: value => set({params: value}),
   setUsername: value => {
-    if (value !== get().username) {
+    const {username} = get();
+    if (value !== username) {
       set({username: value, msgUsername: ''});
     }
   },
   setPassword: value => {
-    if (value !== get().password) {
+    const {password} = get();
+    if (value !== password) {
       set({password: value, msgPassword: ''});
     }
   },
@@ -80,13 +82,16 @@ export const signInDemoStore = create<SignInStore>((set, get) => ({
     set({isLoading: false});
   },
   goSignUp: () => {
-    navActions.navigateToSignUpDemo({username: get().username});
+    const {username} = get();
+    navActions.navigateToSignUpDemo({username: username});
   },
   goForgotPassword: () => {
-    navActions.navigateToForgotPasswordDemo({username: get().username});
+    const {username} = get();
+    navActions.navigateToForgotPasswordDemo({username: username});
   },
   onSkip: () => {
-    if (!get().params?.onNavigateSuccess) {
+    const {params} = get();
+    if (!params?.onNavigateSuccess) {
       navActions.replaceToMainDemo();
     } else {
       navActions.goBack();

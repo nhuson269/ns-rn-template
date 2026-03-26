@@ -11,19 +11,19 @@ type StatusBarStore = {
 export const statusBarStore = create<StatusBarStore>((set, get) => ({
   style: 'dark-content',
   setStyle: value => {
-    const style = get().style;
+    const {style} = get();
     if (value !== style) {
       set({style: value});
     }
   },
   setLight: () => {
-    const style = get().style;
+    const {style} = get();
     if (style !== 'light-content') {
       set({style: 'light-content'});
     }
   },
   setDark: () => {
-    const style = get().style;
+    const {style} = get();
     if (style !== 'dark-content') {
       set({style: 'dark-content'});
     }
